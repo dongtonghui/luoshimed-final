@@ -359,6 +359,221 @@ footer {
 .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form-group { margin-bottom: 14px; }
 
+
+/* 移动端响应式适配 v1.0 */
+
+    /* ============================================================
+       移动端响应式适配 v1.0
+       断点: 768px (平板以下), 480px (手机)
+    ============================================================ */
+
+    /* ── 汉堡菜单按钮 ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .nav-hamburger:hover { background: var(--blue-pale); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text-dark); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── 移动端导航抽屉 ── */
+    @media (max-width: 768px) {
+      .wrap { padding: 0 20px; }
+
+      /* 导航 */
+      .nav-wrap { padding: 0 20px; height: 60px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px; left: 0; right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 16px 20px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 8px 32px rgba(37,99,235,0.10);
+        z-index: 499;
+        gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 11px 16px;
+        font-size: 15px;
+        border-radius: 10px;
+        width: 100%;
+      }
+      .nav-cta {
+        margin-top: 8px;
+        text-align: center;
+        padding: 13px 16px !important;
+      }
+
+      /* Hero Banner */
+      #hero {
+        min-height: auto;
+        padding: 60px 0 0;
+      }
+      .hero-deco-panel { display: none; }
+      .hero-content {
+        flex-direction: column;
+        min-height: auto;
+        padding: 36px 20px 0;
+        gap: 0;
+      }
+      .hero-left {
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 36px;
+        max-width: 100%;
+      }
+      .hero-title { font-size: 44px; }
+      .hero-sub { font-size: 15px; }
+      .hero-right {
+        min-height: 220px;
+        border-radius: 0;
+        width: 100%;
+        padding: 28px 20px;
+      }
+      .hero-stats-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .hero-stat-val { font-size: 30px; }
+      .hero-cta-row { flex-wrap: wrap; gap: 10px; }
+      .hero-scroll-hint { display: none; }
+
+      /* 内页 Banner */
+      .page-banner { padding: 60px 0 0; }
+      .page-banner-inner { padding: 32px 20px 36px; }
+      .page-banner-title { font-size: 32px; }
+      .page-banner-sub { font-size: 14px; }
+
+      /* section通用间距 */
+      section { padding-top: 60px !important; padding-bottom: 60px !important; }
+      .section-header { margin-bottom: 32px; }
+      .sec-title { font-size: 26px; }
+
+      /* 2列/3列 grid → 单列 */
+      .story-grid,
+      .story-grid.reverse,
+      .form-section-inner,
+      .feature-case-card,
+      .detail-grid { grid-template-columns: 1fr !important; gap: 28px !important; direction: ltr !important; }
+
+      .story-img-wrap { height: 220px; }
+      .story-text h2 { font-size: 24px; }
+
+      /* 产品/案例网格 */
+      .products-grid,
+      .cases-grid,
+      .cert-grid,
+      .team-grid,
+      .collab-grid,
+      .cases-hl-grid,
+      .related-grid,
+      .research-stats-grid { grid-template-columns: 1fr !important; }
+
+      .cv-grid,
+      .contact-cards-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+      .support-grid,
+      .patent-grid,
+      .footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+      /* Timeline */
+      .timeline { padding-left: 28px; }
+
+      /* 研发流程步骤 */
+      .process-steps,
+      .flow-steps { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .process-steps::before,
+      .flow-steps::before { display: none; }
+
+      /* 产品筛选Tab */
+      .filter-inner,
+      .cases-filter-inner { gap: 6px; flex-wrap: wrap; height: auto !important; padding: 10px 20px; }
+      .filter-tab { font-size: 13px; padding: 6px 12px; }
+      .filter-count { width: 100%; text-align: center; padding-bottom: 4px; }
+
+      /* 产品详情 */
+      .detail-breadcrumb { padding: 10px 20px; font-size: 12px; }
+      .detail-img-thumbs { gap: 8px; }
+      .detail-thumb { width: 60px; height: 60px; }
+      .detail-kpi-row { flex-wrap: wrap; }
+      .detail-kpi { min-width: 50%; border-bottom: 1px solid var(--border); }
+      .detail-cta { flex-direction: column; }
+      .detail-cta a { text-align: center; justify-content: center; }
+
+      /* 规格参数表 */
+      .spec-table th, .spec-table td { padding: 10px 12px; font-size: 13px; }
+      .spec-table td:first-child { width: 40%; }
+
+      /* 表单 */
+      .form-row-2 { grid-template-columns: 1fr !important; }
+      .form-card { padding: 24px 18px; }
+      .clinic-form-card { padding: 24px 18px; }
+
+      /* CTA Banner */
+      .cta-banner { flex-direction: column; gap: 24px; padding: 36px 24px; text-align: center; }
+      .cta-banner-title { font-size: 24px; }
+
+      /* Logo 墙 */
+      .logo-grid { grid-template-columns: repeat(3,1fr) !important; }
+
+      /* Footer */
+      .footer-inner { padding: 0 20px; }
+      .footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; padding-bottom: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+      /* 悬浮按钮 */
+      #float-bar { bottom: 20px; right: 16px; }
+
+      /* 深度案例卡片 */
+      .feature-case-card { padding: 28px 24px; }
+      .feature-case-img { height: 200px; }
+      .feature-case-title { font-size: 22px; }
+      .fck-val { font-size: 28px; }
+
+      /* 地图占位 */
+      .map-placeholder { height: 220px; }
+
+      /* 联系卡片 */
+      .contact-card { padding: 24px 18px; }
+
+      /* 案例高亮 */
+      .story-highlight { flex-wrap: wrap; gap: 16px; }
+
+      /* 首页产品卡片 */
+      .product-grid-home { grid-template-columns: 1fr !important; }
+
+      /* 首页表单区 */
+      .home-form-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+      .home-form-kpis { grid-template-columns: repeat(2,1fr) !important; }
+    }
+
+    /* ── 超小屏 (≤480px) ── */
+    @media (max-width: 480px) {
+      .hero-title { font-size: 36px; }
+      .page-banner-title { font-size: 26px; }
+      .sec-title { font-size: 22px; }
+      .hero-right { min-height: 180px; padding: 20px 16px; }
+      .hero-stats-grid { grid-template-columns: repeat(2,1fr); }
+      .cert-grid,
+      .team-grid { grid-template-columns: 1fr !important; }
+      .logo-grid { grid-template-columns: repeat(2,1fr) !important; }
+      .feature-case-kpis { flex-wrap: wrap; gap: 16px; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+      .home-form-kpis { grid-template-columns: 1fr !important; }
+    }
+
   </style>
 </head>
 <body><nav id="nav">
@@ -603,6 +818,32 @@ function submitClinicForm(btn) {
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+</script>
+<script>
+  (function() {
+    var hamburger = document.getElementById('nav-hamburger');
+    var navLinks = document.querySelector('.nav-links');
+    if (!hamburger || !navLinks) return;
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+    });
+    navLinks.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
 </script>
 </body>
 </html>
