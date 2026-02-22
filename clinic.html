@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>诊所业务 - 整店输出方案 | 骆氏健康</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   骆氏健康官网 · 共享样式 v2.0
+   色彩方案：白底 + 蓝色主色 + 深蓝文字（无大面积黑色）
+============================================================ */
+
+:root {
+  --blue:        #2563EB;
+  --blue-dark:   #1d4ed8;
+  --blue-mid:    #3b82f6;
+  --blue-light:  #60a5fa;
+  --blue-pale:   #eff6ff;
+  --blue-pale2:  #dbeafe;
+  --green:       #10B981;
+  --green-pale:  #f0fdf4;
+  --green-mid:   #059669;
+  --text-dark:   #1e3a5f;
+  --text-body:   #374151;
+  --text-muted:  #6b7280;
+  --text-light:  #9ca3af;
+  --border:      #e2e8f0;
+  --border-blue: #bfdbfe;
+  --bg-white:    #ffffff;
+  --bg-light:    #f8fafc;
+  --bg-blue:     #f0f7ff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: var(--text-body); background: var(--bg-white);
+  overflow-x: hidden; -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; }
+
+/* ── Layout ── */
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+/* ── Typography helpers ── */
+.sec-eyebrow {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 10px;
+}
+.sec-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--text-dark); line-height: 1.2; margin-bottom: 14px;
+}
+.sec-desc { font-size: 15px; color: var(--text-muted); line-height: 1.75; max-width: 520px; }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue); color: #fff;
+  padding: 13px 30px; border-radius: 9px;
+  font-size: 14px; font-weight: 600;
+  box-shadow: 0 3px 16px rgba(37,99,235,0.28);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(37,99,235,0.38); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1.5px solid var(--blue); color: var(--blue);
+  padding: 12px 30px; border-radius: 9px;
+  font-size: 14px; font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline:hover { background: var(--blue); color: #fff; }
+
+/* ── Navigation ── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+#nav.scrolled { box-shadow: 0 2px 24px rgba(37,99,235,0.08); }
+.nav-wrap {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+  height: 68px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-mark svg { width: 18px; height: 18px; color: #fff; }
+.nav-logo-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text-dark); letter-spacing: 0.05em;
+}
+.nav-links { display: flex; align-items: center; gap: 2px; }
+.nav-links a {
+  padding: 7px 13px; font-size: 14px; font-weight: 500;
+  color: var(--text-muted); border-radius: 7px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--blue); background: var(--blue-pale); }
+.nav-cta {
+  background: var(--blue) !important; color: #fff !important;
+  padding: 9px 20px !important; border-radius: 8px !important;
+  font-weight: 600 !important; font-size: 14px !important;
+  box-shadow: 0 2px 10px rgba(37,99,235,0.25);
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--blue-dark) !important; transform: translateY(-1px); }
+.nav-cta.active { background: var(--blue-dark) !important; }
+
+/* ── Page Banner (inner pages) ── */
+.page-banner {
+  padding: 68px 0 0;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 50%, #1e40af 100%);
+  position: relative; overflow: hidden;
+}
+.page-banner-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.page-banner-glow {
+  position: absolute;
+  width: 500px; height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 65%);
+  right: -80px; top: -80px;
+}
+.page-banner-inner {
+  position: relative; z-index: 2;
+  max-width: 1280px; margin: 0 auto; padding: 56px 48px 56px;
+}
+.page-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  margin-bottom: 20px;
+}
+.page-breadcrumb a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+.page-breadcrumb a:hover { color: rgba(255,255,255,0.9); }
+.page-breadcrumb span { color: rgba(255,255,255,0.3); }
+.page-banner-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 12px;
+}
+.page-banner-sub { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 560px; }
+
+/* ── Section dividers ── */
+.section-header { margin-bottom: 52px; }
+.section-header-row {
+  display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px;
+}
+
+/* ── Cards ── */
+.card-hover {
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(37,99,235,0.08);
+  border-color: var(--border-blue) !important;
+}
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  border-radius: 20px; padding: 56px 60px;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+}
+.cta-banner-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 10px;
+}
+.cta-banner-sub { font-size: 15px; color: rgba(255,255,255,0.7); max-width: 500px; }
+.btn-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--blue);
+  padding: 14px 32px; border-radius: 9px;
+  font-size: 15px; font-weight: 700; white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+/* ── Form styles ── */
+.form-label { display: block; font-size: 13px; font-weight: 500; color: var(--text-body); margin-bottom: 6px; }
+.form-label span { color: #ef4444; margin-left: 2px; }
+.form-control {
+  width: 100%; padding: 11px 13px;
+  border: 1.5px solid var(--border); border-radius: 9px;
+  font-size: 14px; color: var(--text-dark); font-family: inherit;
+  outline: none; background: var(--bg-light);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  appearance: none; -webkit-appearance: none;
+}
+.form-control:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); background: #fff; }
+.form-control::placeholder { color: #9ca3af; }
+textarea.form-control { resize: none; }
+.form-error { font-size: 12px; color: #ef4444; margin-top: 4px; display: none; }
+.form-control.invalid { border-color: #ef4444; }
+.form-control.invalid + .form-error { display: block; }
+.form-submit {
+  width: 100%; padding: 14px; background: var(--blue); color: #fff;
+  border: none; border-radius: 9px; font-size: 15px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.form-submit:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.3); }
+
+/* ── Footer ── */
+footer {
+  background: #1e3a5f;
+  padding: 68px 0 28px;
+}
+.footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+.footer-grid {
+  display: grid; grid-template-columns: 2.2fr 1fr 1fr 1.5fr;
+  gap: 52px; padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.footer-logo-mark {
+  width: 34px; height: 34px; background: rgba(255,255,255,0.15);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+}
+.footer-logo-mark svg { width: 17px; height: 17px; color: #fff; }
+.footer-logo-name { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; color: #fff; }
+.footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 280px; margin-bottom: 20px; }
+.footer-contact-list { display: flex; flex-direction: column; gap: 9px; }
+.footer-contact-item { display: flex; align-items: center; gap: 9px; font-size: 13px; color: rgba(255,255,255,0.42); }
+.footer-contact-item .ic { color: var(--blue-light); font-size: 14px; flex-shrink: 0; }
+.footer-col-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+.footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-col-links a { font-size: 13px; color: rgba(255,255,255,0.42); transition: color 0.2s; }
+.footer-col-links a:hover { color: rgba(255,255,255,0.85); }
+.footer-cert-grid { display: flex; gap: 9px; flex-wrap: wrap; }
+.footer-cert-thumb {
+  width: 58px; height: 70px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 9px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 4px;
+  cursor: pointer; transition: background 0.2s, border-color 0.2s; font-size: 18px;
+}
+.footer-cert-thumb span { font-size: 10px; color: rgba(255,255,255,0.3); text-align: center; line-height: 1.3; }
+.footer-cert-thumb:hover { background: rgba(255,255,255,0.12); border-color: rgba(96,165,250,0.4); }
+.footer-cert-hint { margin-top: 10px; font-size: 11px; color: rgba(255,255,255,0.2); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; }
+.footer-copyright { font-size: 12px; color: rgba(255,255,255,0.25); }
+.footer-socials { display: flex; gap: 8px; }
+.footer-social-btn {
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); font-size: 14px; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.footer-social-btn:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+/* ── Float Bar ── */
+#float-bar {
+  position: fixed; bottom: 30px; right: 30px; z-index: 900;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+}
+.float-qr-card {
+  background: #fff; border-radius: 14px; padding: 14px; width: 150px;
+  box-shadow: 0 8px 30px rgba(37,99,235,0.15); border: 1px solid var(--border-blue);
+  text-align: center; display: none; animation: fadeUp 0.2s ease;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.float-qr-img {
+  width: 112px; height: 112px; background: var(--bg-light); border-radius: 8px;
+  margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 42px;
+}
+.float-qr-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+.float-btn {
+  width: 48px; height: 48px; background: #fff;
+  border-radius: 13px; border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s; font-size: 19px;
+}
+.float-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.15); }
+.float-btn-service { background: var(--blue); border-color: var(--blue); }
+.float-btn-top { display: none; }
+
+/* ── Shared JS (nav scroll + float) inline below each page ── */
+
+
+.clinic-value { padding: 80px 0; background: #fff; }
+.cv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+.cv-card {
+  background: var(--bg-light); border: 1px solid var(--border); border-radius: 20px; padding: 36px 30px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.cv-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(37,99,235,0.08); border-color: var(--border-blue); }
+.cv-icon { font-size: 40px; margin-bottom: 18px; }
+.cv-title { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+.cv-desc { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+.cv-points { margin-top: 16px; display: flex; flex-direction: column; gap: 7px; }
+.cv-point { font-size: 13px; color: var(--text-body); display: flex; align-items: flex-start; gap: 8px; }
+.cv-point::before { content: '✓'; color: var(--blue); font-weight: 700; flex-shrink: 0; }
+
+.support-section { padding: 80px 0; background: var(--bg-light); }
+.support-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 52px; }
+.support-item { display: flex; gap: 20px; }
+.support-icon {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 24px;
+}
+.support-title { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+.support-desc { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+
+.flow-section { padding: 80px 0; background: #fff; }
+.flow-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; margin-top: 52px; }
+.flow-steps::before { content:''; position: absolute; top: 28px; left: 8%; right: 8%; height: 2px; background: linear-gradient(to right, var(--blue), var(--blue-pale2)); z-index:0; }
+.flow-step { text-align: center; position: relative; z-index: 1; padding: 0 8px; }
+.flow-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--blue);
+  color: var(--blue); font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 14px; box-shadow: 0 2px 12px rgba(37,99,235,0.15);
+}
+.flow-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+.flow-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+.cases-highlight { padding: 80px 0; background: var(--bg-light); }
+.cases-hl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.hl-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.hl-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(37,99,235,0.08); border-color: var(--border-blue); }
+.hl-thumb { height: 160px; overflow: hidden; }
+.hl-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.hl-body { padding: 18px 20px; }
+.hl-name { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
+.hl-open { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+.hl-metrics { display: flex; gap: 20px; }
+.hl-mv { font-size: 20px; font-weight: 700; color: var(--blue); line-height: 1; }
+.hl-mk { font-size: 11px; color: var(--text-light); margin-top: 3px; }
+
+.clinic-form { padding: 80px 0; background: linear-gradient(135deg, var(--blue-pale) 0%, var(--blue-pale2) 100%); position: relative; overflow: hidden; }
+.clinic-form::before { content:''; position: absolute; inset:0; background-image: radial-gradient(var(--border-blue) 1.5px, transparent 1.5px); background-size: 28px 28px; opacity: 0.5; }
+.clinic-form-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; text-align: center; }
+.clinic-form-card { background: #fff; border-radius: 20px; padding: 40px 36px; box-shadow: 0 16px 50px rgba(37,99,235,0.12); border: 1px solid var(--border-blue); margin-top: 32px; text-align: left; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 14px; }
+
+  </style>
+</head>
+<body><nav id="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <span class="nav-logo-name">骆氏健康</span>
+    </a>
+    <nav class="nav-links">
+      <a href="about.html">关于骆氏</a>
+      <a href="products.html">产品中心</a>
+      <a href="cases.html">合作案例</a>
+      <a href="research.html">研发实力</a>
+      <a href="clinic.html" class="active">诊所业务</a>
+      <a href="contact.html">联系我们</a>
+      <a href="contact.html#contact-form" class="nav-cta">成为分销商</a>
+    </nav>
+  </div>
+</nav><div class="page-banner">
+  <div class="page-banner-grid"></div>
+  <div class="page-banner-glow"></div>
+  <div class="page-banner-inner">
+    <div class="page-breadcrumb">
+      <a href="index.html">首页</a>
+      <span>›</span>
+      <span>诊所业务</span>
+    </div>
+    <h1 class="page-banner-title">整店输出，快速开店</h1>
+    <p class="page-banner-sub">从选址到开业，骆氏健康提供一站式诊所赋能方案，让您零经验快速启动骆氏正脊体验中心。</p>
+  </div>
+</div>
+<section class="clinic-value">
+  <div class="wrap">
+    <div class="section-header">
+      <p class="sec-eyebrow">Our Value</p>
+      <h2 class="sec-title">三大核心赋能模块</h2>
+      <p class="sec-desc">无论您有无医疗行业经验，骆氏健康都能给您一套完整的诊所开店解决方案。</p>
+    </div>
+    <div class="cv-grid">
+      <div class="cv-card">
+        <div class="cv-icon">🏪</div>
+        <h3 class="cv-title">整店输出</h3>
+        <p class="cv-desc">从零到开业的全流程输出，涵盖品牌授权、装修设计、设备配置、人员培训等所有环节。</p>
+        <div class="cv-points">
+          <div class="cv-point">选址评估与商圈分析</div>
+          <div class="cv-point">标准化装修设计方案</div>
+          <div class="cv-point">设备采购与安装调试</div>
+          <div class="cv-point">骆氏品牌使用授权</div>
+        </div>
+      </div>
+      <div class="cv-card">
+        <div class="cv-icon">🎓</div>
+        <h3 class="cv-title">技术培训</h3>
+        <p class="cv-desc">系统化的技术培训体系，让您的团队快速掌握骆氏正脊技法的标准化服务流程。</p>
+        <div class="cv-points">
+          <div class="cv-point">骆氏正脊基础理论培训</div>
+          <div class="cv-point">设备操作规范培训</div>
+          <div class="cv-point">客户服务话术培训</div>
+          <div class="cv-point">持续进阶培训支持</div>
+        </div>
+      </div>
+      <div class="cv-card">
+        <div class="cv-icon">📈</div>
+        <h3 class="cv-title">运营支持</h3>
+        <p class="cv-desc">开业后的持续运营赋能，帮助合作诊所建立稳定的客源体系和可持续的盈利模式。</p>
+        <div class="cv-points">
+          <div class="cv-point">营销物料与推广素材</div>
+          <div class="cv-point">线上推广方案协助</div>
+          <div class="cv-point">会员体系搭建指导</div>
+          <div class="cv-point">定期运营数据复盘</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow-section">
+  <div class="wrap">
+    <div class="section-header">
+      <p class="sec-eyebrow">Cooperation Flow</p>
+      <h2 class="sec-title">合作流程</h2>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-num">1</div><p class="flow-title">初步洽谈</p><p class="flow-desc">了解需求，介绍合作模式</p></div>
+      <div class="flow-step"><div class="flow-num">2</div><p class="flow-title">方案制定</p><p class="flow-desc">选址评估，定制开店方案</p></div>
+      <div class="flow-step"><div class="flow-num">3</div><p class="flow-title">签约合作</p><p class="flow-desc">签订合作协议，品牌授权</p></div>
+      <div class="flow-step"><div class="flow-num">4</div><p class="flow-title">装修培训</p><p class="flow-desc">设备安装，人员培训</p></div>
+      <div class="flow-step"><div class="flow-num">5</div><p class="flow-title">开业支持</p><p class="flow-desc">开业活动策划，引流推广</p></div>
+      <div class="flow-step"><div class="flow-num">6</div><p class="flow-title">持续运营</p><p class="flow-desc">数据复盘，持续赋能</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="support-section">
+  <div class="wrap">
+    <div class="section-header">
+      <p class="sec-eyebrow">Support System</p>
+      <h2 class="sec-title">全方位支持体系</h2>
+    </div>
+    <div class="support-grid">
+      <div class="support-item"><div class="support-icon">📦</div><div><h3 class="support-title">产品供应保障</h3><p class="support-desc">优先供货政策，保价协议，确保合作诊所产品充足且价格稳定，不受市场波动影响。</p></div></div>
+      <div class="support-item"><div class="support-icon">🔧</div><div><h3 class="support-title">售后服务体系</h3><p class="support-desc">48小时响应机制，专属售后工程师，设备维修与配件提供全覆盖，降低运营风险。</p></div></div>
+      <div class="support-item"><div class="support-icon">🛡</div><div><h3 class="support-title">区域保护政策</h3><p class="support-desc">在约定区域内，骆氏健康不再发展同类型合作伙伴，确保您的市场独占性与经营利益。</p></div></div>
+      <div class="support-item"><div class="support-icon">📊</div><div><h3 class="support-title">数据与运营分析</h3><p class="support-desc">提供门店运营数据分析工具，协助合作诊所优化服务流程、提升客户留存率与复购率。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cases-highlight">
+  <div class="wrap">
+    <div class="section-header">
+      <p class="sec-eyebrow">Success Cases</p>
+      <h2 class="sec-title">合作案例</h2>
+    </div>
+    <div class="cases-hl-grid">
+      <div class="hl-card"><div class="hl-thumb"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=200&fit=crop&auto=format&q=70" alt="四川体验中心"/></div><div class="hl-body"><h3 class="hl-name">四川骆氏正脊体验中心</h3><p class="hl-open">2022年开业 · 成都市</p><div class="hl-metrics"><div><p class="hl-mv">6月</p><p class="hl-mk">回本周期</p></div><div><p class="hl-mv">98%</p><p class="hl-mk">满意度</p></div></div></div></div>
+      <div class="hl-card"><div class="hl-thumb"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=200&fit=crop&auto=format&q=70" alt="上海正脊馆"/></div><div class="hl-body"><h3 class="hl-name">上海骆氏正脊馆</h3><p class="hl-open">2023年开业 · 上海市</p><div class="hl-metrics"><div><p class="hl-mv">8月</p><p class="hl-mk">回本周期</p></div><div><p class="hl-mv">95%</p><p class="hl-mk">满意度</p></div></div></div></div>
+      <div class="hl-card"><div class="hl-thumb"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=200&fit=crop&auto=format&q=70" alt="北京骆氏体验中心"/></div><div class="hl-body"><h3 class="hl-name">北京骆氏体验中心</h3><p class="hl-open">2024年开业 · 北京市</p><div class="hl-metrics"><div><p class="hl-mv">建设中</p><p class="hl-mk">建设进度</p></div><div><p class="hl-mv">预计Q2</p><p class="hl-mk">开业时间</p></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="clinic-form" id="clinic-consult">
+  <div class="clinic-form-inner">
+    <p class="sec-eyebrow" style="text-align:center;">Get Started</p>
+    <h2 class="sec-title" style="text-align:center;">立即预约洽谈</h2>
+    <p class="sec-desc" style="text-align:center;max-width:100%;">填写以下信息，我们的合作顾问将在 24 小时内与您联系。</p>
+    <div class="clinic-form-card">
+      <div class="form-row-2">
+        <div class="form-group"><label class="form-label">姓名<span>*</span></label><input type="text" class="form-control" placeholder="您的姓名"/><p class="form-error">请填写姓名</p></div>
+        <div class="form-group"><label class="form-label">联系电话<span>*</span></label><input type="tel" class="form-control" placeholder="手机号码"/><p class="form-error">请填写有效手机号</p></div>
+      </div>
+      <div class="form-row-2">
+        <div class="form-group"><label class="form-label">意向城市<span>*</span></label><input type="text" class="form-control" placeholder="如：上海市徐汇区"/></div>
+        <div class="form-group"><label class="form-label">可投入资金</label><select class="form-control"><option value="" disabled selected>请选择</option><option>50万以内</option><option>50-100万</option><option>100-200万</option><option>200万以上</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">留言</label><textarea class="form-control" style="height:76px;" placeholder="简单介绍您的背景和诉求（选填）"></textarea></div>
+      <button type="button" class="form-submit" onclick="submitClinicForm(this)">预约免费顾问 →</button>
+      <p style="font-size:12px;color:var(--text-light);text-align:center;margin-top:10px;">🔒 您的信息将被严格保密，仅用于商务联系。</p>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-row">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <span class="footer-logo-name">骆氏健康</span>
+        </div>
+        <p class="footer-brand-desc">上海骆氏健康科技有限公司，致力于将百年骆氏正脊技法与现代智能医疗技术深度融合，为更多人提供专业可信赖的脊柱健康解决方案。</p>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item"><span class="ic">📞</span><span>400-XXX-XXXX</span></div>
+          <div class="footer-contact-item"><span class="ic">✉️</span><span>contact@luoshi-health.com</span></div>
+          <div class="footer-contact-item"><span class="ic">📍</span><span>上海市 XX 区 XX 路 XXX 号</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">产品系列</p>
+        <div class="footer-col-links">
+          <a href="product-detail.html?id=1">医用脊柱牵引床</a>
+          <a href="product-detail.html?id=2">家用智能颈椎仪</a>
+          <a href="product-detail.html?id=3">智能关节康复仪</a>
+          <a href="products.html">查看全部产品</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">快速导航</p>
+        <div class="footer-col-links">
+          <a href="about.html">关于骆氏</a>
+          <a href="cases.html">合作案例</a>
+          <a href="research.html">研发实力</a>
+          <a href="clinic.html">诊所业务</a>
+          <a href="contact.html">联系我们</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">资质荣誉</p>
+        <div class="footer-cert-grid">
+          <div class="footer-cert-thumb">📋<span>经营许可证</span></div>
+          <div class="footer-cert-thumb">✅<span>ISO认证</span></div>
+          <div class="footer-cert-thumb">🏅<span>专利证书</span></div>
+          <div class="footer-cert-thumb">📄<span>注册证</span></div>
+        </div>
+        <p class="footer-cert-hint">点击缩略图查看完整证书</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 上海骆氏健康科技有限公司 · 沪ICP备XXXXXXXX号</p>
+      <div class="footer-socials">
+        <a class="footer-social-btn" href="#" title="微信">💬</a>
+        <a class="footer-social-btn" href="#" title="微博">🔗</a>
+        <a class="footer-social-btn" href="#" title="抖音">▶</a>
+      </div>
+    </div>
+  </div>
+</footer><div id="float-bar">
+  <div class="float-qr-card" id="qr-card">
+    <div class="float-qr-img">📱</div>
+    <p class="float-qr-text">扫码添加客服微信<br>获取合作政策</p>
+  </div>
+  <div class="float-btn float-btn-service" onclick="toggleQR()" title="在线客服" style="color:#fff;font-size:19px;">💬</div>
+  <div class="float-btn float-btn-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</div>
+</div><script>
+function submitClinicForm(btn) {
+  const form = btn.closest('.clinic-form-card');
+  const name = form.querySelector('input[placeholder="您的姓名"]');
+  const tel = form.querySelector('input[type="tel"]');
+  let valid = true;
+  [name, tel].forEach(el => {
+    if (!el.value.trim()) { el.classList.add('invalid'); valid = false; }
+    else el.classList.remove('invalid');
+  });
+  if (!valid) return;
+  btn.textContent = '✓ 已提交，顾问将尽快联系您';
+  btn.style.background = 'var(--green)';
+  btn.disabled = true;
+}
+</script><script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+    const bt = document.getElementById('back-top');
+    if(bt) bt.style.display = window.scrollY > 500 ? 'flex' : 'none';
+  }, { passive: true });
+  function toggleQR() {
+    const c = document.getElementById('qr-card');
+    c.style.display = c.style.display === 'block' ? 'none' : 'block';
+  }
+  document.addEventListener('click', e => {
+    const c = document.getElementById('qr-card');
+    const btn = document.querySelector('.float-btn-service');
+    if (c && btn && !c.contains(e.target) && !btn.contains(e.target)) c.style.display = 'none';
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
