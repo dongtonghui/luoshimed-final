@@ -257,6 +257,29 @@ footer {
 .footer-cert-hint { margin-top: 10px; font-size: 11px; color: rgba(255,255,255,0.2); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; }
 .footer-copyright { font-size: 12px; color: rgba(255,255,255,0.25); }
+    .footer-beian {
+      text-align: center;
+      padding: 12px 0 4px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 12px;
+    }
+    .footer-beian a {
+      font-size: 11px;
+      color: rgba(255,255,255,0.22);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .footer-beian a::before {
+      content: "";
+      display: inline-block;
+      width: 14px; height: 14px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E") center/contain no-repeat;
+      opacity: 0.5;
+    }
+    .footer-beian a:hover { color: rgba(255,255,255,0.5); }
 .footer-socials { display: flex; gap: 8px; }
 .footer-social-btn {
   width: 32px; height: 32px;
@@ -395,7 +418,7 @@ footer {
       .nav-wrap { padding: 0 20px; height: 60px; }
       .nav-hamburger { display: flex; }
       .nav-links {
-        display: none;
+        display: none !important;
         position: fixed;
         top: 60px; left: 0; right: 0;
         background: #fff;
@@ -406,7 +429,7 @@ footer {
         z-index: 499;
         gap: 4px;
       }
-      .nav-links.open { display: flex; }
+      .nav-links.open { display: flex !important; }
       .nav-links a {
         padding: 11px 16px;
         font-size: 15px;
@@ -584,6 +607,9 @@ footer {
       </div>
       <span class="nav-logo-name">骆氏健康</span>
     </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <nav class="nav-links">
       <a href="about.html">关于骆氏</a>
       <a href="products.html">产品中心</a>
@@ -731,7 +757,7 @@ footer {
         <p class="footer-brand-desc">上海骆氏健康科技有限公司，致力于将百年骆氏正脊技法与现代智能医疗技术深度融合，为更多人提供专业可信赖的脊柱健康解决方案。</p>
         <div class="footer-contact-list">
           <div class="footer-contact-item"><span class="ic">📞</span><span>400-XXX-XXXX</span></div>
-          <div class="footer-contact-item"><span class="ic">✉️</span><span>contact@luoshi-health.com</span></div>
+          <div class="footer-contact-item"><span class="ic">✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8eede1e0faefedfacee2fbe1fde6e7a3e6ebefe2fae6a0ede1e3">[email&#160;protected]</a></span></div>
           <div class="footer-contact-item"><span class="ic">📍</span><span>上海市 XX 区 XX 路 XXX 号</span></div>
         </div>
       </div>
@@ -774,6 +800,9 @@ footer {
       </div>
     </div>
   </div>
+    <div class="footer-beian">
+      <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011702891311" rel="noreferrer" target="_blank">沪公网安备 31011702891311 号</a>
+    </div>
 </footer><div id="float-bar">
   <div class="float-qr-card" id="qr-card">
     <div class="float-qr-img">📱</div>
@@ -781,7 +810,7 @@ footer {
   </div>
   <div class="float-btn float-btn-service" onclick="toggleQR()" title="在线客服" style="color:#fff;font-size:19px;">💬</div>
   <div class="float-btn float-btn-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</div>
-</div><script>
+</div><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function submitClinicForm(btn) {
   const form = btn.closest('.clinic-form-card');
   const name = form.querySelector('input[placeholder="您的姓名"]');
@@ -837,13 +866,4 @@ function submitClinicForm(btn) {
       });
     });
     document.addEventListener('click', function(e) {
-      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-    });
-  })();
-</script>
-</body>
-</html>
+      if (!hamburger.contains(e.t
