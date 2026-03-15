@@ -1,0 +1,148 @@
+flowchart TB
+    subgraph PHASE1["📋 第一阶段：项目准备"]
+        A[开始项目] --> B[梳理现有页面结构]
+        B --> C[识别可配置内容]
+        C --> D[识别重复代码模式]
+        D --> E{是否使用配置化方案?}
+        E -->|是| F[创建 website-config.json]
+        E -->|否| G[传统静态开发]
+    end
+
+    subgraph PHASE2["⚙️ 第二阶段：配置设计"]
+        F --> H[设计全局配置]
+        H --> I[公司信息 / 联系方式]
+        H --> J[导航菜单 / 页脚]
+        I --> K[设计页面级配置]
+        J --> K
+        K --> L[SEO 配置]
+        K --> M[Banner 配置]
+        K --> N[内容数据配置]
+        L --> O[Schema 评审]
+        M --> O
+        N --> O
+        O --> P{Schema 是否合理?}
+        P -->|否| K
+        P -->|是| Q[配置设计完成]
+    end
+
+    subgraph PHASE3["💻 第三阶段：开发实现"]
+        Q --> R[开发 config-loader.js]
+        R --> S[配置加载模块]
+        R --> T[DOM 操作工具]
+        R --> U[页面渲染器]
+        R --> V[错误处理机制]
+        S --> W[单元测试]
+        T --> W
+        U --> W
+        V --> W
+        W --> X{测试通过?}
+        X -->|否| R
+        X -->|是| Y[页面接入改造]
+    end
+
+    subgraph PHASE4["🔧 第四阶段：页面改造"]
+        Y --> Z[创建页面模板]
+        Z --> AA[引入 config-loader.js]
+        AA --> AB[删除硬编码文案]
+        AB --> AC[替换为配置绑定]
+        AC --> AD[保留 DOM 结构]
+        AD --> AE{所有页面完成?}
+        AE -->|否| Y
+        AE -->|是| AF[页面改造完成]
+    end
+
+    subgraph PHASE5["🧪 第五阶段：测试验证"]
+        AF --> AG[执行自动化测试]
+        AG --> AH[HTML 结构检查]
+        AG --> AI[配置加载器检查]
+        AG --> AJ[汉堡菜单功能检查]
+        AG --> AK[硬编码链接检查]
+        AG --> AL[JSON 格式验证]
+        AG --> AM[CSS 变量一致性检查]
+        AH --> AN{测试通过?}
+        AI --> AN
+        AJ --> AN
+        AK --> AN
+        AL --> AN
+        AM --> AN
+        AN -->|否| AO[修复问题]
+        AO --> AG
+        AN -->|是| AP[人工复核]
+    end
+
+    subgraph PHASE6["✅ 第六阶段：验收交付"]
+        AP --> AQ[执行验证清单]
+        AQ --> AR[基础结构检查]
+        AQ --> AS[功能完整性检查]
+        AQ --> AT[移动端适配检查]
+        AQ --> AU[UI 一致性检查]
+        AQ --> AV[内容配置化检查]
+        AQ --> AW[代码质量检查]
+        AR --> AX{全部通过?}
+        AS --> AX
+        AT --> AX
+        AU --> AX
+        AV --> AX
+        AW --> AX
+        AX -->|否| AY[修复并重新测试]
+        AY --> AG
+        AX -->|是| AZ[编写文档]
+        AZ --> BA[CONFIG_README.md]
+        AZ --> BB[更新 STATIC_SITE_SKILL.md]
+        BA --> BC[项目交付]
+        BB --> BC
+    end
+
+    subgraph CHECKLIST["📋 验证清单要点"]
+        C1[基础结构]
+        C2[配置文件 JSON 格式正确]
+        C3[所有 HTML 以 </html> 结尾]
+        C4[引入 config-loader.js]
+        C5[包含 viewport meta]
+        
+        C6[功能完整性]
+        C7[全局配置正确加载]
+        C8[SEO 配置正确加载]
+        C9[修改配置后刷新生效]
+        C10[配置失败时有降级方案]
+        
+        C11[移动端适配]
+        C12[汉堡菜单按钮存在]
+        C13[点击展开/收起正常]
+        C14[点击链接后关闭菜单]
+        C15[点击外部区域关闭菜单]
+        
+        C16[UI 一致性]
+        C17[统一 CSS 变量]
+        C18[主题颜色一致]
+        C19[Header 结构一致]
+        C20[Footer 结构一致]
+        C21[Banner 样式一致]
+        
+        C22[内容配置化]
+        C23[无硬编码公司信息]
+        C24[按钮有实际功能]
+        C25[下载链接已配置]
+        C26[图片使用 HTTPS]
+        C27[img 有 alt 属性]
+    end
+
+    subgraph LESSONS["💡 常见踩坑点"]
+        L1[UI 一致性测试遗漏]
+        L2[JavaScript 代码截断]
+        L3[下载按钮硬编码]
+        L4[配置与页面不同步]
+        L5[移动端菜单未测试]
+        L6[图片使用 HTTP]
+    end
+
+    BC --> CD[项目完成]
+
+    style PHASE1 fill:#e1f5fe
+    style PHASE2 fill:#e8f5e9
+    style PHASE3 fill:#fff3e0
+    style PHASE4 fill:#fce4ec
+    style PHASE5 fill:#f3e5f5
+    style PHASE6 fill:#e8eaf6
+    style CHECKLIST fill:#fff8e1
+    style LESSONS fill:#ffebee
