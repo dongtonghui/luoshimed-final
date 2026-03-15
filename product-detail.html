@@ -691,7 +691,7 @@ footer {
 </div>
 
 
-<div id="product-1" class="product-detail-block">
+<div id="product-1" class="product-detail-block" data-product-id="1">
   <!-- 主区 -->
   <section class="detail-main">
     <div class="wrap">
@@ -774,24 +774,24 @@ footer {
         <div class="download-item">
           <span class="download-icon">📄</span>
           <div><p class="download-name">医用脊柱牵引床 LX-T100 产品手册</p><p class="download-desc">产品介绍、规格参数、使用说明（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-manual">下载 PDF</a>
         </div>
         <div class="download-item">
           <span class="download-icon">📋</span>
           <div><p class="download-name">医疗器械注册证</p><p class="download-desc">合规资质证书扫描件（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-cert">下载 PDF</a>
         </div>
         <div class="download-item">
           <span class="download-icon">🔬</span>
           <div><p class="download-name">临床验证报告摘要</p><p class="download-desc">临床试验数据摘要，包含有效率统计（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-report">下载 PDF</a>
         </div>
       </div>
     </div>
   </section>
 </div>
 
-<div id="product-2" class="product-detail-block">
+<div id="product-2" class="product-detail-block" data-product-id="2">
   <!-- 主区 -->
   <section class="detail-main">
     <div class="wrap">
@@ -874,24 +874,24 @@ footer {
         <div class="download-item">
           <span class="download-icon">📄</span>
           <div><p class="download-name">家用智能颈椎仪 LX-N01 产品手册</p><p class="download-desc">产品介绍、规格参数、使用说明（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-manual">下载 PDF</a>
         </div>
         <div class="download-item">
           <span class="download-icon">📋</span>
           <div><p class="download-name">医疗器械注册证</p><p class="download-desc">合规资质证书扫描件（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-cert">下载 PDF</a>
         </div>
         <div class="download-item">
           <span class="download-icon">🔬</span>
           <div><p class="download-name">临床验证报告摘要</p><p class="download-desc">临床试验数据摘要，包含有效率统计（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-report">下载 PDF</a>
         </div>
       </div>
     </div>
   </section>
 </div>
 
-<div id="product-3" class="product-detail-block">
+<div id="product-3" class="product-detail-block" data-product-id="3">
   <!-- 主区 -->
   <section class="detail-main">
     <div class="wrap">
@@ -974,17 +974,17 @@ footer {
         <div class="download-item">
           <span class="download-icon">📄</span>
           <div><p class="download-name">智能关节康复仪 LX-J01 产品手册</p><p class="download-desc">产品介绍、规格参数、使用说明（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-manual">下载 PDF</a>
         </div>
         <div class="download-item">
           <span class="download-icon">📋</span>
           <div><p class="download-name">医疗器械注册证</p><p class="download-desc">合规资质证书扫描件（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-cert">下载 PDF</a>
         </div>
         <div class="download-item">
           <span class="download-icon">🔬</span>
           <div><p class="download-name">临床验证报告摘要</p><p class="download-desc">临床试验数据摘要，包含有效率统计（PDF）</p></div>
-          <a href="#" class="download-btn">下载 PDF</a>
+          <a href="#" class="download-btn download-btn-report">下载 PDF</a>
         </div>
       </div>
     </div>
@@ -1120,6 +1120,59 @@ footer {
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+</script>
+<script>
+  // 从配置加载产品下载信息
+  document.addEventListener('DOMContentLoaded', function() {
+    // 等待配置加载完成
+    function initProductDownloads() {
+      if (typeof siteConfig !== 'undefined' && siteConfig.products && siteConfig.products.productList) {
+        // 遍历所有产品详情区块
+        document.querySelectorAll('.product-detail-block[data-product-id]').forEach(function(block) {
+          var productId = parseInt(block.getAttribute('data-product-id'));
+          renderProductDownloads(productId, block);
+        });
+      } else {
+        // 配置未加载，等待后重试
+        setTimeout(initProductDownloads, 100);
+      }
+    }
+    initProductDownloads();
+  });
+
+  function renderProductDownloads(productId, productBlock) {
+    if (!siteConfig || !siteConfig.products || !siteConfig.products.productList) return;
+    
+    // 查找对应产品配置
+    var product = siteConfig.products.productList.find(function(p) { return p.id === productId; });
+    if (!product || !product.downloads || !Array.isArray(product.downloads)) return;
+    
+    // 根据 type 查找对应的下载项
+    function findDownload(type) {
+      return product.downloads.find(function(d) { return d.type === type; });
+    }
+    
+    // 更新产品手册下载链接
+    var manualBtn = productBlock.querySelector('.download-btn-manual');
+    var manualDownload = findDownload('manual');
+    if (manualBtn && manualDownload) {
+      manualBtn.href = manualDownload.url || '#';
+    }
+    
+    // 更新注册证下载链接
+    var certBtn = productBlock.querySelector('.download-btn-cert');
+    var certDownload = findDownload('cert');
+    if (certBtn && certDownload) {
+      certBtn.href = certDownload.url || '#';
+    }
+    
+    // 更新临床报告下载链接
+    var reportBtn = productBlock.querySelector('.download-btn-report');
+    var reportDownload = findDownload('report');
+    if (reportBtn && reportDownload) {
+      reportBtn.href = reportDownload.url || '#';
+    }
+  }
 </script>
 <script>
   (function() {
