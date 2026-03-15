@@ -855,7 +855,10 @@ footer {
   </div>
   <div class="float-btn float-btn-service" onclick="toggleQR()" title="在线客服" style="color:#fff;font-size:19px;">💬</div>
   <div class="float-btn float-btn-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</div>
-</div><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+</div>
+<!-- 配置加载器 -->
+<script src="config-loader.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   document.querySelectorAll('.filter-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
@@ -872,6 +875,7 @@ footer {
       document.getElementById('no-result').style.display = visible === 0 ? 'block' : 'none';
     });
   });
+
 </script><script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {

@@ -1,0 +1,1068 @@
+{
+  "_comment": "===============================================\n  骆氏健康官网 - 全局配置文件\n  修改此文件即可更新全站文案和图片\n  每个配置项前有详细注释说明其用途和所在区域\n  ===============================================",
+
+  "global": {
+    "_comment": "全局通用配置 - 影响所有页面",
+    
+    "company": {
+      "name": "骆氏健康",
+      "fullName": "上海骆氏健康科技有限公司",
+      "englishName": "LUOSHI HEALTH TECHNOLOGY",
+      "slogan": "科技正脊找骆氏",
+      "description": "致力于将百年骆氏正脊技法与现代智能医疗技术深度融合，为更多人提供专业可信赖的脊柱健康解决方案呢。"
+    },
+
+    "contact": {
+      "phone": "4008-XXX-XXXX",
+      "email": "info@luoshi-health.com",
+      "address": "上海市 XX 区 XX 路 XXX 号",
+      "workTime": "周一至周六 09:00 - 18:00"
+    },
+
+    "certifications": {
+      "icp": "沪ICP备XXXXXXXX号",
+      "beian": "沪公网安备 31011702891311 号",
+      "medicalLicense": "沪药监械经营 XXXX 号",
+      "iso": "ISO 13485 认证"
+    },
+
+    "stats": {
+      "patents": "20+",
+      "partners": "20+",
+      "efficiency": "92%",
+      "years": "7+"
+    },
+
+    "navigation": {
+      "items": [
+        {"id": "about", "label": "关于骆氏", "url": "about.html"},
+        {"id": "products", "label": "产品中心", "url": "products.html"},
+        {"id": "cases", "label": "合作案例", "url": "cases.html"},
+        {"id": "news", "label": "新闻中心", "url": "news.html"},
+        {"id": "research", "label": "研发实力", "url": "research.html"},
+        {"id": "clinic", "label": "诊所业务", "url": "clinic.html"},
+        {"id": "downloads", "label": "下载中心", "url": "downloads.html"},
+        {"id": "contact", "label": "联系我们", "url": "contact.html"}
+      ],
+      "ctaButton": {
+        "label": "成为分销商",
+        "url": "contact.html#contact-form"
+      }
+    },
+
+    "footer": {
+      "productLinks": [
+        {"label": "医用脊柱牵引床", "url": "product-detail.html?id=1"},
+        {"label": "家用智能颈椎仪", "url": "product-detail.html?id=2"},
+        {"label": "智能关节康复仪", "url": "product-detail.html?id=3"},
+        {"label": "查看全部产品", "url": "products.html"}
+      ],
+      "quickLinks": [
+        {"label": "关于骆氏", "url": "about.html"},
+        {"label": "合作案例", "url": "cases.html"},
+        {"label": "研发实力", "url": "research.html"},
+        {"label": "诊所业务", "url": "clinic.html"},
+        {"label": "联系我们", "url": "contact.html"}
+      ],
+      "socialMedia": [
+        {"platform": "微信", "icon": "💬", "url": "#"},
+        {"platform": "微博", "icon": "🔗", "url": "#"},
+        {"platform": "抖音", "icon": "▶", "url": "#"}
+      ],
+      "certificates": [
+        {"name": "经营许可证", "icon": "📋"},
+        {"name": "ISO认证", "icon": "✅"},
+        {"name": "专利证书", "icon": "🏅"},
+        {"name": "注册证", "icon": "📄"}
+      ]
+    },
+
+    "floatBar": {
+      "qrText": "扫码添加客服微信<br>获取合作政策",
+      "serviceIcon": "💬",
+      "topIcon": "↑"
+    }
+  },
+
+  "home": {
+    "_comment": "========== 首页 (index.html) 配置 ==========",
+
+    "seo": {
+      "title": "骆氏健康 · 科技正脊找骆氏 | 上海骆氏健康科技有限公司",
+      "description": "骆氏健康，古法传承×科技正脊。医用牵引床、家用颈椎仪、智能关节设备，10+国家专利，20+医疗机构合作。"
+    },
+
+    "hero": {
+      "_comment": "首屏大图区域 - 网站最重要的展示区域",
+      "badge": "已服务 20+ 医疗机构 · 10+ 国家专利认证",
+      "title": {
+        "line1": "科技正脊",
+        "line2": "找骆氏",
+        "accent": "找骆氏"
+      },
+      "englishTitle": "LUOSHI HEALTH TECHNOLOGY",
+      "subtitle": "古法传承 × 现代科技，骆氏百年正脊技法深度融合智能医疗设备，为医疗机构与家庭用户提供专业脊柱健康解决方案。",
+      
+      "brands": [
+        {
+          "name": "骆氏健康研究中心",
+          "subtitle": "研发 · 生产 · 专利认证"
+        },
+        {
+          "name": "骆氏正脊体验中心",
+          "subtitle": "服务 · 体验 · 康复指导"
+        }
+      ],
+
+      "buttons": [
+        {
+          "label": "成为骆氏分销商",
+          "url": "#form-section",
+          "type": "primary"
+        },
+        {
+          "label": "查看产品系列",
+          "url": "products.html",
+          "type": "outline"
+        }
+      ],
+
+      "trustBar": [
+        {"highlight": "医疗器械经营许可证", "text": "合规资质"},
+        {"highlight": "ISO 13485", "text": "质量体系认证"},
+        {"highlight": "三甲医院", "text": "合作背书"}
+      ],
+
+      "stats": {
+        "title": "核心数据",
+        "items": [
+          {"icon": "🏅", "value": "10+", "label": "国家专利认证"},
+          {"icon": "🏥", "value": "20+", "label": "医疗合作机构"},
+          {"icon": "📊", "value": "92%", "label": "临床有效率"}
+        ]
+      },
+
+      "brandStrip": {
+        "company": "上海骆氏健康科技有限公司",
+        "slogan": "古法传承 × 科技正脊"
+      },
+
+      "scrollHint": "SCROLL DOWN"
+    },
+
+    "advantages": {
+      "_comment": "核心优势区域 - 展示三大竞争优势",
+      "sectionTag": "Why LUOSHI",
+      "title": "三大核心竞争优势",
+      "description": "以百年传承为根基，以现代科技为翼，构建可信赖的脊柱健康品牌。",
+      "linkText": "深入了解骆氏 →",
+      
+      "cards": [
+        {
+          "icon": "🏆",
+          "title": "古法 × 科技融合",
+          "description": "骆氏百年正脊技法，结合现代生物力学研究与智能传感技术，打造兼具传统智慧与科技精准的健康方案。",
+          "tag": "传承 · 创新 · 精准 →"
+        },
+        {
+          "icon": "🔬",
+          "title": "产学研深度合作",
+          "description": "与上海工程技术大学等高校建立联合实验室，累计获得10+国家专利，持续将传统技法转化为可量化技术参数。",
+          "tag": "专利 · 研发 · 创新 →"
+        },
+        {
+          "icon": "🏥",
+          "title": "医疗级品质保障",
+          "description": "通过ISO 13485医疗器械质量管理体系认证，产品取得医疗器械注册证，临床有效率92%，安全可信赖。",
+          "tag": "合规 · 安全 · 有效 →"
+        }
+      ],
+
+      "certPanel": {
+        "title": "📋 资质认证",
+        "items": [
+          {"icon": "📋", "name": "医疗器械经营许可证", "sub": "合规经营资质"},
+          {"icon": "✅", "name": "ISO 13485 认证", "sub": "国际质量体系"},
+          {"icon": "🏅", "name": "国家专利证书", "sub": "自主知识产权"},
+          {"icon": "📄", "name": "医疗器械注册证", "sub": "产品合规认证"}
+        ],
+        "hint": "点击查看完整证书"
+      }
+    },
+
+    "products": {
+      "_comment": "首页产品展示区域",
+      "sectionTag": "Products",
+      "title": "核心产品系列",
+      "description": "医用、家用、智能三大系列，覆盖脊柱康复全场景需求。",
+      "buttonText": "查看全部产品 →",
+      
+      "items": [
+        {
+          "id": 1,
+          "badge": "医疗机构专用",
+          "badgeType": "blue",
+          "image": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=360&fit=crop&auto=format&q=80",
+          "name": "医用脊柱牵引床 LX-T100",
+          "description": "智能化脊柱牵引系统，精准控制牵引力度与角度，适用于腰椎间盘突出、颈椎病等临床康复治疗。",
+          "cert": "注册证：浙械注准 202XXXXXX",
+          "kpis": [
+            {"value": "15+", "label": "适应症"},
+            {"value": "92%", "label": "有效率"}
+          ]
+        },
+        {
+          "id": 2,
+          "badge": "家庭健康",
+          "badgeType": "green",
+          "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=360&fit=crop&auto=format&q=80",
+          "name": "家用智能颈椎仪 LX-N01",
+          "description": "便携式颈椎智能牵引设备，内置压力传感与自适应算法，居家即可完成专业颈椎康复训练。",
+          "cert": "注册证：占位待填",
+          "kpis": [
+            {"value": "580g", "label": "超轻便携"},
+            {"value": "3档", "label": "智能调节"}
+          ]
+        },
+        {
+          "id": 3,
+          "badge": "康复设备",
+          "badgeType": "teal",
+          "image": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=360&fit=crop&auto=format&q=80",
+          "name": "智能关节康复仪 LX-J01",
+          "description": "结合生物力学与智能传感技术，精准评估关节状态，适用于运动损伤与关节退化的综合康复。",
+          "cert": "注册证：占位待填",
+          "kpis": [
+            {"value": "360°", "label": "评估范围"},
+            {"value": "AI", "label": "智能算法"}
+          ]
+        }
+      ]
+    },
+
+    "cases": {
+      "_comment": "首页合作案例区域",
+      "sectionTag": "Cases",
+      "title": "合作案例",
+      "description": "20+ 合作伙伴的真实验证，覆盖医疗机构、品牌诊所、分销商与产学研机构。",
+      "partnerBig": "20+",
+      "partnerLabel": "合作医疗机构",
+      "seeAllText": "查看全部案例 →",
+
+      "items": [
+        {
+          "type": "品牌授权",
+          "typeClass": "ctp-blue",
+          "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=240&fit=crop&auto=format&q=70",
+          "name": "四川骆氏正脊体验中心",
+          "description": "整店输出模式标杆案例，从选址装修、设备配置到运营培训全程赋能，实现快速规模化复制。",
+          "metrics": [
+            {"value": "6月", "label": "回本周期"},
+            {"value": "98%", "label": "客户满意度"}
+          ]
+        },
+        {
+          "type": "医疗机构",
+          "typeClass": "ctp-green",
+          "image": "https://images.unsplash.com/photo-1551076805-e1869033e561?w=500&h=240&fit=crop&auto=format&q=70",
+          "name": "上海惠元医院",
+          "description": "引进骆氏医用牵引床系统，用于骨科与康复科临床诊疗，设备合规性与临床效果获科室医师认可。",
+          "metrics": [
+            {"value": "200+", "label": "月均服务患者"},
+            {"value": "三甲", "label": "同等配置"}
+          ]
+        },
+        {
+          "type": "产学研",
+          "typeClass": "ctp-purple",
+          "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&h=240&fit=crop&auto=format&q=70",
+          "name": "上海工程技术大学",
+          "description": "共建医工交叉产学研基地，联合推进智能康复设备的算法研发与临床验证，成果转化落地。",
+          "metrics": [
+            {"value": "3项", "label": "联合专利"},
+            {"value": "2年+", "label": "深度合作"}
+          ]
+        }
+      ]
+    },
+
+    "form": {
+      "_comment": "首页表单区域 - 分销商招募",
+      "sectionTag": "Partnership",
+      "title": "成为骆氏分销商",
+      "description": "无论您是医疗机构、诊所经营者还是分销商，我们期待与您合作，共同推广专业脊柱健康解决方案。",
+      
+      "perks": [
+        {"icon": "🏥", "text": "医疗机构采购专享批量优惠与技术支持"},
+        {"icon": "🏪", "text": "诊所开店整店输出方案与持续运营指导"},
+        {"icon": "🤝", "text": "区域分销商独家保护政策与市场支持"}
+      ],
+
+      "formCard": {
+        "title": "填写联系信息",
+        "fields": {
+          "name": {"label": "姓名", "placeholder": "您的姓名", "required": true},
+          "phone": {"label": "联系电话", "placeholder": "手机号码", "required": true},
+          "company": {"label": "公司 / 机构", "placeholder": "选填", "required": false},
+          "type": {
+            "label": "咨询类型",
+            "placeholder": "请选择",
+            "required": true,
+            "options": ["产品采购咨询", "诊所合作开店", "分销商合作", "售后服务", "产学研合作", "其他"]
+          },
+          "message": {"label": "留言内容", "placeholder": "请描述您的需求或问题", "required": true}
+        },
+        "submitButton": "提交留言 →",
+        "privacyText": "🔒 您的信息将被严格保密，仅用于商务联系。"
+      }
+    }
+  },
+
+  "about": {
+    "_comment": "========== 关于我们 (about.html) 配置 ==========",
+
+    "seo": {
+      "title": "关于骆氏 - 品牌故事与发展历程 | 骆氏健康"
+    },
+
+    "banner": {
+      "breadcrumb": ["首页", "关于骆氏"],
+      "title": "百年传承，科技赋能",
+      "subtitle": "从骆氏百年正脊技法到现代智能医疗设备，我们以创新守护每一位用户的脊柱健康。"
+    },
+
+    "story": {
+      "_comment": "品牌故事区域 - 两个故事板块",
+      "section1": {
+        "tag": "Heritage · 百年传承",
+        "title": "源自百年的正脊智慧",
+        "paragraphs": [
+          "骆氏正脊技法源于清末民初，历经骆氏家族数代人的钻研与传承，逐步形成一套以「形、气、神」三位一体为核心的脊柱调理理论体系。",
+          "这套技法以「望、触、动、调」四步诊疗为基础，强调整体性评估与个性化施治，在民间积累了大量临床验证案例，以其安全有效深得患者信赖。"
+        ],
+        "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&h=460&fit=crop&auto=format&q=80",
+        "imageAlt": "骆氏古法传承",
+        "stats": [
+          {"value": "100+", "label": "传承年份"},
+          {"value": "3", "label": "代家族传承"},
+          {"value": "万+", "label": "患者服务"}
+        ]
+      },
+      "section2": {
+        "tag": "Innovation · 科技融合",
+        "title": "古法技艺与现代科技的融合",
+        "paragraphs": [
+          "2018年，骆氏第三代传人携手生物力学专家、医疗器械工程师，共同创立上海骆氏健康科技有限公司。以骆氏正脊技法为核心理论，将传统经验转化为可量化、可标准化的智能设备参数。",
+          "通过与上海工程技术大学等高校深度合作，建立了完善的产学研体系，目前已取得10余项国家专利，并通过ISO 13485医疗器械质量管理体系认证。"
+        ],
+        "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=700&h=460&fit=crop&auto=format&q=80",
+        "imageAlt": "科技融合研发",
+        "stats": [
+          {"value": "2018", "label": "公司成立"},
+          {"value": "10+", "label": "国家专利"},
+          {"value": "20+", "label": "合作机构"}
+        ]
+      }
+    },
+
+    "timeline": {
+      "_comment": "发展历程时间轴",
+      "sectionTag": "Milestones",
+      "title": "发展历程",
+      "description": "从技艺传承到科技公司，每一步都承载着对脊柱健康事业的坚守。",
+      
+      "items": [
+        {"year": "清末民初", "title": "骆氏正脊技法起源", "description": "骆氏先祖在行医实践中，逐步总结出一套独特的脊柱调理方法，并在家族内部口耳相传，形成骆氏正脊技法的雏形。"},
+        {"year": "2010", "title": "技法系统化整理", "description": "骆氏第二代传人将百年积累的临床经验进行系统化梳理，完成《骆氏正脊技法》文献整理，奠定了现代化转型的理论基础。"},
+        {"year": "2016", "title": "产学研合作启动", "description": "与上海工程技术大学建立合作关系，启动骆氏技法的生物力学量化研究项目，开始探索传统技艺的科技化转型路径。"},
+        {"year": "2018", "title": "上海骆氏健康科技有限公司成立", "description": "正式成立公司，引入生物力学专家、医疗器械工程师组建研发团队，开始医用脊柱牵引床的研发工作，进入产品化阶段。"},
+        {"year": "2020", "title": "首款医用产品获证上市", "description": "医用脊柱牵引床取得医疗器械注册证（浙械注准202XXXXXX），并通过ISO 13485认证，正式进入医疗机构渠道销售。"},
+        {"year": "2022", "title": "家用产品线上线下双渠道发力", "description": "推出家用智能颈椎仪，开拓C端市场。同年，四川骆氏正脊体验中心开业，成为整店输出模式首个标杆案例。"},
+        {"year": "2024", "title": "合作版图扩大至20+机构", "description": "累计与20余家医疗机构、连锁诊所、区域分销商建立合作关系，智能关节康复仪完成研发并进入临床验证阶段。"}
+      ]
+    },
+
+    "certifications": {
+      "_comment": "资质荣誉墙",
+      "sectionTag": "Certifications",
+      "title": "资质荣誉",
+      "description": "合规是医疗产品的底线，也是骆氏健康对每一位合作伙伴的承诺。",
+      
+      "items": [
+        {"icon": "📋", "name": "医疗器械经营许可证", "num": "沪药监械经营 XXXX 号", "badge": "✓ 合规认证"},
+        {"icon": "✅", "name": "ISO 13485 认证", "num": "医疗器械质量管理体系", "badge": "✓ 国际认证"},
+        {"icon": "🏅", "name": "国家发明专利", "num": "ZL 20XX XXXXXXXX.X", "badge": "✓ 自主知识产权"},
+        {"icon": "📄", "name": "医疗器械注册证", "num": "浙械注准 202XXXXXX", "badge": "✓ 产品合规"},
+        {"icon": "🔬", "name": "实用新型专利 ×8", "num": "多项技术保护", "badge": "✓ 技术创新"},
+        {"icon": "🏆", "name": "高新技术企业认定", "num": "上海市科委颁发", "badge": "✓ 政府认定"},
+        {"icon": "📊", "name": "临床试验报告", "num": "92% 临床有效率认证", "badge": "✓ 临床验证"},
+        {"icon": "🌐", "name": "CE 认证（申报中）", "num": "欧盟医疗器械认证", "badge": "⏳ 申报中"}
+      ]
+    },
+
+    "team": {
+      "_comment": "核心团队",
+      "sectionTag": "Our Team",
+      "title": "核心团队",
+      "description": "汇聚传统技艺传承人、生物力学专家、医疗器械工程师，共同推动脊柱健康事业发展。",
+      
+      "members": [
+        {"avatar": "👨‍⚕️", "name": "骆 XX", "title": "创始人 · 正脊技法传承人", "description": "骆氏正脊技法第三代传承人，从事脊柱康复研究20余年，主导公司核心技术体系建设。"},
+        {"avatar": "👨‍🔬", "name": "张 XX", "title": "首席科学家 · 生物力学博士", "description": "上海交通大学生物力学博士，主持国家级科研项目3项，将传统技法转化为可量化技术参数。"},
+        {"avatar": "👩‍💼", "name": "李 XX", "title": "医疗器械研发总监", "description": "15年医疗器械研发经验，曾任职于国内头部医疗设备企业，主导骆氏系列产品注册证申请与技术攻关。"},
+        {"avatar": "👨‍💻", "name": "王 XX", "title": "智能算法负责人", "description": "专注医疗AI算法研究，负责骆氏智能设备的自适应算法开发，实现设备对用户个体差异的智能适配。"}
+      ]
+    },
+
+    "cta": {
+      "title": "与骆氏健康携手共进",
+      "description": "无论您是医疗机构、诊所经营者还是分销商，我们期待与您合作，共同推广专业脊柱健康解决方案。",
+      "buttonText": "立即联系我们 →"
+    }
+  },
+
+  "products": {
+    "_comment": "========== 产品中心 (products.html) 配置 ==========",
+
+    "seo": {
+      "title": "产品中心 | 骆氏健康"
+    },
+
+    "banner": {
+      "breadcrumb": ["首页", "产品中心"],
+      "title": "核心产品系列",
+      "subtitle": "医用、家用、智能三大系列，覆盖脊柱康复全场景需求。"
+    },
+
+    "filter": {
+      "tabs": [
+        {"id": "all", "label": "全部产品"},
+        {"id": "medical", "label": "医用系列"},
+        {"id": "home", "label": "家用系列"},
+        {"id": "smart", "label": "智能设备"}
+      ],
+      "countText": "共 {count} 款产品"
+    },
+
+    "productList": [
+      {
+        "id": 1,
+        "category": "medical",
+        "badge": "医疗机构专用",
+        "badgeClass": "pb-blue",
+        "image": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=360&fit=crop&auto=format&q=80",
+        "name": "医用脊柱牵引床 LX-T100",
+        "description": "智能化脊柱牵引系统，精准控制牵引力度与角度，适用于腰椎间盘突出、颈椎病等临床康复治疗。",
+        "cert": "注册证：浙械注准 202XXXXXX",
+        "params": ["牵引力 0-100kg", "18档调节", "承重 ≤ 200kg", "电动升降"],
+        "kpis": [
+          {"value": "15+", "label": "适应症"},
+          {"value": "92%", "label": "有效率"}
+        ]
+      },
+      {
+        "id": 2,
+        "category": "home",
+        "badge": "家庭健康",
+        "badgeClass": "pb-green",
+        "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=360&fit=crop&auto=format&q=80",
+        "name": "家用智能颈椎仪 LX-N01",
+        "description": "便携式颈椎智能牵引设备，内置压力传感与自适应算法，居家即可完成专业颈椎康复训练。",
+        "cert": "注册证：占位待填",
+        "params": ["重量 580g", "充电续航 8h", "3档智能调节", "APP连接"],
+        "kpis": [
+          {"value": "580g", "label": "超轻便携"},
+          {"value": "3档", "label": "智能调节"}
+        ]
+      },
+      {
+        "id": 3,
+        "category": "smart",
+        "badge": "康复设备",
+        "badgeClass": "pb-teal",
+        "image": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=360&fit=crop&auto=format&q=80",
+        "name": "智能关节康复仪 LX-J01",
+        "description": "结合生物力学与智能传感技术，精准评估关节状态，适用于运动损伤与关节退化的综合康复。",
+        "cert": "注册证：占位待填",
+        "params": ["360°全方位评估", "AI自适应", "无线传输", "防水IPX4"],
+        "kpis": [
+          {"value": "360°", "label": "评估范围"},
+          {"value": "AI", "label": "智能算法"}
+        ]
+      },
+      {
+        "id": 4,
+        "category": "medical",
+        "badge": "医疗机构专用",
+        "badgeClass": "pb-blue",
+        "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=360&fit=crop&auto=format&q=80",
+        "name": "医用颈椎牵引椅 LX-C100",
+        "description": "专为颈椎病患者设计的医用牵引椅，可精准调控牵引角度，适合康复科与骨科门诊使用。",
+        "cert": "注册证：占位待填",
+        "params": ["牵引力 0-30kg", "角度可调", "坐姿牵引", "静音电机"],
+        "kpis": [
+          {"value": "8+", "label": "适应症"},
+          {"value": "静音", "label": "电机设计"}
+        ]
+      },
+      {
+        "id": 5,
+        "category": "home",
+        "badge": "家庭健康",
+        "badgeClass": "pb-green",
+        "image": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=360&fit=crop&auto=format&q=80",
+        "name": "家用腰椎减压仪 LX-L01",
+        "description": "专为久坐人群设计的家用腰椎减压设备，结合热敷与轻度牵引，缓解腰部酸痛，改善坐姿习惯。",
+        "cert": "注册证：占位待填",
+        "params": ["热敷功能", "3档强度", "定时提醒", "人体工学"],
+        "kpis": [
+          {"value": "热敷", "label": "理疗功能"},
+          {"value": "30min", "label": "快速见效"}
+        ]
+      },
+      {
+        "id": 6,
+        "category": "smart",
+        "badge": "智能设备",
+        "badgeClass": "pb-teal",
+        "image": "https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&h=360&fit=crop&auto=format&q=80",
+        "name": "智能脊柱健康监测仪 LX-M01",
+        "description": "穿戴式脊柱健康实时监测设备，通过传感器持续评估脊柱负荷与姿态，并联动APP生成健康报告。",
+        "cert": "注册证：占位待填",
+        "params": ["实时监测", "7天续航", "防汗IPX5", "云端报告"],
+        "kpis": [
+          {"value": "7天", "label": "超长续航"},
+          {"value": "云端", "label": "健康报告"}
+        ]
+      }
+    ],
+
+    "cta": {
+      "title": "需要定制化产品方案？",
+      "description": "我们可根据您的机构需求，提供设备选型建议、试用体验及批量采购优惠政策。",
+      "buttonText": "咨询采购方案 →"
+    }
+  },
+
+  "cases": {
+    "_comment": "========== 合作案例 (cases.html) 配置 ==========",
+
+    "seo": {
+      "title": "合作案例 | 骆氏健康"
+    },
+
+    "banner": {
+      "breadcrumb": ["首页", "合作案例"],
+      "title": "合作案例精选",
+      "subtitle": "20+ 合作伙伴的真实验证，覆盖医疗机构、品牌诊所、分销商与产学研机构。"
+    },
+
+    "filter": {
+      "tabs": [
+        {"id": "all", "label": "全部案例"},
+        {"id": "medical", "label": "医疗机构"},
+        {"id": "brand", "label": "品牌授权"},
+        {"id": "distributor", "label": "分销合作"},
+        {"id": "research", "label": "产学研"}
+      ]
+    },
+
+    "caseList": [
+      {
+        "category": "brand",
+        "type": "品牌授权",
+        "typeClass": "ctp-blue",
+        "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=240&fit=crop&auto=format&q=70",
+        "name": "四川骆氏正脊体验中心",
+        "description": "整店输出模式标杆案例，从选址装修、设备配置到运营培训全程赋能，实现快速规模化复制。",
+        "metrics": [
+          {"value": "6月", "label": "回本周期"},
+          {"value": "98%", "label": "客户满意度"}
+        ]
+      },
+      {
+        "category": "medical",
+        "type": "医疗机构",
+        "typeClass": "ctp-green",
+        "image": "https://images.unsplash.com/photo-1551076805-e1869033e561?w=500&h=240&fit=crop&auto=format&q=70",
+        "name": "上海惠元医院",
+        "description": "引进骆氏医用牵引床系统，用于骨科与康复科临床诊疗，设备合规性与临床效果获科室医师认可。",
+        "metrics": [
+          {"value": "200+", "label": "月均服务患者"},
+          {"value": "三甲", "label": "同等配置"}
+        ]
+      },
+      {
+        "category": "research",
+        "type": "产学研",
+        "typeClass": "ctp-purple",
+        "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&h=240&fit=crop&auto=format&q=70",
+        "name": "上海工程技术大学",
+        "description": "共建医工交叉产学研基地，联合推进智能康复设备的算法研发与临床验证，成果转化落地。",
+        "metrics": [
+          {"value": "3项", "label": "联合专利"},
+          {"value": "2年+", "label": "深度合作"}
+        ]
+      },
+      {
+        "category": "distributor",
+        "type": "分销合作",
+        "typeClass": "ctp-orange",
+        "image": "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=500&h=240&fit=crop&auto=format&q=70",
+        "name": "华东区域分销合作伙伴",
+        "description": "代理骆氏家用系列与康复设备，建立线上线下双渠道分销网络，实现华东区域规模化铺货。",
+        "metrics": [
+          {"value": "50+", "label": "终端网点"},
+          {"value": "华东", "label": "区域覆盖"}
+        ]
+      },
+      {
+        "category": "medical",
+        "type": "医疗机构",
+        "typeClass": "ctp-indigo",
+        "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&h=240&fit=crop&auto=format&q=70",
+        "name": "某三甲医院康复科",
+        "description": "与医院康复科合作开展脊柱疾病综合诊疗项目，骆氏设备纳入科室标准化治疗方案。",
+        "metrics": [
+          {"value": "三甲", "label": "医院合作"},
+          {"value": "专科", "label": "深度嵌入"}
+        ]
+      },
+      {
+        "category": "brand",
+        "type": "康复中心",
+        "typeClass": "ctp-teal",
+        "image": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=240&fit=crop&auto=format&q=70",
+        "name": "某运动康复连锁机构",
+        "description": "旗下多门店统一引进骆氏智能关节康复系统，专注运动损伤修复与运动表现提升。",
+        "metrics": [
+          {"value": "8家", "label": "门店覆盖"},
+          {"value": "连锁", "label": "标准化配置"}
+        ]
+      }
+    ],
+
+    "featuredCase": {
+      "_comment": "深度案例展示",
+      "sectionTag": "Featured Case",
+      "title": "深度案例：四川骆氏正脊体验中心",
+      "eyebrow": "Brand Partnership · 整店输出",
+      "caseTitle": "从零到开业，骆氏全程陪跑",
+      "description": "四川合作伙伴在缺乏专业医疗背景的情况下，选择骆氏整店输出模式。骆氏健康提供从选址评估、装修设计、设备采购、人员培训到开业支持的一站式服务，最终实现 6 个月内回本的优秀成绩。",
+      "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=700&h=460&fit=crop&auto=format&q=70",
+      "kpis": [
+        {"value": "6月", "label": "回本周期"},
+        {"value": "98%", "label": "客户满意度"},
+        {"value": "3倍", "label": "月营业额增长"}
+      ],
+      "tags": ["✓ 整店输出", "✓ 技术培训", "✓ 品牌授权", "✓ 持续运营支持"]
+    },
+
+    "partners": {
+      "_comment": "合作伙伴Logo墙",
+      "sectionTag": "Our Partners",
+      "title": "合作伙伴",
+      "logos": [
+        "上海惠元医院", "某三甲医院", "上海工程技术大学", "四川骆氏体验中心",
+        "华东分销伙伴", "运动康复机构", "北京合作医院", "南京诊所联盟",
+        "杭州健康管理", "成都体验中心", "广州骨科诊所", "深圳康复中心"
+      ]
+    },
+
+    "cta": {
+      "title": "加入骆氏合作伙伴网络",
+      "description": "无论您处于哪个阶段，骆氏健康都有适合您的合作模式，期待与您携手共建健康生态。",
+      "buttonText": "立即申请合作 →"
+    }
+  },
+
+  "research": {
+    "_comment": "========== 研发实力 (research.html) 配置 ==========",
+
+    "seo": {
+      "title": "研发实力 | 骆氏健康"
+    },
+
+    "banner": {
+      "breadcrumb": ["首页", "研发实力"],
+      "title": "以科技驱动健康创新",
+      "subtitle": "10+ 国家专利，产学研深度合作，持续将传统技法转化为精准可靠的医疗科技。"
+    },
+
+    "stats": {
+      "_comment": "研发数据展示",
+      "sectionTag": "Research & Development",
+      "title": "研发实力数据",
+      "description": "用数据说话，用创新奠基，骆氏健康的研发投入是品质承诺的核心保障。",
+      
+      "items": [
+        {"icon": "🏅", "value": "10+", "label": "国家专利（发明+实用新型）"},
+        {"icon": "🏫", "value": "5+", "label": "产学研合作高校 / 研究院"},
+        {"icon": "🔬", "value": "20+", "label": "参与临床验证的医疗机构"},
+        {"icon": "📅", "value": "7+", "label": "年研发积累（2016至今）"}
+      ]
+    },
+
+    "patents": {
+      "_comment": "技术专利展示",
+      "sectionTag": "Patents",
+      "title": "技术专利",
+      "description": "自主知识产权是骆氏健康技术壁垒的核心，覆盖脊柱牵引、关节评估、智能算法等多个领域。",
+      
+      "items": [
+        {"type": "invention", "typeName": "发明专利", "name": "一种基于生物力学的脊柱自适应牵引力控制方法", "num": "ZL 20XX XXXXXXXX.X", "year": "2022年获授权"},
+        {"type": "invention", "typeName": "发明专利", "name": "一种颈椎牵引角度智能调节系统及方法", "num": "ZL 20XX XXXXXXXX.X", "year": "2021年获授权"},
+        {"type": "utility", "typeName": "实用新型", "name": "一种医用脊柱牵引床的多轴联动机构", "num": "ZL 20XX XXXXXXXX.X", "year": "2020年获授权"},
+        {"type": "utility", "typeName": "实用新型", "name": "一种便携式颈椎牵引仪的安全限位装置", "num": "ZL 20XX XXXXXXXX.X", "year": "2021年获授权"},
+        {"type": "invention", "typeName": "发明专利", "name": "一种基于穿戴传感器的关节活动度评估方法", "num": "ZL 20XX XXXXXXXX.X", "year": "2023年获授权"},
+        {"type": "utility", "typeName": "实用新型", "name": "一种脊柱康复设备的电动升降调节结构", "num": "ZL 20XX XXXXXXXX.X", "year": "2020年获授权"},
+        {"type": "utility", "typeName": "实用新型", "name": "一种智能康复设备的人机交互控制面板", "num": "ZL 20XX XXXXXXXX.X", "year": "2022年获授权"},
+        {"type": "invention", "typeName": "发明专利", "name": "一种基于骆氏正脊技法的机械辅助调理系统", "num": "ZL 20XX XXXXXXXX.X", "year": "2023年获授权"}
+      ]
+    },
+
+    "process": {
+      "_comment": "研发流程",
+      "sectionTag": "R&D Process",
+      "title": "研发流程",
+      
+      "steps": [
+        {"num": "01", "title": "需求研究", "description": "临床需求调研与用户痛点分析，确定产品功能边界"},
+        {"num": "02", "title": "技术研发", "description": "结合生物力学与传统技法，进行核心技术攻关"},
+        {"num": "03", "title": "产品设计", "description": "人机工学设计，完成原型制造与功能验证"},
+        {"num": "04", "title": "临床验证", "description": "与合作医疗机构开展临床试验，收集有效性数据"},
+        {"num": "05", "title": "获证上市", "description": "完成注册证申请，通过质量体系审核正式上市"}
+      ]
+    },
+
+    "collaborations": {
+      "_comment": "产学研合作机构",
+      "sectionTag": "Collaborations",
+      "title": "产学研合作机构",
+      
+      "items": [
+        {"icon": "🏫", "type": "高校合作", "name": "上海工程技术大学", "description": "共建医工交叉研究基地，合作开展智能传感与康复算法研究，已共同申请发明专利3项。"},
+        {"icon": "🏥", "type": "临床合作", "name": "上海惠元医院", "description": "长期临床合作单位，为骆氏设备提供真实医疗环境下的临床验证数据支持。"},
+        {"icon": "🔬", "type": "研究机构", "name": "国内生物力学实验室", "description": "借助专业生物力学测试设备，对骆氏正脊技法进行量化研究，建立技术参数数据库。"}
+      ]
+    },
+
+    "cta": {
+      "title": "有研发合作意向？",
+      "description": "欢迎高校、研究机构与我们探讨产学研合作可能性，共同推动脊柱健康领域的技术创新。",
+      "buttonText": "联系研发团队 →"
+    }
+  },
+
+  "clinic": {
+    "_comment": "========== 诊所业务 (clinic.html) 配置 ==========",
+
+    "seo": {
+      "title": "诊所业务 - 整店输出方案 | 骆氏健康"
+    },
+
+    "banner": {
+      "breadcrumb": ["首页", "诊所业务"],
+      "title": "整店输出，快速开店",
+      "subtitle": "从选址到开业，骆氏健康提供一站式诊所赋能方案，让您零经验快速启动骆氏正脊体验中心。"
+    },
+
+    "value": {
+      "_comment": "三大核心赋能模块",
+      "sectionTag": "Our Value",
+      "title": "三大核心赋能模块",
+      "description": "无论您有无医疗行业经验，骆氏健康都能给您一套完整的诊所开店解决方案。",
+      
+      "cards": [
+        {
+          "icon": "🏪",
+          "title": "整店输出",
+          "description": "从零到开业的全流程输出，涵盖品牌授权、装修设计、设备配置、人员培训等所有环节。",
+          "points": ["选址评估与商圈分析", "标准化装修设计方案", "设备采购与安装调试", "骆氏品牌使用授权"]
+        },
+        {
+          "icon": "🎓",
+          "title": "技术培训",
+          "description": "系统化的技术培训体系，让您的团队快速掌握骆氏正脊技法的标准化服务流程。",
+          "points": ["骆氏正脊基础理论培训", "设备操作规范培训", "客户服务话术培训", "持续进阶培训支持"]
+        },
+        {
+          "icon": "📈",
+          "title": "运营支持",
+          "description": "开业后的持续运营赋能，帮助合作诊所建立稳定的客源体系和可持续的盈利模式。",
+          "points": ["营销物料与推广素材", "线上推广方案协助", "会员体系搭建指导", "定期运营数据复盘"]
+        }
+      ]
+    },
+
+    "flow": {
+      "_comment": "合作流程",
+      "sectionTag": "Cooperation Flow",
+      "title": "合作流程",
+      
+      "steps": [
+        {"num": "1", "title": "初步洽谈", "description": "了解需求，介绍合作模式"},
+        {"num": "2", "title": "方案制定", "description": "选址评估，定制开店方案"},
+        {"num": "3", "title": "签约合作", "description": "签订合作协议，品牌授权"},
+        {"num": "4", "title": "装修培训", "description": "设备安装，人员培训"},
+        {"num": "5", "title": "开业支持", "description": "开业活动策划，引流推广"},
+        {"num": "6", "title": "持续运营", "description": "数据复盘，持续赋能"}
+      ]
+    },
+
+    "support": {
+      "_comment": "全方位支持体系",
+      "sectionTag": "Support System",
+      "title": "全方位支持体系",
+      
+      "items": [
+        {"icon": "📦", "title": "产品供应保障", "description": "优先供货政策，保价协议，确保合作诊所产品充足且价格稳定，不受市场波动影响。"},
+        {"icon": "🔧", "title": "售后服务体系", "description": "48小时响应机制，专属售后工程师，设备维修与配件提供全覆盖，降低运营风险。"},
+        {"icon": "🛡", "title": "区域保护政策", "description": "在约定区域内，骆氏健康不再发展同类型合作伙伴，确保您的市场独占性与经营利益。"},
+        {"icon": "📊", "title": "数据与运营分析", "description": "提供门店运营数据分析工具，协助合作诊所优化服务流程、提升客户留存率与复购率。"}
+      ]
+    },
+
+    "cases": {
+      "_comment": "合作案例",
+      "sectionTag": "Success Cases",
+      "title": "合作案例",
+      
+      "items": [
+        {
+          "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=200&fit=crop&auto=format&q=70",
+          "name": "四川骆氏正脊体验中心",
+          "location": "2022年开业 · 成都市",
+          "metrics": [
+            {"value": "6月", "label": "回本周期"},
+            {"value": "98%", "label": "满意度"}
+          ]
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=200&fit=crop&auto=format&q=70",
+          "name": "上海骆氏正脊馆",
+          "location": "2023年开业 · 上海市",
+          "metrics": [
+            {"value": "8月", "label": "回本周期"},
+            {"value": "95%", "label": "满意度"}
+          ]
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=200&fit=crop&auto=format&q=70",
+          "name": "北京骆氏体验中心",
+          "location": "2024年开业 · 北京市",
+          "metrics": [
+            {"value": "建设中", "label": "建设进度"},
+            {"value": "预计Q2", "label": "开业时间"}
+          ]
+        }
+      ]
+    },
+
+    "form": {
+      "_comment": "诊所加盟申请表单",
+      "sectionTag": "Get Started",
+      "title": "立即预约洽谈",
+      "description": "填写以下信息，我们的合作顾问将在 24 小时内与您联系。",
+      
+      "fields": {
+        "name": {"label": "姓名", "placeholder": "您的姓名", "required": true},
+        "phone": {"label": "联系电话", "placeholder": "手机号码", "required": true},
+        "city": {"label": "意向城市", "placeholder": "如：上海市徐汇区", "required": true},
+        "budget": {
+          "label": "可投入资金",
+          "required": false,
+          "options": ["50万以内", "50-100万", "100-200万", "200万以上"]
+        },
+        "message": {"label": "留言", "placeholder": "简单介绍您的背景和诉求（选填）", "required": false}
+      },
+      "submitButton": "预约免费顾问 →",
+      "privacyText": "🔒 您的信息将被严格保密，仅用于商务联系。"
+    }
+  },
+
+  "contact": {
+    "_comment": "========== 联系我们 (contact.html) 配置 ==========",
+
+    "seo": {
+      "title": "联系我们 | 骆氏健康"
+    },
+
+    "banner": {
+      "breadcrumb": ["首页", "联系我们"],
+      "title": "联系骆氏健康",
+      "subtitle": "无论您有采购咨询、合作洽谈还是售后需求，我们期待与您沟通。"
+    },
+
+    "contactCards": [
+      {
+        "icon": "📞",
+        "label": "销售热线",
+        "value": "400-XXX-XXXX",
+        "type": "tel",
+        "sub": "周一至周六 09:00 - 18:00"
+      },
+      {
+        "icon": "✉️",
+        "label": "邮件联系",
+        "value": "info@luoshi-health.com",
+        "type": "email",
+        "sub": "工作日 24 小时内回复"
+      },
+      {
+        "icon": "📍",
+        "label": "公司地址",
+        "value": "上海市 XX 区 XX 路 XXX 号",
+        "type": "text",
+        "sub": "欢迎预约来访参观体验"
+      }
+    ],
+
+    "map": {
+      "placeholder": "上海市 XX 区 XX 路 XXX 号",
+      "hint": "[地图区域 · 可替换为百度地图 iframe]"
+    },
+
+    "form": {
+      "_comment": "联系表单",
+      "title": "给我们留言",
+      "description": "无论您是医疗机构、诊所经营者还是个人用户，填写留言后我们将在 24 小时内与您联系，提供专业的产品咨询与解决方案。",
+      
+      "perks": [
+        {"icon": "🏥", "title": "医疗机构采购", "desc": "提供产品选型建议、合规资质、批量优惠"},
+        {"icon": "🏪", "title": "诊所合作开店", "desc": "整店输出方案咨询，免费评估选址可行性"},
+        {"icon": "🤝", "title": "分销商合作", "desc": "了解分销政策、区域保护、合作条件"},
+        {"icon": "🔧", "title": "售后服务", "desc": "设备维修、配件更换、使用咨询"}
+      ],
+
+      "formCard": {
+        "title": "填写联系信息",
+        "fields": {
+          "name": {"label": "姓名", "placeholder": "您的姓名", "required": true},
+          "phone": {"label": "联系电话", "placeholder": "手机号码", "required": true},
+          "company": {"label": "公司 / 机构", "placeholder": "选填", "required": false},
+          "type": {
+            "label": "咨询类型",
+            "placeholder": "请选择",
+            "required": true,
+            "options": ["产品采购咨询", "诊所合作开店", "分销商合作", "售后服务", "产学研合作", "其他"]
+          },
+          "message": {"label": "留言内容", "placeholder": "请描述您的需求或问题", "required": true}
+        },
+        "submitButton": "提交留言 →",
+        "privacyText": "🔒 您的信息将被严格保密，仅用于商务联系。"
+      }
+    }
+  },
+
+  "downloads": {
+    "_comment": "========== 下载中心 (downloads.html) 配置 ==========",
+
+    "seo": {
+      "title": "下载中心 | 骆氏健康"
+    },
+
+    "banner": {
+      "breadcrumb": ["首页", "下载中心"],
+      "title": "资料下载中心",
+      "subtitle": "产品说明书、技术手册、资质证书等资料的集中下载平台。"
+    },
+
+    "categories": [
+      {"id": "all", "label": "全部资料"},
+      {"id": "manual", "label": "产品说明书"},
+      {"id": "cert", "label": "资质证书"},
+      {"id": "tech", "label": "技术手册"}
+    ],
+
+    "files": [
+      {
+        "id": 1,
+        "category": "manual",
+        "name": "医用脊柱牵引床 LX-T100 使用说明书",
+        "version": "V2.1",
+        "size": "3.2 MB",
+        "date": "2024-01-15",
+        "icon": "📄"
+      },
+      {
+        "id": 2,
+        "category": "cert",
+        "name": "医疗器械注册证",
+        "version": "-",
+        "size": "1.5 MB",
+        "date": "2023-12-01",
+        "icon": "📋"
+      },
+      {
+        "id": 3,
+        "category": "cert",
+        "name": "ISO 13485 认证证书",
+        "version": "-",
+        "size": "2.1 MB",
+        "date": "2023-11-20",
+        "icon": "✅"
+      },
+      {
+        "id": 4,
+        "category": "tech",
+        "name": "智能颈椎仪技术规格书",
+        "version": "V1.3",
+        "size": "4.5 MB",
+        "date": "2024-02-10",
+        "icon": "🔧"
+      }
+    ]
+  },
+
+  "news": {
+    "_comment": "========== 新闻中心 (news.html) 配置 ==========",
+
+    "seo": {
+      "title": "新闻中心 | 骆氏健康"
+    },
+
+    "banner": {
+      "breadcrumb": ["首页", "新闻中心"],
+      "title": "新闻动态",
+      "subtitle": "了解骆氏健康的最新资讯、行业动态与企业发展。"
+    },
+
+    "filters": [
+      {"id": "all", "label": "全部"},
+      {"id": "company", "label": "企业新闻"},
+      {"id": "industry", "label": "行业动态"},
+      {"id": "product", "label": "产品资讯"}
+    ],
+
+    "articles": [
+      {
+        "id": 1,
+        "category": "company",
+        "categoryLabel": "企业新闻",
+        "title": "骆氏健康荣获高新技术企业认定",
+        "summary": "经上海市科委评审，上海骆氏健康科技有限公司正式获得高新技术企业认定...",
+        "date": "2024-03-15",
+        "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=240&fit=crop"
+      },
+      {
+        "id": 2,
+        "category": "product",
+        "categoryLabel": "产品资讯",
+        "title": "智能关节康复仪 LX-J01 正式上市",
+        "summary": "历经两年研发，骆氏健康第三款核心产品——智能关节康复仪正式上市...",
+        "date": "2024-02-28",
+        "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=240&fit=crop"
+      },
+      {
+        "id": 3,
+        "category": "industry",
+        "categoryLabel": "行业动态",
+        "title": "2024康复医疗行业趋势报告发布",
+        "summary": "据最新行业研究报告显示，智能康复设备市场预计将在未来五年保持高速增长...",
+        "date": "2024-02-10",
+        "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=240&fit=crop"
+      }
+    ]
+  }
+}
