@@ -800,4 +800,17 @@ function submitContactForm(btn) {
       a.addEventListener('click', function() {
         hamburger.classList.remove('open');
         navLinks.classList.remove('open');
-        hamburg
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+</body>
+</html>

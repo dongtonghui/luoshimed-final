@@ -870,4 +870,13 @@ function submitClinicForm(btn) {
       });
     });
     document.addEventListener('click', function(e) {
-      if (!hamburger.contains(e.t
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+</body>
+</html>
