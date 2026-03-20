@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>关于骆氏 - 品牌故事与发展历程 | 骆氏健康</title>
+  <title>家用系列案例 | 骆氏健康</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -194,31 +194,6 @@ a { text-decoration: none; }
 }
 .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
 
-/* ── Form styles ── */
-.form-label { display: block; font-size: 13px; font-weight: 500; color: var(--text-body); margin-bottom: 6px; }
-.form-label span { color: #ef4444; margin-left: 2px; }
-.form-control {
-  width: 100%; padding: 11px 13px;
-  border: 1.5px solid var(--border); border-radius: 9px;
-  font-size: 14px; color: var(--text-dark); font-family: inherit;
-  outline: none; background: var(--bg-light);
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-  appearance: none; -webkit-appearance: none;
-}
-.form-control:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); background: #fff; }
-.form-control::placeholder { color: #9ca3af; }
-textarea.form-control { resize: none; }
-.form-error { font-size: 12px; color: #ef4444; margin-top: 4px; display: none; }
-.form-control.invalid { border-color: #ef4444; }
-.form-control.invalid + .form-error { display: block; }
-.form-submit {
-  width: 100%; padding: 14px; background: var(--blue); color: #fff;
-  border: none; border-radius: 9px; font-size: 15px; font-weight: 600;
-  cursor: pointer; font-family: inherit;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.form-submit:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.3); }
-
 /* ── Footer ── */
 footer {
   background: #1e3a5f;
@@ -258,29 +233,29 @@ footer {
 .footer-cert-hint { margin-top: 10px; font-size: 11px; color: rgba(255,255,255,0.2); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; }
 .footer-copyright { font-size: 12px; color: rgba(255,255,255,0.25); }
-    .footer-beian {
-      text-align: center;
-      padding: 12px 0 4px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      margin-top: 12px;
-    }
-    .footer-beian a {
-      font-size: 11px;
-      color: rgba(255,255,255,0.22);
-      text-decoration: none;
-      transition: color 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .footer-beian a::before {
-      content: "";
-      display: inline-block;
-      width: 14px; height: 14px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E") center/contain no-repeat;
-      opacity: 0.5;
-    }
-    .footer-beian a:hover { color: rgba(255,255,255,0.5); }
+.footer-beian {
+  text-align: center;
+  padding: 12px 0 4px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 12px;
+}
+.footer-beian a {
+  font-size: 11px;
+  color: rgba(255,255,255,0.22);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.footer-beian a::before {
+  content: "";
+  display: inline-block;
+  width: 14px; height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: 0.5;
+}
+.footer-beian a:hover { color: rgba(255,255,255,0.5); }
 .footer-socials { display: flex; gap: 8px; }
 .footer-social-btn {
   width: 32px; height: 32px;
@@ -318,83 +293,52 @@ footer {
 .float-btn-service { background: var(--blue); border-color: var(--blue); }
 .float-btn-top { display: none; }
 
-/* ── Shared JS (nav scroll + float) inline below each page ── */
-
-
-/* ── About 页专属样式 ── */
-.story-section { padding: 100px 0; }
-.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-.story-grid.reverse { direction: rtl; }
-.story-grid.reverse > * { direction: ltr; }
-.story-img-wrap {
-  border-radius: 20px; overflow: hidden;
-  box-shadow: 0 20px 60px rgba(37,99,235,0.1);
-  height: 380px;
-}
-.story-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-.story-text-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
-.story-text h2 { font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700; color: var(--text-dark); line-height: 1.25; margin-bottom: 18px; }
-.story-text p { font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 14px; }
-.story-highlight {
-  display: flex; gap: 28px; margin-top: 24px;
-  padding: 20px 24px; background: var(--bg-blue);
-  border-radius: 12px; border-left: 3px solid var(--blue);
-}
-.sh-item { text-align: center; }
-.sh-num { font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700; color: var(--blue); line-height: 1; }
-.sh-num sup { font-size: 14px; }
-.sh-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-
-/* ── 时间轴 ── */
-.timeline-section { padding: 100px 0; background: var(--bg-light); }
-.timeline { position: relative; padding: 0 0 0 40px; }
-.timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--blue), var(--blue-pale2)); }
-.tl-item { position: relative; margin-bottom: 48px; }
-.tl-item:last-child { margin-bottom: 0; }
-.tl-dot {
-  position: absolute; left: -49px; top: 4px;
-  width: 18px; height: 18px; border-radius: 50%;
-  background: #fff; border: 3px solid var(--blue);
-  box-shadow: 0 0 0 4px var(--blue-pale);
-}
-.tl-year { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 6px; letter-spacing: 0.05em; }
-.tl-title { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
-.tl-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 600px; }
-
-/* ── 资质荣誉墙 ── */
-.cert-wall { padding: 100px 0; }
-.cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.cert-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 16px; padding: 28px 20px;
-  text-align: center; cursor: pointer;
+/* ── Cases 页 ── */
+.cases-section { padding: 60px 0 80px; background: var(--bg-light); }
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.case-card {
+  border-radius: 18px; overflow: hidden; border: 1px solid var(--border); background: #fff;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: pointer;
 }
-.cert-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(37,99,235,0.08); border-color: var(--border-blue); }
-.cert-card-icon { font-size: 36px; margin-bottom: 14px; }
-.cert-card-name { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
-.cert-card-num { font-size: 12px; color: var(--text-muted); }
-.cert-badge { display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 600; color: var(--green-mid); background: var(--green-pale); border: 1px solid #bbf7d0; padding: 3px 10px; border-radius: 100px; }
+.case-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(37,99,235,0.09); border-color: var(--border-blue); }
+.case-thumb { position: relative; height: 196px; overflow: hidden; }
+.case-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.case-card:hover .case-thumb img { transform: scale(1.04); }
+.case-thumb-overlay { position: absolute; inset: 0; }
+.case-type-pill {
+  position: absolute; top: 12px; right: 12px;
+  font-size: 11px; font-weight: 700; padding: 4px 11px;
+  border-radius: 100px; backdrop-filter: blur(6px); letter-spacing: 0.04em;
+}
+.ctp-blue   { background: rgba(37,99,235,0.85);  color: #fff; }
+.ctp-green  { background: rgba(5,150,105,0.85);   color: #fff; }
+.ctp-purple { background: rgba(124,58,237,0.85);  color: #fff; }
+.ctp-orange { background: rgba(234,88,12,0.85);   color: #fff; }
+.ctp-indigo { background: rgba(79,70,229,0.85);   color: #fff; }
+.ctp-teal   { background: rgba(13,148,136,0.85);  color: #fff; }
+.case-body { padding: 20px 22px 22px; }
+.case-name { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 7px; }
+.case-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin-bottom: 14px; }
+.case-metrics { display: flex; gap: 22px; }
+.case-metric-val { font-size: 20px; font-weight: 700; color: var(--blue); line-height: 1; }
+.case-metric-key { font-size: 11px; color: var(--text-light); margin-top: 3px; }
 
-/* ── 专家团队 ── */
-.team-section { padding: 100px 0; background: var(--bg-light); }
-.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.team-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 18px; padding: 32px 22px; text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+/* 空状态 */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-muted);
 }
-.team-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(37,99,235,0.08); border-color: var(--border-blue); }
-.team-avatar {
-  width: 88px; height: 88px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue-pale2), var(--blue-pale));
-  border: 3px solid var(--blue-pale2); margin: 0 auto 16px;
-  display: flex; align-items: center; justify-content: center; font-size: 36px;
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
 }
-.team-name { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
-.team-title { font-size: 13px; color: var(--blue); font-weight: 500; margin-bottom: 12px; }
-.team-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
-
+.empty-state-text {
+  font-size: 15px;
+  color: var(--text-muted);
+}
 
 /* 移动端响应式适配 v1.0 */
 
@@ -612,7 +556,8 @@ footer {
 
   </style>
 </head>
-<body><nav id="nav">
+<body>
+<nav id="nav">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo">
       <div class="nav-logo-mark">
@@ -623,14 +568,14 @@ footer {
     <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-        <nav class="nav-links">
-      <a href="about.html" class="active">关于骆氏</a>
+    <nav class="nav-links">
+      <a href="about.html">关于骆氏</a>
       <a href="products.html">产品中心</a>
       <div class="nav-item-dropdown">
-        <a href="cases.html">合作案例</a>
+        <a href="cases.html" class="active">合作案例</a>
         <div class="dropdown-menu">
           <a href="cases-medical.html">医用系列</a>
-          <a href="cases-home.html">家用系列</a>
+          <a href="cases-home.html" class="active">家用系列</a>
         </div>
       </div>
       <a href="news.html">新闻中心</a>
@@ -641,228 +586,53 @@ footer {
       <a href="contact.html#contact-form" class="nav-cta">成为分销商</a>
     </nav>
   </div>
-</nav><div class="page-banner">
+</nav>
+
+<div class="page-banner">
   <div class="page-banner-grid"></div>
   <div class="page-banner-glow"></div>
   <div class="page-banner-inner">
     <div class="page-breadcrumb">
       <a href="index.html">首页</a>
       <span>›</span>
-      <span>关于骆氏</span>
+      <a href="cases.html">合作案例</a>
+      <span>›</span>
+      <span>家用系列</span>
     </div>
-    <h1 class="page-banner-title">百年传承，科技赋能</h1>
-    <p class="page-banner-sub">从骆氏百年正脊技法到现代智能医疗设备，我们以创新守护每一位用户的脊柱健康。</p>
+    <h1 class="page-banner-title">家用系列案例</h1>
+    <p class="page-banner-sub">骆氏家用康复设备在个人家庭的成功应用案例</p>
   </div>
 </div>
-<!-- 品牌故事 1 -->
-<section class="story-section" style="background:#fff;">
-  <div class="wrap">
-    <div class="story-grid">
-      <div class="story-img-wrap">
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&h=460&fit=crop&auto=format&q=80" alt="骆氏古法传承" loading="lazy"/>
-      </div>
-      <div class="story-text">
-        <p class="story-text-eyebrow">Heritage · 百年传承</p>
-        <h2>源自百年的正脊智慧</h2>
-        <p>骆氏正脊技法源于清末民初，历经骆氏家族数代人的钻研与传承，逐步形成一套以"形、气、神"三位一体为核心的脊柱调理理论体系。</p>
-        <p>这套技法以"望、触、动、调"四步诊疗为基础，强调整体性评估与个性化施治，在民间积累了大量临床验证案例，以其安全有效深得患者信赖。</p>
-        <div class="story-highlight">
-          <div class="sh-item"><p class="sh-num">100<sup>+</sup></p><p class="sh-label">传承年份</p></div>
-          <div class="sh-item"><p class="sh-num">3</p><p class="sh-label">代家族传承</p></div>
-          <div class="sh-item"><p class="sh-num">万+</p><p class="sh-label">患者服务</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 品牌故事 2 -->
-<section class="story-section" style="background:var(--bg-light); padding-top: 0;">
-  <div class="wrap">
-    <div class="story-grid reverse">
-      <div class="story-img-wrap">
-        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=700&h=460&fit=crop&auto=format&q=80" alt="科技融合研发" loading="lazy"/>
-      </div>
-      <div class="story-text">
-        <p class="story-text-eyebrow">Innovation · 科技融合</p>
-        <h2>古法技艺与现代科技的融合</h2>
-        <p>2018年，骆氏第三代传人携手生物力学专家、医疗器械工程师，共同创立上海骆氏健康科技有限公司。以骆氏正脊技法为核心理论，将传统经验转化为可量化、可标准化的智能设备参数。</p>
-        <p>通过与上海工程技术大学等高校深度合作，建立了完善的产学研体系，目前已取得10余项国家专利，并通过ISO 13485医疗器械质量管理体系认证。</p>
-        <div class="story-highlight">
-          <div class="sh-item"><p class="sh-num">2018</p><p class="sh-label">公司成立</p></div>
-          <div class="sh-item"><p class="sh-num">10<sup>+</sup></p><p class="sh-label">国家专利</p></div>
-          <div class="sh-item"><p class="sh-num">20<sup>+</sup></p><p class="sh-label">合作机构</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 发展历程 -->
-<section class="timeline-section">
+<section class="cases-section">
   <div class="wrap">
     <div class="section-header">
-      <p class="sec-eyebrow">Milestones</p>
-      <h2 class="sec-title">发展历程</h2>
-      <p class="sec-desc">从技艺传承到科技公司，每一步都承载着对脊柱健康事业的坚守。</p>
+      <p class="sec-eyebrow">Home Cases</p>
+      <h2 class="sec-title">家庭用户康复案例</h2>
     </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-year">清末民初</p>
-        <h3 class="tl-title">骆氏正脊技法起源</h3>
-        <p class="tl-desc">骆氏先祖在行医实践中，逐步总结出一套独特的脊柱调理方法，并在家族内部口耳相传，形成骆氏正脊技法的雏形。</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-year">2010</p>
-        <h3 class="tl-title">技法系统化整理</h3>
-        <p class="tl-desc">骆氏第二代传人将百年积累的临床经验进行系统化梳理，完成《骆氏正脊技法》文献整理，奠定了现代化转型的理论基础。</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-year">2016</p>
-        <h3 class="tl-title">产学研合作启动</h3>
-        <p class="tl-desc">与上海工程技术大学建立合作关系，启动骆氏技法的生物力学量化研究项目，开始探索传统技艺的科技化转型路径。</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-year">2018</p>
-        <h3 class="tl-title">上海骆氏健康科技有限公司成立</h3>
-        <p class="tl-desc">正式成立公司，引入生物力学专家、医疗器械工程师组建研发团队，开始医用脊柱牵引床的研发工作，进入产品化阶段。</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-year">2020</p>
-        <h3 class="tl-title">首款医用产品获证上市</h3>
-        <p class="tl-desc">医用脊柱牵引床取得医疗器械注册证（浙械注准202XXXXXX），并通过ISO 13485认证，正式进入医疗机构渠道销售。</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-year">2022</p>
-        <h3 class="tl-title">家用产品线上线下双渠道发力</h3>
-        <p class="tl-desc">推出家用智能颈椎仪，开拓C端市场。同年，四川骆氏正脊体验中心开业，成为整店输出模式首个标杆案例。</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <p class="tl-year">2024</p>
-        <h3 class="tl-title">合作版图扩大至20+机构</h3>
-        <p class="tl-desc">累计与20余家医疗机构、连锁诊所、区域分销商建立合作关系，智能关节康复仪完成研发并进入临床验证阶段。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 资质荣誉墙 -->
-<section class="cert-wall">
-  <div class="wrap">
-    <div class="section-header">
-      <p class="sec-eyebrow">Certifications</p>
-      <h2 class="sec-title">资质荣誉</h2>
-      <p class="sec-desc">合规是医疗产品的底线，也是骆氏健康对每一位合作伙伴的承诺。</p>
-    </div>
-    <div class="cert-grid">
-      <div class="cert-card">
-        <div class="cert-card-icon">📋</div>
-        <p class="cert-card-name">医疗器械经营许可证</p>
-        <p class="cert-card-num">沪药监械经营 XXXX 号</p>
-        <span class="cert-badge">✓ 合规认证</span>
-      </div>
-      <div class="cert-card">
-        <div class="cert-card-icon">✅</div>
-        <p class="cert-card-name">ISO 13485 认证</p>
-        <p class="cert-card-num">医疗器械质量管理体系</p>
-        <span class="cert-badge">✓ 国际认证</span>
-      </div>
-      <div class="cert-card">
-        <div class="cert-card-icon">🏅</div>
-        <p class="cert-card-name">国家发明专利</p>
-        <p class="cert-card-num">ZL 20XX XXXXXXXX.X</p>
-        <span class="cert-badge">✓ 自主知识产权</span>
-      </div>
-      <div class="cert-card">
-        <div class="cert-card-icon">📄</div>
-        <p class="cert-card-name">医疗器械注册证</p>
-        <p class="cert-card-num">浙械注准 202XXXXXX</p>
-        <span class="cert-badge">✓ 产品合规</span>
-      </div>
-      <div class="cert-card">
-        <div class="cert-card-icon">🔬</div>
-        <p class="cert-card-name">实用新型专利 ×8</p>
-        <p class="cert-card-num">多项技术保护</p>
-        <span class="cert-badge">✓ 技术创新</span>
-      </div>
-      <div class="cert-card">
-        <div class="cert-card-icon">🏆</div>
-        <p class="cert-card-name">高新技术企业认定</p>
-        <p class="cert-card-num">上海市科委颁发</p>
-        <span class="cert-badge">✓ 政府认定</span>
-      </div>
-      <div class="cert-card">
-        <div class="cert-card-icon">📊</div>
-        <p class="cert-card-name">临床试验报告</p>
-        <p class="cert-card-num">92% 临床有效率认证</p>
-        <span class="cert-badge">✓ 临床验证</span>
-      </div>
-      <div class="cert-card">
-        <div class="cert-card-icon">🌐</div>
-        <p class="cert-card-name">CE 认证（申报中）</p>
-        <p class="cert-card-num">欧盟医疗器械认证</p>
-        <span class="cert-badge">⏳ 申报中</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 专家团队 -->
-<section class="team-section">
-  <div class="wrap">
-    <div class="section-header">
-      <p class="sec-eyebrow">Our Team</p>
-      <h2 class="sec-title">核心团队</h2>
-      <p class="sec-desc">汇聚传统技艺传承人、生物力学专家、医疗器械工程师，共同推动脊柱健康事业发展。</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar">👨‍⚕️</div>
-        <h3 class="team-name">骆 XX</h3>
-        <p class="team-title">创始人 · 正脊技法传承人</p>
-        <p class="team-desc">骆氏正脊技法第三代传承人，从事脊柱康复研究20余年，主导公司核心技术体系建设。</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">👨‍🔬</div>
-        <h3 class="team-name">张 XX</h3>
-        <p class="team-title">首席科学家 · 生物力学博士</p>
-        <p class="team-desc">上海交通大学生物力学博士，主持国家级科研项目3项，将传统技法转化为可量化技术参数。</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">👩‍💼</div>
-        <h3 class="team-name">李 XX</h3>
-        <p class="team-title">医疗器械研发总监</p>
-        <p class="team-desc">15年医疗器械研发经验，曾任职于国内头部医疗设备企业，主导骆氏系列产品注册证申请与技术攻关。</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">👨‍💻</div>
-        <h3 class="team-name">王 XX</h3>
-        <p class="team-title">智能算法负责人</p>
-        <p class="team-desc">专注医疗AI算法研究，负责骆氏智能设备的自适应算法开发，实现设备对用户个体差异的智能适配。</p>
+    <div class="cases-grid" id="cases-grid">
+      <!-- 案例卡片将通过 JavaScript 动态加载 -->
+      <div class="empty-state">
+        <div class="empty-state-icon">📦</div>
+        <p class="empty-state-text">案例加载中...</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section style="padding: 72px 0; background: #fff;">
+<section style="padding:72px 0;background:#fff;">
   <div class="wrap">
     <div class="cta-banner">
       <div>
-        <h3 class="cta-banner-title">与骆氏健康携手共进</h3>
-        <p class="cta-banner-sub">无论您是医疗机构、诊所经营者还是分销商，我们期待与您合作，共同推广专业脊柱健康解决方案。</p>
+        <h3 class="cta-banner-title">加入骆氏合作伙伴网络</h3>
+        <p class="cta-banner-sub">无论您处于哪个阶段，骆氏健康都有适合您的合作模式，期待与您携手共建健康生态。</p>
       </div>
-      <a href="contact.html#contact-form" class="btn-white">立即联系我们 →</a>
+      <a href="contact.html#contact-form" class="btn-white">立即申请合作 →</a>
     </div>
   </div>
 </section>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
@@ -876,7 +646,7 @@ footer {
         <p class="footer-brand-desc">上海骆氏健康科技有限公司，致力于将百年骆氏正脊技法与现代智能医疗技术深度融合，为更多人提供专业可信赖的脊柱健康解决方案。</p>
         <div class="footer-contact-list">
           <div class="footer-contact-item"><span class="ic">📞</span><span>400-XXX-XXXX</span></div>
-          <div class="footer-contact-item"><span class="ic">✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="13707c7d67727067537f667c607b7a3e7b76727f677b3d707c7e">[email&#160;protected]</a></span></div>
+          <div class="footer-contact-item"><span class="ic">✉️</span><span>contact@luoshihealth.com</span></div>
           <div class="footer-contact-item"><span class="ic">📍</span><span>上海市 XX 区 XX 路 XXX 号</span></div>
         </div>
       </div>
@@ -919,34 +689,121 @@ footer {
       </div>
     </div>
   </div>
-    <div class="footer-beian">
-      <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011702891311" rel="noreferrer" target="_blank">沪公网安备 31011702891311 号</a>
-    </div>
-</footer><div id="float-bar">
+  <div class="footer-beian">
+    <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011702891311" rel="noreferrer" target="_blank">沪公网安备 31011702891311 号</a>
+  </div>
+</footer>
+
+<div id="float-bar">
   <div class="float-qr-card" id="qr-card">
     <div class="float-qr-img">📱</div>
     <p class="float-qr-text">扫码添加客服微信<br>获取合作政策</p>
   </div>
   <div class="float-btn float-btn-service" onclick="toggleQR()" title="在线客服" style="color:#fff;font-size:19px;">💬</div>
   <div class="float-btn float-btn-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</div>
-</div><!-- 配置加载器 -->
+</div>
+
+<!-- 配置加载器 -->
 <script src="config-loader.js"></script>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+<!-- 家用系列案例加载脚本 -->
+<script>
+  // 加载并渲染家用系列案例
+  async function loadHomeCases() {
+    const gridContainer = document.getElementById('cases-grid');
+    
+    try {
+      // 1. fetch data/cases.json
+      const response = await fetch('data/cases.json');
+      if (!response.ok) {
+        throw new Error('Failed to load cases data');
+      }
+      
+      const data = await response.json();
+      
+      // 2. 获取 home 数组
+      const homeCases = data.home || [];
+      
+      if (homeCases.length === 0) {
+        gridContainer.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📭</div>
+            <p class="empty-state-text">暂无案例</p>
+          </div>
+        `;
+        return;
+      }
+      
+      // 3. 动态生成 HTML 卡片
+      const casesHTML = homeCases.map(caseItem => {
+        // 构建指标 HTML
+        const metricsHTML = caseItem.metrics.map(metric => `
+          <div>
+            <p class="case-metric-val">${metric.value}</p>
+            <p class="case-metric-key">${metric.label}</p>
+          </div>
+        `).join('');
+        
+        // 构建卡片 HTML
+        return `
+          <div class="case-card" onclick="window.location.href='case-detail.html?id=${caseItem.id}'">
+            <div class="case-thumb">
+              <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#1e40af,#3b82f6);opacity:0.5;"></div>
+              <img src="${caseItem.cover}" alt="${caseItem.title}" loading="lazy" style="opacity:0.55;"/>
+              <span class="case-type-pill ctp-blue">家用系列</span>
+            </div>
+            <div class="case-body">
+              <h3 class="case-name">${caseItem.title}</h3>
+              <p class="case-desc">${caseItem.summary}</p>
+              <div class="case-metrics">
+                ${metricsHTML}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      // 4. 插入到 cases-grid 容器中
+      gridContainer.innerHTML = casesHTML;
+      
+    } catch (error) {
+      console.error('Error loading home cases:', error);
+      gridContainer.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">⚠️</div>
+          <p class="empty-state-text">案例加载失败，请稍后重试</p>
+        </div>
+      `;
+    }
+  }
+
+  // 页面加载完成后执行
+  document.addEventListener('DOMContentLoaded', loadHomeCases);
+</script>
+
+<script>
+  // 导航滚动效果
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);
     const bt = document.getElementById('back-top');
     if(bt) bt.style.display = window.scrollY > 500 ? 'flex' : 'none';
   }, { passive: true });
+  
+  // 二维码切换
   function toggleQR() {
     const c = document.getElementById('qr-card');
     c.style.display = c.style.display === 'block' ? 'none' : 'block';
   }
+  
+  // 点击外部关闭二维码
   document.addEventListener('click', e => {
     const c = document.getElementById('qr-card');
     const btn = document.querySelector('.float-btn-service');
     if (c && btn && !c.contains(e.target) && !btn.contains(e.target)) c.style.display = 'none';
   });
+  
+  // 平滑滚动
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const t = document.querySelector(a.getAttribute('href'));
@@ -954,7 +811,9 @@ footer {
     });
   });
 </script>
+
 <script>
+  // 移动端汉堡菜单
   (function() {
     var hamburger = document.getElementById('nav-hamburger');
     var navLinks = document.querySelector('.nav-links');

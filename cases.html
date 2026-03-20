@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/nav-dropdown.css">
   <style>
 /* ============================================================
    骆氏健康官网 · 共享样式 v2.0
@@ -321,81 +322,82 @@ footer {
 
 
 /* ── Cases 页 ── */
-.cases-filter-bar {
-  position: sticky; top: 68px; z-index: 100;
-  background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+/* 系列入口卡片 */
+.series-section { padding: 80px 0; background: var(--bg-light); min-height: 500px; }
+.series-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.series-card {
+  display: flex; flex-direction: column;
+  border-radius: 24px; overflow: hidden;
+  border: 1px solid var(--border); background: #fff;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.4s ease, 
+              border-color 0.3s ease;
+  cursor: pointer; text-decoration: none;
 }
-.cases-filter-inner {
-  max-width: 1280px; margin: 0 auto; padding: 0 48px;
-  height: 60px; display: flex; align-items: center; gap: 6px;
+.series-card:hover { 
+  transform: translateY(-12px); 
+  box-shadow: 0 32px 64px rgba(37,99,235,0.15); 
+  border-color: var(--border-blue); 
 }
-.filter-tab {
-  padding: 7px 18px; border-radius: 8px; font-size: 14px; font-weight: 500;
-  color: var(--text-muted); cursor: pointer; border: 1.5px solid transparent;
-  transition: all 0.2s; user-select: none;
+.series-card-visual {
+  height: 220px; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
 }
-.filter-tab:hover { color: var(--blue); background: var(--blue-pale); }
-.filter-tab.active { color: var(--blue); background: var(--blue-pale); border-color: var(--border-blue); font-weight: 600; }
+.series-card-visual.medical { 
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #1d4ed8 100%); 
+}
+.series-card-visual.home { 
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); 
+}
+.series-icon {
+  font-size: 80px; z-index: 2; position: relative;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.2));
+  transition: transform 0.4s ease;
+}
+.series-card:hover .series-icon { transform: scale(1.1) rotate(-5deg); }
+.series-card-pattern {
+  position: absolute; inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%);
+}
+.series-card-content { padding: 32px; flex: 1; display: flex; flex-direction: column; }
+.series-card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.series-card-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px; font-weight: 700; color: var(--text-dark);
+}
+.series-count {
+  font-size: 13px; font-weight: 600; color: var(--blue);
+  background: var(--blue-pale); padding: 6px 14px;
+  border-radius: 100px;
+}
+.series-card-desc {
+  font-size: 15px; color: var(--text-muted); line-height: 1.7;
+  margin-bottom: 24px; flex: 1;
+}
+.series-card-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 600; color: var(--blue);
+  transition: gap 0.3s ease;
+}
+.series-card:hover .series-card-btn { gap: 14px; }
+.series-card-btn-arrow {
+  transition: transform 0.3s ease;
+}
+.series-card:hover .series-card-btn-arrow { transform: translateX(4px); }
 
-.cases-section { padding: 60px 0 80px; background: var(--bg-light); }
-.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.case-card {
-  border-radius: 18px; overflow: hidden; border: 1px solid var(--border); background: #fff;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+/* 响应式 */
+@media (max-width: 768px) {
+  .series-grid { grid-template-columns: 1fr; gap: 24px; }
+  .series-card-visual { height: 180px; }
+  .series-icon { font-size: 60px; }
+  .series-card-title { font-size: 22px; }
+  .series-card-content { padding: 24px; }
 }
-.case-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(37,99,235,0.09); border-color: var(--border-blue); }
-.case-thumb { position: relative; height: 196px; overflow: hidden; }
-.case-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-.case-card:hover .case-thumb img { transform: scale(1.04); }
-.case-thumb-overlay { position: absolute; inset: 0; }
-.case-type-pill {
-  position: absolute; top: 12px; right: 12px;
-  font-size: 11px; font-weight: 700; padding: 4px 11px;
-  border-radius: 100px; backdrop-filter: blur(6px); letter-spacing: 0.04em;
-}
-.ctp-blue   { background: rgba(37,99,235,0.85);  color: #fff; }
-.ctp-green  { background: rgba(5,150,105,0.85);   color: #fff; }
-.ctp-purple { background: rgba(124,58,237,0.85);  color: #fff; }
-.ctp-orange { background: rgba(234,88,12,0.85);   color: #fff; }
-.ctp-indigo { background: rgba(79,70,229,0.85);   color: #fff; }
-.ctp-teal   { background: rgba(13,148,136,0.85);  color: #fff; }
-.case-body { padding: 20px 22px 22px; }
-.case-name { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 7px; }
-.case-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin-bottom: 14px; }
-.case-metrics { display: flex; gap: 22px; }
-.case-metric-val { font-size: 20px; font-weight: 700; color: var(--blue); line-height: 1; }
-.case-metric-key { font-size: 11px; color: var(--text-light); margin-top: 3px; }
-
-/* 深度案例 */
-.feature-case { padding: 80px 0; background: #fff; }
-.feature-case-card {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
-  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
-  border-radius: 24px; padding: 56px 64px; color: #fff;
-}
-.feature-case-img { border-radius: 16px; overflow: hidden; height: 360px; }
-.feature-case-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; }
-.feature-case-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
-.feature-case-title { font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 16px; }
-.feature-case-desc { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 28px; }
-.feature-case-kpis { display: flex; gap: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.15); margin-bottom: 28px; }
-.fck-val { font-family: 'Noto Serif SC', serif; font-size: 36px; font-weight: 700; color: #fff; line-height: 1; }
-.fck-key { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; }
-.feature-case-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.feature-case-tag { font-size: 12px; color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 100px; }
-
-/* Logo 墙 */
-.partner-logos { padding: 72px 0; background: var(--bg-light); }
-.logo-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
-.logo-item {
-  background: #fff; border: 1px solid var(--border); border-radius: 12px;
-  height: 72px; display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 600; color: var(--text-muted); text-align: center;
-  padding: 10px; cursor: default;
-  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
-}
-.logo-item:hover { border-color: var(--border-blue); color: var(--blue); box-shadow: 0 4px 16px rgba(37,99,235,0.07); }
 
 
 /* 移动端响应式适配 v1.0 */
@@ -628,7 +630,13 @@ footer {
         <nav class="nav-links">
       <a href="about.html">关于骆氏</a>
       <a href="products.html">产品中心</a>
-      <a href="cases.html" class="active">合作案例</a>
+      <div class="nav-item-dropdown">
+        <a href="cases.html" class="active">合作案例</a>
+        <div class="dropdown-menu">
+          <a href="cases-medical.html">医用系列</a>
+          <a href="cases-home.html">家用系列</a>
+        </div>
+      </div>
       <a href="news.html">新闻中心</a>
       <a href="research.html">研发实力</a>
       <a href="clinic.html">诊所业务</a>
@@ -650,162 +658,51 @@ footer {
     <p class="page-banner-sub">20+ 合作伙伴的真实验证，覆盖医疗机构、品牌诊所、分销商与产学研机构。</p>
   </div>
 </div>
-<div class="cases-filter-bar">
-  <div class="cases-filter-inner">
-    <div class="filter-tab active" data-cat="all">全部案例</div>
-    <div class="filter-tab" data-cat="medical">医疗机构</div>
-    <div class="filter-tab" data-cat="brand">品牌授权</div>
-    <div class="filter-tab" data-cat="distributor">分销合作</div>
-    <div class="filter-tab" data-cat="research">产学研</div>
-  </div>
-</div>
-
-<section class="cases-section">
+<!-- 系列入口 -->
+<section class="series-section">
   <div class="wrap">
-    <div class="cases-grid" id="cases-grid"><div class="case-card" data-cat="brand">
-  <div class="case-thumb">
-    <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);opacity:0.5;"></div>
-    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=240&fit=crop&auto=format&q=70" alt="四川骆氏正脊体验中心" loading="lazy" style="opacity:0.6;"/>
-    <span class="case-type-pill ctp-blue">品牌授权</span>
-  </div>
-  <div class="case-body">
-    <h3 class="case-name">四川骆氏正脊体验中心</h3>
-    <p class="case-desc">整店输出模式标杆案例，从选址装修、设备配置到运营培训全程赋能，实现快速规模化复制。</p>
-    <div class="case-metrics">
-      <div><p class="case-metric-val">6月</p><p class="case-metric-key">回本周期</p></div>
-      <div><p class="case-metric-val">98%</p><p class="case-metric-key">客户满意度</p></div>
-    </div>
-  </div>
-</div>
-<div class="case-card" data-cat="medical">
-  <div class="case-thumb">
-    <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#064e3b,#059669);opacity:0.5;"></div>
-    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=500&h=240&fit=crop&auto=format&q=70" alt="上海惠元医院" loading="lazy" style="opacity:0.55;"/>
-    <span class="case-type-pill ctp-green">医疗机构</span>
-  </div>
-  <div class="case-body">
-    <h3 class="case-name">上海惠元医院</h3>
-    <p class="case-desc">引进骆氏医用牵引床系统，用于骨科与康复科临床诊疗，设备合规性与临床效果获科室医师认可。</p>
-    <div class="case-metrics">
-      <div><p class="case-metric-val">200+</p><p class="case-metric-key">月均服务患者</p></div>
-      <div><p class="case-metric-val">三甲</p><p class="case-metric-key">同等配置</p></div>
-    </div>
-  </div>
-</div>
-<div class="case-card" data-cat="research">
-  <div class="case-thumb">
-    <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);opacity:0.5;"></div>
-    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&h=240&fit=crop&auto=format&q=70" alt="上海工程技术大学" loading="lazy" style="opacity:0.45;"/>
-    <span class="case-type-pill ctp-purple">产学研</span>
-  </div>
-  <div class="case-body">
-    <h3 class="case-name">上海工程技术大学</h3>
-    <p class="case-desc">共建医工交叉产学研基地，联合推进智能康复设备的算法研发与临床验证，成果转化落地。</p>
-    <div class="case-metrics">
-      <div><p class="case-metric-val">3项</p><p class="case-metric-key">联合专利</p></div>
-      <div><p class="case-metric-val">2年+</p><p class="case-metric-key">深度合作</p></div>
-    </div>
-  </div>
-</div>
-<div class="case-card" data-cat="distributor">
-  <div class="case-thumb">
-    <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#7c2d12,#ea580c);opacity:0.5;"></div>
-    <img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=500&h=240&fit=crop&auto=format&q=70" alt="华东区域分销合作伙伴" loading="lazy" style="opacity:0.55;"/>
-    <span class="case-type-pill ctp-orange">分销合作</span>
-  </div>
-  <div class="case-body">
-    <h3 class="case-name">华东区域分销合作伙伴</h3>
-    <p class="case-desc">代理骆氏家用系列与康复设备，建立线上线下双渠道分销网络，实现华东区域规模化铺货。</p>
-    <div class="case-metrics">
-      <div><p class="case-metric-val">50+</p><p class="case-metric-key">终端网点</p></div>
-      <div><p class="case-metric-val">华东</p><p class="case-metric-key">区域覆盖</p></div>
-    </div>
-  </div>
-</div>
-<div class="case-card" data-cat="medical">
-  <div class="case-thumb">
-    <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#1e1b4b,#4f46e5);opacity:0.5;"></div>
-    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&h=240&fit=crop&auto=format&q=70" alt="某三甲医院康复科" loading="lazy" style="opacity:0.45;"/>
-    <span class="case-type-pill ctp-indigo">医疗机构</span>
-  </div>
-  <div class="case-body">
-    <h3 class="case-name">某三甲医院康复科</h3>
-    <p class="case-desc">与医院康复科合作开展脊柱疾病综合诊疗项目，骆氏设备纳入科室标准化治疗方案。</p>
-    <div class="case-metrics">
-      <div><p class="case-metric-val">三甲</p><p class="case-metric-key">医院合作</p></div>
-      <div><p class="case-metric-val">专科</p><p class="case-metric-key">深度嵌入</p></div>
-    </div>
-  </div>
-</div>
-<div class="case-card" data-cat="brand">
-  <div class="case-thumb">
-    <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#042f2e,#0d9488);opacity:0.5;"></div>
-    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=240&fit=crop&auto=format&q=70" alt="某运动康复连锁机构" loading="lazy" style="opacity:0.55;"/>
-    <span class="case-type-pill ctp-teal">康复中心</span>
-  </div>
-  <div class="case-body">
-    <h3 class="case-name">某运动康复连锁机构</h3>
-    <p class="case-desc">旗下多门店统一引进骆氏智能关节康复系统，专注运动损伤修复与运动表现提升。</p>
-    <div class="case-metrics">
-      <div><p class="case-metric-val">8家</p><p class="case-metric-key">门店覆盖</p></div>
-      <div><p class="case-metric-val">连锁</p><p class="case-metric-key">标准化配置</p></div>
-    </div>
-  </div>
-</div></div>
-  </div>
-</section>
-
-<!-- 深度案例 -->
-<section class="feature-case">
-  <div class="wrap">
-    <div class="section-header">
-      <p class="sec-eyebrow">Featured Case</p>
-      <h2 class="sec-title">深度案例：四川骆氏正脊体验中心</h2>
-    </div>
-    <div class="feature-case-card">
-      <div class="feature-case-img">
-        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=700&h=460&fit=crop&auto=format&q=70" alt="四川体验中心"/>
-      </div>
-      <div>
-        <p class="feature-case-eyebrow">Brand Partnership · 整店输出</p>
-        <h3 class="feature-case-title">从零到开业，骆氏全程陪跑</h3>
-        <p class="feature-case-desc">四川合作伙伴在缺乏专业医疗背景的情况下，选择骆氏整店输出模式。骆氏健康提供从选址评估、装修设计、设备采购、人员培训到开业支持的一站式服务，最终实现 6 个月内回本的优秀成绩。</p>
-        <div class="feature-case-kpis">
-          <div><p class="fck-val">6月</p><p class="fck-key">回本周期</p></div>
-          <div><p class="fck-val">98%</p><p class="fck-key">客户满意度</p></div>
-          <div><p class="fck-val">3倍</p><p class="fck-key">月营业额增长</p></div>
+    <div class="series-grid">
+      <!-- 医用系列入口 -->
+      <a href="cases-medical.html" class="series-card">
+        <div class="series-card-visual medical">
+          <div class="series-card-pattern"></div>
+          <div class="series-icon">🏥</div>
         </div>
-        <div class="feature-case-tags">
-          <span class="feature-case-tag">✓ 整店输出</span>
-          <span class="feature-case-tag">✓ 技术培训</span>
-          <span class="feature-case-tag">✓ 品牌授权</span>
-          <span class="feature-case-tag">✓ 持续运营支持</span>
+        <div class="series-card-content">
+          <div class="series-card-header">
+            <h3 class="series-card-title">医用系列</h3>
+            <span class="series-count">6个案例</span>
+          </div>
+          <p class="series-card-desc">专为医疗机构打造的专业级设备解决方案，覆盖三甲医院、专科医院、康复中心等多种医疗场景，提供高端牵引设备与整体解决方案。</p>
+          <div class="series-card-btn">
+            查看案例 
+            <svg class="series-card-btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Logo 墙 -->
-<section class="partner-logos">
-  <div class="wrap">
-    <div class="section-header">
-      <p class="sec-eyebrow">Our Partners</p>
-      <h2 class="sec-title">合作伙伴</h2>
-    </div>
-    <div class="logo-grid"><div class="logo-item">上海惠元医院</div><div class="logo-item">某三甲医院</div><div class="logo-item">上海工程技术大学</div><div class="logo-item">四川骆氏体验中心</div><div class="logo-item">华东分销伙伴</div><div class="logo-item">运动康复机构</div><div class="logo-item">北京合作医院</div><div class="logo-item">南京诊所联盟</div><div class="logo-item">杭州健康管理</div><div class="logo-item">成都体验中心</div><div class="logo-item">广州骨科诊所</div><div class="logo-item">深圳康复中心</div></div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section style="padding:72px 0;background:#fff;">
-  <div class="wrap">
-    <div class="cta-banner">
-      <div>
-        <h3 class="cta-banner-title">加入骆氏合作伙伴网络</h3>
-        <p class="cta-banner-sub">无论您处于哪个阶段，骆氏健康都有适合您的合作模式，期待与您携手共建健康生态。</p>
-      </div>
-      <a href="contact.html#contact-form" class="btn-white">立即申请合作 →</a>
+      </a>
+      
+      <!-- 家用系列入口 -->
+      <a href="cases-home.html" class="series-card">
+        <div class="series-card-visual home">
+          <div class="series-card-pattern"></div>
+          <div class="series-icon">🏠</div>
+        </div>
+        <div class="series-card-content">
+          <div class="series-card-header">
+            <h3 class="series-card-title">家用系列</h3>
+            <span class="series-count">6个案例</span>
+          </div>
+          <p class="series-card-desc">面向家庭用户的智能康复产品解决方案，包含颈椎护理、脊柱牵引、关节康复等多类产品，让专业级健康照护走进千家万户。</p>
+          <div class="series-card-btn">
+            查看案例 
+            <svg class="series-card-btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -879,17 +776,6 @@ footer {
 <!-- 配置加载器 -->
 <script src="config-loader.js"></script>
 <script>
-  document.querySelectorAll('.filter-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const cat = tab.dataset.cat;
-      document.querySelectorAll('.case-card').forEach(card => {
-        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
-      });
-    });
-  });
-</script><script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);

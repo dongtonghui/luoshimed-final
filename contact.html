@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/nav-dropdown.css">
   <style>
 /* ============================================================
    骆氏健康官网 · 共享样式 v2.0
@@ -590,7 +591,13 @@ footer {
         <nav class="nav-links">
       <a href="about.html">关于骆氏</a>
       <a href="products.html">产品中心</a>
-      <a href="cases.html">合作案例</a>
+      <div class="nav-item-dropdown">
+        <a href="cases.html">合作案例</a>
+        <div class="dropdown-menu">
+          <a href="cases-medical.html">医用系列</a>
+          <a href="cases-home.html">家用系列</a>
+        </div>
+      </div>
       <a href="news.html">新闻中心</a>
       <a href="research.html">研发实力</a>
       <a href="clinic.html">诊所业务</a>
