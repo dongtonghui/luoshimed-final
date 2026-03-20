@@ -1006,11 +1006,64 @@ footer {
 </div>
 
 <script>
-  // Filter tabs
-  document.querySelectorAll('.filter-tab').forEach(btn => {
+  // Filter tabs - 筛选功能
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const sectionTitles = document.querySelectorAll('.section-title');
+  const dlGrids = document.querySelectorAll('.dl-grid');
+  
+  // 筛选映射：按钮索引 -> 要显示的区域索引
+  const filterMap = {
+    0: [0, 1, 2, 3],      // 全部 - 显示所有区域
+    1: [0],               // 产品手册
+    2: [1],               // 使用说明书
+    3: [2],               // 合规证书
+    4: [3],               // 学术资料
+    5: []                 // 软件驱动（暂无内容，显示空状态）
+  };
+  
+  filterTabs.forEach((btn, index) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      // 更新按钮状态
+      filterTabs.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      
+      // 获取要显示的区域索引
+      const showIndices = filterMap[index] || [];
+      
+      // 显示/隐藏区域
+      sectionTitles.forEach((title, idx) => {
+        if (showIndices.includes(idx)) {
+          title.style.display = 'flex';
+        } else {
+          title.style.display = 'none';
+        }
+      });
+      
+      dlGrids.forEach((grid, idx) => {
+        if (showIndices.includes(idx)) {
+          grid.style.display = 'grid';
+        } else {
+          grid.style.display = 'none';
+        }
+      });
+      
+      // 软件驱动暂无内容，显示提示
+      const emptyTip = document.getElementById('empty-filter-tip');
+      if (index === 5) {
+        // 软件驱动
+        if (!emptyTip) {
+          const tip = document.createElement('div');
+          tip.id = 'empty-filter-tip';
+          tip.className = 'empty-filter-tip';
+          tip.innerHTML = '<div class="empty-tip-content">📦 软件驱动资源正在整理中，敬请期待...</div>';
+          tip.style.cssText = 'text-align: center; padding: 60px 20px; color: var(--text-muted);';
+          document.querySelector('.main-wrap').insertBefore(tip, document.querySelector('.apply-section'));
+        } else {
+          emptyTip.style.display = 'block';
+        }
+      } else if (emptyTip) {
+        emptyTip.style.display = 'none';
+      }
     });
   });
   
