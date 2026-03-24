@@ -14,7 +14,9 @@ window.WebsiteConfig = window.WebsiteConfig || {};
  */
 async function loadConfig() {
   try {
-    const response = await fetch('website-config.json');
+    // 添加时间戳绕过缓存
+    const cacheBuster = '?_t=' + new Date().getTime();
+    const response = await fetch('website-config.json' + cacheBuster);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -223,6 +225,135 @@ function renderHomePage() {
     if (hero.subtitle) {
       const subEl = document.querySelector('.hero-sub');
       if (subEl) subEl.innerHTML = hero.subtitle.replace(/\n/g, '<br>');
+    }
+  }
+  
+  // 产品展示区域
+  const products = config.products;
+  if (products) {
+    const productsSection = document.getElementById('products');
+    if (productsSection) {
+      // 区域标签
+      if (products.sectionTag) {
+        const eyebrowEl = productsSection.querySelector('.sec-eyebrow');
+        if (eyebrowEl) eyebrowEl.textContent = products.sectionTag;
+      }
+      
+      // 标题
+      if (products.title) {
+        const titleEl = productsSection.querySelector('.sec-title');
+        if (titleEl) titleEl.textContent = products.title;
+      }
+      
+      // 按钮文字
+      if (products.buttonText) {
+        const btnEl = productsSection.querySelector('.btn-outline-blue');
+        if (btnEl) btnEl.textContent = products.buttonText;
+      }
+      
+      // 产品卡片
+      if (products.items && Array.isArray(products.items) && products.items.length > 0) {
+        const gridEl = productsSection.querySelector('.products-grid');
+        if (gridEl) {
+          gridEl.innerHTML = products.items.map(item => {
+            const badgeClass = item.badgeType === 'green' ? 'pb-green' : 
+                              item.badgeType === 'teal' ? 'pb-teal' : 'pb-blue';
+            const kpisHTML = item.kpis ? item.kpis.map(kpi => 
+              `<div><p class="product-kpi-val">${kpi.value}</p><p class="product-kpi-key">${kpi.label}</p></div>`
+            ).join('') : '';
+            
+            return `
+              <div class="product-card">
+                <div class="product-thumb">
+                  <img src="${item.image || ''}" alt="${item.name || ''}" loading="lazy"/>
+                  <span class="product-badge ${badgeClass}">${item.badge || ''}</span>
+                </div>
+                <div class="product-body">
+                  <h3 class="product-name">${item.name || ''}</h3>
+                  <p class="product-desc">${item.description || ''}</p>
+                  <div class="product-cert-tag"><span class="cert-dot-sm"></span>${item.cert || ''}</div>
+                  <div class="product-foot">
+                    <div class="product-kpis">${kpisHTML}</div>
+                    <a href="product-detail.html?id=${item.id || 1}" class="btn-card-link">了解详情 →</a>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+    }
+  }
+  
+  // 合作案例区域
+  const cases = config.cases;
+  if (cases) {
+    const casesSection = document.getElementById('cases');
+    if (casesSection) {
+      // 区域标签
+      if (cases.sectionTag) {
+        const eyebrowEl = casesSection.querySelector('.sec-eyebrow');
+        if (eyebrowEl) eyebrowEl.textContent = cases.sectionTag;
+      }
+      
+      // 标题
+      if (cases.title) {
+        const titleEl = casesSection.querySelector('.sec-title');
+        if (titleEl) titleEl.textContent = cases.title;
+      }
+      
+      // 描述
+      if (cases.description) {
+        const descEl = casesSection.querySelector('.sec-desc');
+        if (descEl) descEl.textContent = cases.description;
+      }
+      
+      // 合作伙伴大数字
+      if (cases.partnerBig) {
+        const bigEl = casesSection.querySelector('.cases-partner-big');
+        if (bigEl) bigEl.innerHTML = cases.partnerBig + '<sup>+</sup>';
+      }
+      
+      // 合作伙伴标签
+      if (cases.partnerLabel) {
+        const labelEl = casesSection.querySelector('.cases-partner-label');
+        if (labelEl) labelEl.textContent = cases.partnerLabel;
+      }
+      
+      // 查看全部链接
+      if (cases.seeAllText) {
+        const seeAllEl = casesSection.querySelector('.cases-see-all');
+        if (seeAllEl) seeAllEl.textContent = cases.seeAllText;
+      }
+      
+      // 案例卡片 - 如果有配置项则重新渲染
+      if (cases.items && Array.isArray(cases.items) && cases.items.length > 0) {
+        const gridEl = casesSection.querySelector('.cases-grid');
+        if (gridEl) {
+          // 只渲染前6个案例
+          const itemsToRender = cases.items.slice(0, 6);
+          gridEl.innerHTML = itemsToRender.map(item => {
+            const metricsHTML = item.metrics ? item.metrics.map(m => 
+              `<div><p class="case-metric-val">${m.value}</p><p class="case-metric-key">${m.label}</p></div>`
+            ).join('') : '';
+            
+            return `
+              <div class="case-card">
+                <div class="case-thumb">
+                  <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);"></div>
+                  <img src="${item.image || ''}" alt="${item.name || ''}" loading="lazy" style="opacity:0.6;"/>
+                  <span class="case-type-pill ${item.typeClass || 'ctp-blue'}">${item.type || ''}</span>
+                </div>
+                <div class="case-body">
+                  <h3 class="case-name">${item.name || ''}</h3>
+                  <p class="case-desc">${item.description || ''}</p>
+                  <div class="case-metrics">${metricsHTML}</div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
     }
   }
   
