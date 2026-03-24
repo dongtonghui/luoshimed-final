@@ -226,6 +226,176 @@ function renderHomePage() {
       const subEl = document.querySelector('.hero-sub');
       if (subEl) subEl.innerHTML = hero.subtitle.replace(/\n/g, '<br>');
     }
+    
+    // 核心数据区域（右侧蓝色面板）
+    if (hero.stats) {
+      // 标题
+      if (hero.stats.title) {
+        const statsTitleEl = document.querySelector('.hero-stats-title');
+        if (statsTitleEl) statsTitleEl.textContent = hero.stats.title;
+      }
+      
+      // 数据项
+      if (hero.stats.items && Array.isArray(hero.stats.items)) {
+        const statCards = document.querySelectorAll('.hero-stats .stat-card');
+        hero.stats.items.forEach((item, index) => {
+          if (statCards[index]) {
+            const iconEl = statCards[index].querySelector('.stat-icon');
+            const numEl = statCards[index].querySelector('.stat-num');
+            const labelEl = statCards[index].querySelector('.stat-label');
+            
+            if (iconEl) iconEl.textContent = item.icon || '';
+            if (numEl) {
+              // 处理带单位的数值，如 92% 或 10+
+              const value = item.value || '';
+              const supMatch = value.match(/^(\d+)([+%])$/);
+              if (supMatch) {
+                numEl.innerHTML = `${supMatch[1]}<sup>${supMatch[2]}</sup>`;
+              } else {
+                numEl.innerHTML = value;
+              }
+            }
+            if (labelEl) labelEl.textContent = item.label || '';
+          }
+        });
+      }
+    }
+    
+    // 品牌条
+    if (hero.brandStrip) {
+      const brandStripEl = document.querySelector('.hero-brand-strip p');
+      if (brandStripEl && hero.brandStrip.company && hero.brandStrip.slogan) {
+        brandStripEl.innerHTML = `<strong>${hero.brandStrip.company}</strong><br>${hero.brandStrip.slogan}`;
+      }
+    }
+    
+    // 双品牌展示
+    if (hero.brands && Array.isArray(hero.brands) && hero.brands.length >= 2) {
+      const brandItems = document.querySelectorAll('.hero-brand-item');
+      hero.brands.forEach((brand, index) => {
+        if (brandItems[index]) {
+          const nameEl = brandItems[index].querySelector('.hero-brand-name');
+          const subEl = brandItems[index].querySelector('.hero-brand-sub');
+          if (nameEl) nameEl.textContent = brand.name || '';
+          if (subEl) subEl.textContent = brand.subtitle || '';
+        }
+      });
+    }
+    
+    // 按钮
+    if (hero.buttons && Array.isArray(hero.buttons) && hero.buttons.length >= 2) {
+      const btnEls = document.querySelectorAll('.hero-btns a');
+      hero.buttons.forEach((btn, index) => {
+        if (btnEls[index]) {
+          btnEls[index].textContent = btn.label || '';
+          btnEls[index].href = btn.url || '#';
+        }
+      });
+    }
+    
+    // 底部信任条
+    if (hero.trustBar && Array.isArray(hero.trustBar) && hero.trustBar.length >= 3) {
+      const trustItems = document.querySelectorAll('.hero-trust-bar .trust-item span');
+      hero.trustBar.forEach((item, index) => {
+        if (trustItems[index]) {
+          trustItems[index].innerHTML = `<strong>${item.highlight}</strong> ${item.text}`;
+        }
+      });
+    }
+    
+    // 滚动提示
+    if (hero.scrollHint) {
+      const scrollHintEl = document.querySelector('.hero-scroll-hint');
+      if (scrollHintEl) {
+        const textNode = scrollHintEl.lastChild;
+        if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+          textNode.textContent = ' ' + hero.scrollHint;
+        }
+      }
+    }
+  }
+  
+  // 核心优势区
+  const advantages = config.advantages;
+  if (advantages) {
+    const advSection = document.getElementById('advantages');
+    if (advSection) {
+      // 区域标签
+      if (advantages.sectionTag) {
+        const eyebrowEl = advSection.querySelector('.sec-eyebrow');
+        if (eyebrowEl) eyebrowEl.textContent = advantages.sectionTag;
+      }
+      
+      // 标题
+      if (advantages.title) {
+        const titleEl = advSection.querySelector('.sec-title');
+        if (titleEl) titleEl.textContent = advantages.title;
+      }
+      
+      // 描述
+      if (advantages.description) {
+        const descEl = advSection.querySelector('.sec-desc');
+        if (descEl) descEl.textContent = advantages.description;
+      }
+      
+      // 链接文字
+      if (advantages.linkText) {
+        const linkEl = advSection.querySelector('.adv-link');
+        if (linkEl) linkEl.textContent = advantages.linkText;
+      }
+      
+      // 卡片
+      if (advantages.cards && Array.isArray(advantages.cards) && advantages.cards.length > 0) {
+        const cardEls = advSection.querySelectorAll('.adv-card');
+        advantages.cards.forEach((card, index) => {
+          if (cardEls[index]) {
+            const iconEl = cardEls[index].querySelector('.adv-icon-wrap');
+            const titleEl = cardEls[index].querySelector('h3');
+            const descEl = cardEls[index].querySelector('p');
+            const tagEl = cardEls[index].querySelector('.adv-tag');
+            
+            if (iconEl) iconEl.textContent = card.icon || '';
+            if (titleEl) titleEl.textContent = card.title || '';
+            if (descEl) descEl.textContent = card.description || '';
+            if (tagEl) tagEl.textContent = card.tag || '';
+          }
+        });
+      }
+      
+      // 认证面板
+      if (advantages.certPanel) {
+        const certPanelEl = advSection.querySelector('.cert-panel');
+        if (certPanelEl) {
+          // 面板标题
+          if (advantages.certPanel.title) {
+            const panelTitleEl = certPanelEl.querySelector('.cert-panel-title');
+            if (panelTitleEl) panelTitleEl.textContent = advantages.certPanel.title;
+          }
+          
+          // 认证项
+          if (advantages.certPanel.items && Array.isArray(advantages.certPanel.items)) {
+            const certRows = certPanelEl.querySelectorAll('.cert-row');
+            advantages.certPanel.items.forEach((item, index) => {
+              if (certRows[index]) {
+                const iconEl = certRows[index].querySelector('.cert-row-icon');
+                const nameEl = certRows[index].querySelector('.cert-row-name');
+                const subEl = certRows[index].querySelector('.cert-row-sub');
+                
+                if (iconEl) iconEl.textContent = item.icon || '';
+                if (nameEl) nameEl.textContent = item.name || '';
+                if (subEl) subEl.textContent = item.sub || '';
+              }
+            });
+          }
+          
+          // 提示文字
+          if (advantages.certPanel.hint) {
+            const hintEl = certPanelEl.querySelector('.cert-panel-hint');
+            if (hintEl) hintEl.textContent = advantages.certPanel.hint;
+          }
+        }
+      }
+    }
   }
   
   // 产品展示区域
@@ -352,6 +522,126 @@ function renderHomePage() {
               </div>
             `;
           }).join('');
+        }
+      }
+    }
+  }
+  
+  // 表单区域
+  const form = config.form;
+  if (form) {
+    const formSection = document.getElementById('form-section');
+    if (formSection) {
+      // 区域标签
+      if (form.sectionTag) {
+        const eyebrowEl = formSection.querySelector('.form-eyebrow');
+        if (eyebrowEl) eyebrowEl.textContent = form.sectionTag;
+      }
+      
+      // 标题
+      if (form.title) {
+        const titleEl = formSection.querySelector('.form-heading');
+        if (titleEl) titleEl.innerHTML = form.title.replace(/\n/g, '<br>');
+      }
+      
+      // 描述
+      if (form.description) {
+        const descEl = formSection.querySelector('.form-sub');
+        if (descEl) descEl.textContent = form.description;
+      }
+      
+      // 优势项
+      if (form.perks && Array.isArray(form.perks)) {
+        const perkEls = formSection.querySelectorAll('.form-perk');
+        form.perks.forEach((perk, index) => {
+          if (perkEls[index]) {
+            const iconEl = perkEls[index].querySelector('.form-perk-icon');
+            const textNode = perkEls[index].lastChild;
+            if (iconEl) iconEl.textContent = perk.icon || '';
+            if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+              textNode.textContent = perk.text || '';
+            }
+          }
+        });
+      }
+      
+      // 表单卡片
+      if (form.formCard) {
+        // 卡片标题
+        if (form.formCard.title) {
+          const cardTitleEl = formSection.querySelector('.form-card-title');
+          if (cardTitleEl) cardTitleEl.textContent = form.formCard.title;
+        }
+        
+        // 表单字段
+        if (form.formCard.fields) {
+          const fields = form.formCard.fields;
+          
+          // 姓名字段
+          if (fields.name) {
+            const nameLabel = formSection.querySelector('.form-group:nth-child(1) .form-label');
+            const nameInput = formSection.querySelector('.form-group:nth-child(1) input');
+            if (nameLabel) {
+              nameLabel.innerHTML = fields.name.label + (fields.name.required ? '<span>*</span>' : '');
+            }
+            if (nameInput && fields.name.placeholder) nameInput.placeholder = fields.name.placeholder;
+          }
+          
+          // 公司字段
+          if (fields.company) {
+            const companyLabel = formSection.querySelector('.form-group:nth-child(2) .form-label');
+            const companyInput = formSection.querySelector('.form-group:nth-child(2) input');
+            if (companyLabel) {
+              companyLabel.innerHTML = fields.company.label + (fields.company.required ? '<span>*</span>' : '');
+            }
+            if (companyInput && fields.company.placeholder) companyInput.placeholder = fields.company.placeholder;
+          }
+          
+          // 电话字段
+          if (fields.phone) {
+            const phoneLabel = formSection.querySelector('.form-row-2:nth-of-type(2) .form-group:nth-child(1) .form-label');
+            const phoneInput = formSection.querySelector('.form-row-2:nth-of-type(2) .form-group:nth-child(1) input');
+            if (phoneLabel) {
+              phoneLabel.innerHTML = fields.phone.label + (fields.phone.required ? '<span>*</span>' : '');
+            }
+            if (phoneInput && fields.phone.placeholder) phoneInput.placeholder = fields.phone.placeholder;
+          }
+          
+          // 合作意向下拉框
+          if (fields.type) {
+            const typeLabel = formSection.querySelector('.form-row-2:nth-of-type(2) .form-group:nth-child(2) .form-label');
+            const typeSelect = formSection.querySelector('.form-row-2:nth-of-type(2) .form-group:nth-child(2) select');
+            if (typeLabel) {
+              typeLabel.innerHTML = fields.type.label + (fields.type.required ? '<span>*</span>' : '');
+            }
+            if (typeSelect && fields.type.options) {
+              const optionsHTML = `<option value="" disabled selected>${fields.type.placeholder || '请选择'}</option>` +
+                fields.type.options.map(opt => `<option>${opt}</option>`).join('');
+              typeSelect.innerHTML = optionsHTML;
+            }
+          }
+          
+          // 留言字段
+          if (fields.message) {
+            const messageLabel = formSection.querySelector('.form-group:has(textarea) .form-label');
+            const messageTextarea = formSection.querySelector('.form-group textarea');
+            if (messageLabel) {
+              messageLabel.innerHTML = fields.message.label + (fields.message.required ? '<span>*</span>' : '');
+            }
+            if (messageTextarea && fields.message.placeholder) messageTextarea.placeholder = fields.message.placeholder;
+          }
+        }
+        
+        // 提交按钮
+        if (form.formCard.submitButton) {
+          const submitBtn = formSection.querySelector('.form-submit');
+          if (submitBtn) submitBtn.textContent = form.formCard.submitButton;
+        }
+        
+        // 隐私声明
+        if (form.formCard.privacyText) {
+          const privacyEl = formSection.querySelector('.form-privacy');
+          if (privacyEl) privacyEl.innerHTML = `<em>${form.formCard.privacyText}</em>`;
         }
       }
     }
