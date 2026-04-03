@@ -958,55 +958,6 @@
             "size": "1.7 MB"
           }
         ]
-      },
-      {
-        "id": 6,
-        "category": "smart",
-        "badge": "智能设备",
-        "badgeClass": "pb-teal",
-        "image": "https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&h=360&fit=crop&auto=format&q=80",
-        "name": "智能脊柱健康监测仪 LX-M01",
-        "description": "穿戴式脊柱健康实时监测设备，通过传感器持续评估脊柱负荷与姿态，并联动APP生成健康报告。",
-        "cert": "注册证：占位待填",
-        "params": [
-          "实时监测",
-          "7天续航",
-          "防汗IPX5",
-          "云端报告"
-        ],
-        "kpis": [
-          {
-            "value": "7天",
-            "label": "超长续航"
-          },
-          {
-            "value": "云端",
-            "label": "健康报告"
-          }
-        ],
-        "downloads": [
-          {
-            "type": "manual",
-            "name": "产品手册",
-            "desc": "产品介绍、规格参数、使用说明（PDF）",
-            "url": "#",
-            "size": "3.0 MB"
-          },
-          {
-            "type": "cert",
-            "name": "医疗器械注册证",
-            "desc": "合规资质证书扫描件（PDF）",
-            "url": "#",
-            "size": "1.5 MB"
-          },
-          {
-            "type": "report",
-            "name": "临床验证报告摘要",
-            "desc": "临床试验数据摘要，包含有效率统计（PDF）",
-            "url": "#",
-            "size": "2.0 MB"
-          }
-        ]
       }
     ],
     "cta": {
