@@ -289,7 +289,7 @@
       border-top: 1px solid var(--border);
     }
     .trust-item { display: flex; align-items: center; gap: 8px; }
-    .trust-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    .trust-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; overflow: hidden; font-size: 0; line-height: 0; }
     .trust-item span { font-size: 13px; color: var(--text-muted); }
     .trust-item strong { color: var(--text-dark); }
 
@@ -946,15 +946,15 @@
       <div class="hero-trust-bar">
         <div class="trust-item">
           <span class="trust-dot"></span>
-          <span><strong>医疗器械许可证</strong> 合规资质</span>
+          <span class="trust-text"><strong>医疗器械许可证</strong> 合规资质</span>
         </div>
         <div class="trust-item">
           <span class="trust-dot"></span>
-          <span><strong>10+项</strong> 国家专利认证</span>
+          <span class="trust-text"><strong>10+项</strong> 国家专利认证</span>
         </div>
         <div class="trust-item">
           <span class="trust-dot"></span>
-          <span><strong>三甲医院</strong> 合作背书</span>
+          <span class="trust-text"><strong>三甲医院</strong> 合作背书</span>
         </div>
       </div>
     </div>
@@ -1356,7 +1356,7 @@
 
 
 <!-- 配置加载器 -->
-<script src="config-loader.js"></script>
+<script src="config-loader.js?v=2"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
   const nav = document.getElementById('nav');
