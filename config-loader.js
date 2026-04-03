@@ -295,7 +295,7 @@ function renderHomePage() {
     
     // 底部信任条
     if (hero.trustBar && Array.isArray(hero.trustBar) && hero.trustBar.length >= 3) {
-      const trustItems = document.querySelectorAll('.hero-trust-bar .trust-item span');
+      const trustItems = document.querySelectorAll('.hero-trust-bar .trust-item > span:last-child');
       hero.trustBar.forEach((item, index) => {
         if (trustItems[index]) {
           trustItems[index].innerHTML = `<strong>${item.highlight}</strong> ${item.text}`;
