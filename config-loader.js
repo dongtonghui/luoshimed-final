@@ -861,14 +861,21 @@ function renderAboutPage() {
       if (team.members && Array.isArray(team.members) && team.members.length > 0) {
         const teamGrid = teamSection.querySelector('.team-grid');
         if (teamGrid) {
-          teamGrid.innerHTML = team.members.map(member => `
+          teamGrid.innerHTML = team.members.map(member => {
+            const avatar = member.avatar || '';
+            const isImg = /^https?:\/\//.test(avatar) || /^\//.test(avatar) || /\.(jpg|jpeg|png|webp|gif|svg)(\?.*)?$/i.test(avatar);
+            const avatarHTML = isImg
+              ? `<img src="${avatar}" alt="${member.name || ''}" class="team-avatar-img" loading="lazy"/>`
+              : avatar;
+            return `
             <div class="team-card">
-              <div class="team-avatar">${member.avatar || ''}</div>
+              <div class="team-avatar">${avatarHTML}</div>
               <h3 class="team-name">${member.name || ''}</h3>
               <p class="team-title">${member.title || ''}</p>
               <p class="team-desc">${member.description || ''}</p>
             </div>
-          `).join('');
+          `;
+          }).join('');
         }
       }
     }
