@@ -367,7 +367,7 @@
         {
           "type": "品牌授权",
           "typeClass": "ctp-blue",
-          "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=240&fit=crop&auto=format&q=70",
+          "image": "images/case-home-sichuan.jpg",
           "name": "四川骆氏正脊康元中医诊所",
           "description": "整店输出模式标杆案例，从选址装修、设备配置到运营培训全程赋能，实现快速规模化复制。",
           "metrics": [
@@ -384,7 +384,7 @@
         {
           "type": "医疗机构",
           "typeClass": "ctp-green",
-          "image": "https://images.unsplash.com/photo-1551076805-e1869033e561?w=500&h=240&fit=crop&auto=format&q=70",
+          "image": "images/case-home-henan.jpg",
           "name": "河南省中西医结合医院",
           "description": "引进坐式牵引治疗机系统，用于骨科与康复科临床诊疗，设备实用性与临床效果获科室医师认可。",
           "metrics": [
@@ -401,7 +401,7 @@
         {
           "type": "产学研",
           "typeClass": "ctp-purple",
-          "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&h=240&fit=crop&auto=format&q=70",
+          "image": "images/case-home-uni.jpg",
           "name": "上海工程技术大学",
           "description": "共建医工交叉产学研基地，联合推进智能康复设备的算法研发与临床验证，成果转化落地。",
           "metrics": [
@@ -984,7 +984,7 @@
         "category": "brand",
         "type": "品牌授权",
         "typeClass": "ctp-blue",
-        "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=240&fit=crop&auto=format&q=70",
+        "image": "images/case-home-sichuan.jpg",
         "name": "四川骆氏正脊体验中心",
         "description": "整店输出模式标杆案例，从选址装修、设备配置到运营培训全程赋能，实现快速规模化复制。",
         "metrics": [
@@ -1002,7 +1002,7 @@
         "category": "medical",
         "type": "医疗机构",
         "typeClass": "ctp-green",
-        "image": "https://images.unsplash.com/photo-1551076805-e1869033e561?w=500&h=240&fit=crop&auto=format&q=70",
+        "image": "images/case-huiyuan.jpg",
         "name": "上海惠元医院",
         "description": "引进骆氏医用牵引床系统，用于骨科与康复科临床诊疗，设备合规性与临床效果获科室医师认可。",
         "metrics": [
@@ -1020,7 +1020,7 @@
         "category": "research",
         "type": "产学研",
         "typeClass": "ctp-purple",
-        "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&h=240&fit=crop&auto=format&q=70",
+        "image": "images/case-home-uni.jpg",
         "name": "上海工程技术大学",
         "description": "共建医工交叉产学研基地，联合推进智能康复设备的算法研发与临床验证，成果转化落地。",
         "metrics": [
@@ -1056,7 +1056,7 @@
         "category": "medical",
         "type": "医疗机构",
         "typeClass": "ctp-indigo",
-        "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&h=240&fit=crop&auto=format&q=70",
+        "image": "images/case-home-henan.jpg",
         "name": "河南省中西医结合医院",
         "description": "与医院康复科合作开展脊柱疾病综合诊疗项目，骆氏动态牵引设备纳入科室标准化治疗方案。",
         "metrics": [
