@@ -1499,27 +1499,30 @@
       {
         "icon": "📞",
         "label": "销售热线",
-        "value": "400-XXX-XXXX",
+        "value": "186-1277-9998",
+        "tel": "18612779998",
         "type": "tel",
-        "sub": "周一至周六 09:00 - 18:00"
+        "sub": "周一至周五 09:00 - 18:00"
       },
       {
         "icon": "✉️",
         "label": "邮件联系",
-        "value": "info@luoshi-health.com",
+        "value": "contact@luoshimed.com",
+        "email": "contact@luoshimed.com",
         "type": "email",
         "sub": "工作日 24 小时内回复"
       },
       {
         "icon": "📍",
         "label": "公司地址",
-        "value": "上海市 XX 区 XX 路 XXX 号",
+        "value": "上海市松江区龙腾路1015弄11号302",
         "type": "text",
         "sub": "欢迎预约来访参观体验"
       }
     ],
     "map": {
-      "placeholder": "上海市 XX 区 XX 路 XXX 号",
+      "address": "上海市松江区龙腾路1015弄11号302",
+      "icon": "🗺️",
       "hint": "[地图区域 · 可替换为百度地图 iframe]"
     },
     "form": {
