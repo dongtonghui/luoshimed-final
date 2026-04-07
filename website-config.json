@@ -970,10 +970,6 @@
           "label": "品牌授权"
         },
         {
-          "id": "distributor",
-          "label": "分销合作"
-        },
-        {
           "id": "research",
           "label": "产学研"
         }
@@ -1035,24 +1031,6 @@
         ]
       },
       {
-        "category": "distributor",
-        "type": "分销合作",
-        "typeClass": "ctp-orange",
-        "image": "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=500&h=240&fit=crop&auto=format&q=70",
-        "name": "西南区域分销合作伙伴",
-        "description": "代理骆氏健康动态牵引设备，建立线上线下双渠道分销网络，实现西南区域规模化铺货。",
-        "metrics": [
-          {
-            "value": "10+",
-            "label": "终端网点"
-          },
-          {
-            "value": "西南",
-            "label": "区域覆盖"
-          }
-        ]
-      },
-      {
         "category": "medical",
         "type": "医疗机构",
         "typeClass": "ctp-indigo",
@@ -1067,24 +1045,6 @@
           {
             "value": "专科",
             "label": "深度嵌入"
-          }
-        ]
-      },
-      {
-        "category": "brand",
-        "type": "康复中心",
-        "typeClass": "ctp-teal",
-        "image": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=240&fit=crop&auto=format&q=70",
-        "name": "运动康复连锁机构",
-        "description": "旗下多门店统一引进骆氏便携式膝关节牵引系统，专注运动损伤修复与运动表现提升。",
-        "metrics": [
-          {
-            "value": "3家",
-            "label": "门店覆盖"
-          },
-          {
-            "value": "连锁",
-            "label": "标准化配置"
           }
         ]
       }
