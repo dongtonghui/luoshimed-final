@@ -210,6 +210,60 @@
 
 > 如需把产品详情页也接入 `website-config.json` 进行动态配置，需要额外开发支持。
 
+### 12.1 产品详情页图片配置
+
+每个产品详情页包含 **3** 张图片（1张主图 + 2张缩略图）。
+
+#### 主图（产品图1）
+
+| 产品 | 文件路径 | 建议规格 |
+|------|---------|---------|
+| 坐式牵引治疗机 LS-1 | `images/product-ls1.jpg` | **600×360px**，5:3，JPG |
+| 颈椎牵引椅 LSQY-1型 | `images/product-lsqy1.jpg` | **600×360px**，5:3，JPG |
+| 脊柱保健垫 | `images/product-cushion.jpg` | **600×360px**，5:3，JPG |
+| 多功能牵引床 | `images/product-traction-bed.jpg` | **600×360px**，5:3，JPG |
+| 膝关节牵引器 | `images/product-knee.jpg` | **600×360px**，5:3，JPG |
+
+> ✅ 当前状态：主图已更新为本地图片
+
+#### 缩略图（产品图2、产品图3）
+
+用于展示产品的不同角度、使用场景或细节特写。
+
+| 产品 | 产品图2 建议文件名 | 产品图3 建议文件名 | 建议规格 |
+|------|-------------------|-------------------|---------|
+| 坐式牵引治疗机 LS-1 | `product-ls1-angle2.jpg` | `product-ls1-angle3.jpg` | **700×500px**，7:5，JPG |
+| 颈椎牵引椅 LSQY-1型 | `product-lsqy1-angle2.jpg` | `product-lsqy1-angle3.jpg` | **700×500px**，7:5，JPG |
+| 脊柱保健垫 | `product-cushion-angle2.jpg` | `product-cushion-angle3.jpg` | **700×500px**，7:5，JPG |
+| 多功能牵引床 | `product-traction-bed-angle2.jpg` | `product-traction-bed-angle3.jpg` | **700×500px**，7:5，JPG |
+| 膝关节牵引器 | `product-knee-angle2.jpg` | `product-knee-angle3.jpg` | **700×500px**，7:5，JPG |
+
+> ⚠️ 当前状态：产品图2/3 仍使用 Unsplash 占位图，**需替换为真实产品多角度图**
+
+#### 图片内容建议
+
+| 图片位置 | 建议内容 |
+|---------|---------|
+| **产品图1（主图）** | 产品正面全貌，白底或场景图，突出产品整体外观 |
+| **产品图2** | 产品侧面/背面角度，展示产品结构细节；或使用场景图 |
+| **产品图3** | 产品局部特写（控制面板、关键部件）；或包装/配件展示 |
+
+#### 如何修改产品详情页图片
+
+由于产品详情页图片写死在 HTML 中，需直接编辑 `product-detail.html` 文件：
+
+1. 找到对应产品的 `<div class="product-detail-block">` 区域
+2. 修改 `detail-img-thumbs` 内的 `data-src` 和 `img src` 属性：
+
+```html
+<div class="detail-thumb" onclick="switchImg(1)" data-src="images/product-ls1-angle2.jpg">
+  <img src="images/product-ls1-angle2.jpg" alt="产品图2" loading="lazy"/>
+</div>
+<div class="detail-thumb" onclick="switchImg(2)" data-src="images/product-ls1-angle3.jpg">
+  <img src="images/product-ls1-angle3.jpg" alt="产品图3" loading="lazy"/>
+</div>
+```
+
 ---
 
 ## 十三、图片准备优先级清单
@@ -218,13 +272,17 @@
 1. `images/logo.png` — 全局 Logo（✅ 已存在）
 2. `images/team-*.jpg` × 4 — 团队头像（✅ 已存在）
 3. `images/about-story-1.jpg` / `about-story-2.jpg` — 品牌故事图（✅ 已存在）
-4. `products.productList[].image` × 5 — 产品中心主图（⚠️ 当前为占位图）
-5. `home.products.items[].image` × 3 — 首页产品图（⚠️ 当前为占位图）
+4. `products.productList[].image` × 5 — 产品中心主图（✅ 已更新）
+5. `home.products.items[].image` × 3 — 首页产品图（✅ 已更新）
+6. 产品详情页主图 × 5 — `product-detail.html` 主图（✅ 已更新）
 
 ### 🟡 中优先级
-6. `cases.caseList[].image` × 6 + `featuredCase.image` — 案例图（⚠️ 占位图）
-7. `clinic.cases.items[].image` × 3 — 诊所案例图（⚠️ 占位图）
-8. `news.articles[].image` × 6 + `featured.image` — 新闻封面图（⚠️ 占位图）
+7. `cases.caseList[].image` × 6 + `featuredCase.image` — 案例图（⚠️ 占位图）
+8. `clinic.cases.items[].image` × 3 — 诊所案例图（⚠️ 占位图）
+9. `news.articles[].image` × 6 + `featured.image` — 新闻封面图（⚠️ 占位图）
+
+### 🟢 低优先级（丰富展示）
+10. 产品详情页缩略图 × 10 — `product-xxx-angle2/3.jpg`（⚠️ 占位图，多角度产品图）
 
 ---
 
@@ -246,11 +304,24 @@
 
 | 内容 | 建议文件名 |
 |------|-----------|
+| **产品主图** ||
 | 坐式牵引治疗机 | `product-ls1.jpg` |
 | 颈椎牵引椅 | `product-lsqy1.jpg` |
 | 脊柱保健垫 | `product-cushion.jpg` |
 | 多功能牵引床 | `product-traction-bed.jpg` |
 | 膝关节牵引器 | `product-knee.jpg` |
+| **产品详情页缩略图** ||
+| 坐式牵引治疗机 - 角度2 | `product-ls1-angle2.jpg` |
+| 坐式牵引治疗机 - 角度3 | `product-ls1-angle3.jpg` |
+| 颈椎牵引椅 - 角度2 | `product-lsqy1-angle2.jpg` |
+| 颈椎牵引椅 - 角度3 | `product-lsqy1-angle3.jpg` |
+| 脊柱保健垫 - 角度2 | `product-cushion-angle2.jpg` |
+| 脊柱保健垫 - 角度3 | `product-cushion-angle3.jpg` |
+| 多功能牵引床 - 角度2 | `product-traction-bed-angle2.jpg` |
+| 多功能牵引床 - 角度3 | `product-traction-bed-angle3.jpg` |
+| 膝关节牵引器 - 角度2 | `product-knee-angle2.jpg` |
+| 膝关节牵引器 - 角度3 | `product-knee-angle3.jpg` |
+| **案例图** ||
 | 首页案例-四川诊所 | `case-home-sichuan.jpg` |
 | 首页案例-河南医院 | `case-home-henan.jpg` |
 | 首页案例-工程大 | `case-home-uni.jpg` |
@@ -258,9 +329,10 @@
 | 案例页-上海惠元医院 | `case-huiyuan.jpg` |
 | 诊所页-四川体验中心 | `clinic-sichuan.jpg` |
 | 诊所页-上海正脊馆 | `clinic-shanghai.jpg` |
+| **新闻图** ||
 | 新闻-高新技术企业 | `news-hightech.jpg` |
 | 新闻-产品发布 | `news-product-launch.jpg` |
 
 ---
 
-*文档生成时间：2026-04-03*
+*文档生成时间：2026-04-07*
