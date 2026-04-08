@@ -50,7 +50,7 @@ function doPost(e) {
     
     // 发送邮件通知
     try {
-      var notificationEmail = "your-email@example.com"; // 修改为你的邮箱
+      var notificationEmail = "dong.smu@foxmail.com"; // 修改为你的邮箱
       var typeLabel = data.type || data.budget || "咨询";
       
       MailApp.sendEmail({
