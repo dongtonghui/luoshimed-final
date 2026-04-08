@@ -2219,9 +2219,11 @@ if (document.readyState === 'loading') {
 // 注意：不要清空 WebsiteConfig，直接从缓存中重新渲染即可
 window.addEventListener('pageshow', function(event) {
   if (event.persisted) {
-    console.log('页面从缓存恢复，重新渲染...');
-    // 配置已经在 window.WebsiteConfig 中，直接重新渲染
-    autoInit();
+    console.log('页面从缓存恢复，延迟重新渲染...');
+    // 延迟执行，确保 DOM 完全恢复
+    setTimeout(function() {
+      autoInit();
+    }, 100);
   }
 });
 
