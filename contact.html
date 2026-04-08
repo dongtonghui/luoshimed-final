@@ -882,7 +882,8 @@ async function submitContactForm(btn) {
       phone: tel.value.trim(),
       company: company?.value?.trim() || '',
       type: type.value,
-      message: msg.value.trim()
+      message: msg.value.trim(),
+      source: '联系我们页面'
     };
     
     console.log('正在提交数据到 Google Sheets:', submitData);

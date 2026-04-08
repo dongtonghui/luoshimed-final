@@ -14,7 +14,7 @@
 4. 重命名为：**网站询盘管理**
 
 ### 1.2 设置表头
-在第一行（A1:F1）输入以下表头：
+在第一行（A1:H1）输入以下表头：
 
 | 列 | 表头名称 | 说明 |
 |---|---------|------|
@@ -24,11 +24,13 @@
 | D | 公司 | 公司/机构 |
 | E | 咨询类型 | 咨询分类 |
 | F | 留言内容 | 详细需求 |
+| G | 城市 | 意向城市（诊所加盟表单）|
+| H | 来源 | 表单来源页面 |
 
 **操作步骤：**
 1. 点击 A1 单元格，输入「提交时间」
 2. 点击 B1 单元格，输入「姓名」
-3. 依次完成 C1-F1
+3. 依次完成 C1-H1
 4. 可选：选中第一行，点击工具栏「填充颜色」设为浅灰色，作为表头样式
 
 ---
@@ -70,12 +72,14 @@ function doPost(e) {
     
     // 添加数据行
     sheet.appendRow([
-      new Date(),           // 提交时间
-      data.name || '',      // 姓名
-      data.phone || '',     // 联系电话
-      data.company || '',   // 公司
-      data.type || '',      // 咨询类型
-      data.message || ''    // 留言内容
+      new Date(),           // A: 提交时间
+      data.name || '',      // B: 姓名
+      data.phone || '',     // C: 联系电话
+      data.company || '',   // D: 公司
+      data.type || data.budget || '',  // E: 咨询类型/预算
+      data.message || '',   // F: 留言内容
+      data.city || '',      // G: 意向城市
+      data.source || ''     // H: 表单来源
     ]);
     
     // 发送邮件通知（可选）
@@ -83,16 +87,20 @@ function doPost(e) {
     const notificationEmail = 'your-email@example.com';
     
     try {
+      const typeLabel = data.type || data.budget || '咨询';
       MailApp.sendEmail({
         to: notificationEmail,
-        subject: '【骆氏健康官网 - 新询盘】' + (data.type || '咨询'),
+        subject: '【骆氏健康官网 - 新询盘】' + typeLabel + (data.source ? ` [${data.source}]` : ''),
         body: `您收到一条新的网站询盘：\n\n` +
               `提交时间：${new Date().toLocaleString('zh-CN')}\n` +
               `姓名：${data.name || '未填写'}\n` +
               `联系电话：${data.phone || '未填写'}\n` +
               `公司/机构：${data.company || '未填写'}\n` +
-              `咨询类型：${data.type || '未填写'}\n` +
+              (data.city ? `意向城市：${data.city}\n` : '') +
+              (data.type ? `咨询类型：${data.type}\n` : '') +
+              (data.budget ? `可投入资金：${data.budget}\n` : '') +
               `留言内容：\n${data.message || '无'}\n\n` +
+              (data.source ? `来源页面：${data.source}\n` : '') +
               `---\n` +
               `此邮件由系统自动发送，请勿回复。`
       });
