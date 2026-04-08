@@ -1027,32 +1027,9 @@ function renderCasesPage() {
     }
   }
   
-  // 2. 案例列表 (cases.caseList)
-  if (config.caseList && Array.isArray(config.caseList)) {
-    const casesGrid = document.querySelector('.cases-grid');
-    if (casesGrid) {
-      casesGrid.innerHTML = config.caseList.map(item => {
-        const metricsHTML = item.metrics ? item.metrics.map(m => 
-          `<div><p class="case-metric-val">${m.value}</p><p class="case-metric-key">${m.label}</p></div>`
-        ).join('') : '';
-        
-        return `
-          <div class="case-card" data-category="${item.category || 'all'}">
-            <div class="case-thumb">
-              <div class="case-thumb-overlay" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);"></div>
-              <img src="${item.image || ''}" alt="${item.name || ''}" loading="lazy" style="opacity:0.6;"/>
-              <span class="case-type-pill ${item.typeClass || 'ctp-blue'}">${item.type || ''}</span>
-            </div>
-            <div class="case-body">
-              <h3 class="case-name">${item.name || ''}</h3>
-              <p class="case-desc">${item.description || ''}</p>
-              <div class="case-metrics">${metricsHTML}</div>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-  }
+  // 2. 案例列表 (cases.caseList) - 注释掉，由页面自己的脚本从 data/cases.json 加载
+  // cases.html 使用 loadMedicalCases() 从 data/cases.json 加载医用案例
+  // 不再从 website-config.json 的 caseList 加载，避免数据格式冲突
   
   // 3. 深度案例 (cases.featuredCase)
   if (config.featuredCase) {
@@ -2229,6 +2206,14 @@ if (document.readyState === 'loading') {
 } else {
   autoInit();
 }
+
+// 处理从 bfcache 恢复页面时重新渲染
+window.addEventListener('pageshow', function(event) {
+  if (event.persisted) {
+    console.log('页面从缓存恢复，重新渲染...');
+    autoInit();
+  }
+});
 
 // 导出API供手动调用
 window.LuoshiConfig = {
