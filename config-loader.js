@@ -321,9 +321,11 @@ function renderHomePage() {
     const advantages = config.advantages;
     console.log('开始渲染核心优势区:', advantages ? '有配置' : '无配置');
     if (advantages) {
-      const advSection = document.getElementById('advantages');
+      // 从 bfcache 恢复时，使用 querySelector 重新获取元素，确保元素在当前文档中
+      const advSection = document.querySelector('#advantages');
       console.log('找到 advantages 元素:', advSection ? '是' : '否');
-      if (advSection) {
+      console.log('元素是否在文档中:', advSection && advSection.isConnected ? '是' : '否');
+      if (advSection && advSection.isConnected) {
         // 区域标签
         if (advantages.sectionTag) {
           const eyebrowEl = advSection.querySelector('.sec-eyebrow');
