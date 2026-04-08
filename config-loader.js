@@ -319,19 +319,29 @@ function renderHomePage() {
   // 核心优势区
   try {
     const advantages = config.advantages;
+    console.log('开始渲染核心优势区:', advantages ? '有配置' : '无配置');
     if (advantages) {
       const advSection = document.getElementById('advantages');
+      console.log('找到 advantages 元素:', advSection ? '是' : '否');
       if (advSection) {
         // 区域标签
         if (advantages.sectionTag) {
           const eyebrowEl = advSection.querySelector('.sec-eyebrow');
-          if (eyebrowEl) eyebrowEl.textContent = advantages.sectionTag;
+          console.log('找到 eyebrow 元素:', eyebrowEl ? '是' : '否');
+          if (eyebrowEl) {
+            eyebrowEl.textContent = advantages.sectionTag;
+            console.log('设置 eyebrow:', advantages.sectionTag);
+          }
         }
         
         // 标题
         if (advantages.title) {
           const titleEl = advSection.querySelector('.sec-title');
-          if (titleEl) titleEl.textContent = advantages.title;
+          console.log('找到 title 元素:', titleEl ? '是' : '否');
+          if (titleEl) {
+            titleEl.textContent = advantages.title;
+            console.log('设置 title:', advantages.title);
+          }
         }
         
         // 描述
@@ -2208,8 +2218,22 @@ if (document.readyState === 'loading') {
 // 处理从 bfcache 恢复页面时重新渲染
 window.addEventListener('pageshow', function(event) {
   if (event.persisted) {
-    console.log('页面从缓存恢复，重新渲染...');
+    console.log('页面从缓存恢复，清除配置并重新渲染...');
+    // 清除缓存的配置，强制重新加载
+    window.WebsiteConfig = {};
     autoInit();
+  }
+});
+
+// 处理 visibilitychange 事件（切换标签页后返回）
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden && document.readyState === 'complete') {
+    console.log('页面变为可见，检查配置...');
+    // 如果配置为空，重新加载
+    if (!window.WebsiteConfig || Object.keys(window.WebsiteConfig).length === 0) {
+      console.log('配置为空，重新加载...');
+      autoInit();
+    }
   }
 });
 
