@@ -2216,24 +2216,12 @@ if (document.readyState === 'loading') {
 }
 
 // 处理从 bfcache 恢复页面时重新渲染
+// 注意：不要清空 WebsiteConfig，直接从缓存中重新渲染即可
 window.addEventListener('pageshow', function(event) {
   if (event.persisted) {
-    console.log('页面从缓存恢复，清除配置并重新渲染...');
-    // 清除缓存的配置，强制重新加载
-    window.WebsiteConfig = {};
+    console.log('页面从缓存恢复，重新渲染...');
+    // 配置已经在 window.WebsiteConfig 中，直接重新渲染
     autoInit();
-  }
-});
-
-// 处理 visibilitychange 事件（切换标签页后返回）
-document.addEventListener('visibilitychange', function() {
-  if (!document.hidden && document.readyState === 'complete') {
-    console.log('页面变为可见，检查配置...');
-    // 如果配置为空，重新加载
-    if (!window.WebsiteConfig || Object.keys(window.WebsiteConfig).length === 0) {
-      console.log('配置为空，重新加载...');
-      autoInit();
-    }
   }
 });
 
