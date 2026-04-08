@@ -115,16 +115,20 @@ function doOptions(e) {
     "Access-Control-Max-Age": "86400"
   };
   
-  return ContentService.createTextOutput("")
-    .setMimeType(ContentService.MimeType.TEXT)
-    .setHeaders(headers);
+  var output = ContentService.createTextOutput("").setMimeType(ContentService.MimeType.TEXT);
+  for (var key in headers) {
+    output.setHeader(key, headers[key]);
+  }
+  return output;
 }
 
 /**
  * 创建JSON响应的辅助函数
  */
 function createResponse(data, headers) {
-  return ContentService.createTextOutput(JSON.stringify(data))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeaders(headers);
+  var output = ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
+  for (var key in headers) {
+    output.setHeader(key, headers[key]);
+  }
+  return output;
 }
