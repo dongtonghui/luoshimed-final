@@ -208,10 +208,7 @@ function renderHomePage() {
     if (hero.title) {
       const titleEl = document.querySelector('.hero-title');
       if (titleEl) {
-        const line1 = hero.title.line1 || '';
-        const line2 = hero.title.line2 || '';
-        const accent = hero.title.accent ? `<span class="hero-title-accent">${hero.title.accent}</span>` : '';
-        titleEl.innerHTML = `${line1}<br>${accent || line2}`;
+        titleEl.textContent = hero.title.line1 || '';
       }
     }
     
