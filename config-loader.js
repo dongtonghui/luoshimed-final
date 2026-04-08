@@ -2076,6 +2076,26 @@ function renderProductDetailPage() {
   // SEO
   updateSEO(config.seo);
   
+  // 获取URL参数中的产品ID
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = parseInt(urlParams.get('id'));
+  
+  if (!productId || !config.productList) return;
+  
+  // 查找对应产品
+  const product = config.productList.find(p => p.id === productId);
+  if (!product) return;
+  
+  // 渲染规格参数表
+  if (product.specifications && Array.isArray(product.specifications)) {
+    const specTableBody = document.querySelector('.spec-table tbody');
+    if (specTableBody) {
+      specTableBody.innerHTML = product.specifications.map(spec => 
+        `<tr><td>${spec.label}</td><td>${spec.value}</td></tr>`
+      ).join('');
+    }
+  }
+  
   console.log('✅ 产品详情页面配置已应用');
 }
 

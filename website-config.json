@@ -737,6 +737,19 @@
             "url": "#",
             "size": "2.1 MB"
           }
+        ],
+        "specifications": [
+          { "label": "产品名称", "value": "坐式牵引治疗机" },
+          { "label": "型号", "value": "LS-1" },
+          { "label": "注册证号", "value": "豫械注准20212090151" },
+          { "label": "最大牵引力", "value": ">800N" },
+          { "label": "动态牵引", "value": "支持" },
+          { "label": "立式结构", "value": "支持" },
+          { "label": "全脊柱", "value": "支持" },
+          { "label": "供电方式", "value": "AC 220V / 50Hz" },
+          { "label": "噪音指标", "value": "≤ 40 dB" },
+          { "label": "安全保护", "value": "过载保护 + 急停开关" },
+          { "label": "适用场景", "value": "医疗机构骨科 / 康复科" }
         ]
       },
       {
@@ -786,6 +799,17 @@
             "url": "#",
             "size": "1.8 MB"
           }
+        ],
+        "specifications": [
+          { "label": "产品名称", "value": "颈椎牵引椅" },
+          { "label": "型号", "value": "LSQY-1型" },
+          { "label": "注册证号", "value": "豫械注准20212090184" },
+          { "label": "牵引方式", "value": "气囊动态牵引" },
+          { "label": "供电方式", "value": "充电/插电两用" },
+          { "label": "背部按摩", "value": "支持" },
+          { "label": "适用场景", "value": "家庭/医疗机构" },
+          { "label": "单次时长", "value": "5-10分钟" },
+          { "label": "适用部位", "value": "颈椎" }
         ]
       },
       {
@@ -835,6 +859,16 @@
             "url": "#",
             "size": "2.3 MB"
           }
+        ],
+        "specifications": [
+          { "label": "产品名称", "value": "脊柱保健垫" },
+          { "label": "型号", "value": "LZT-100B" },
+          { "label": "注册证号", "value": "资质申报中" },
+          { "label": "产品类型", "value": "靠背式脊柱保健垫" },
+          { "label": "核心功能", "value": "脊柱牵引 + 热敷" },
+          { "label": "适用场景", "value": "居家/办公" },
+          { "label": "便携性", "value": "可挂载至椅背" },
+          { "label": "保健部位", "value": "颈椎/腰椎" }
         ]
       },
       {
@@ -884,6 +918,16 @@
             "url": "#",
             "size": "1.9 MB"
           }
+        ],
+        "specifications": [
+          { "label": "产品名称", "value": "多功能牵引床" },
+          { "label": "型号", "value": "LZT-300" },
+          { "label": "注册证号", "value": "资质申报中" },
+          { "label": "牵引方式", "value": "躺式牵引" },
+          { "label": "牵引力范围", "value": "0-30kg" },
+          { "label": "角度调节", "value": "支持" },
+          { "label": "适用部位", "value": "颈椎/腰椎" },
+          { "label": "适用场景", "value": "医疗机构康复科/骨科" }
         ]
       },
       {
@@ -933,6 +977,16 @@
             "url": "#",
             "size": "1.7 MB"
           }
+        ],
+        "specifications": [
+          { "label": "产品名称", "value": "便携式膝关节牵引器" },
+          { "label": "型号", "value": "LZT-500" },
+          { "label": "注册证号", "value": "资质申报中" },
+          { "label": "牵引方式", "value": "动态牵引" },
+          { "label": "辅助功能", "value": "热敷" },
+          { "label": "适用症状", "value": "膝关节退行性病变/滑膜炎/半月板损伤" },
+          { "label": "适用人群", "value": "术后康复/慢性疼痛患者" },
+          { "label": "产品特点", "value": "便携移动/人体工学设计" }
         ]
       }
     ],
