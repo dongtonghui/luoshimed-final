@@ -1250,21 +1250,21 @@
       <div class="form-row-2">
         <div class="form-group">
           <label class="form-label">姓名<span>*</span></label>
-          <input type="text" class="form-control" placeholder="您的姓名"/>
+          <input type="text" id="home-name" class="form-control" placeholder="您的姓名"/>
         </div>
         <div class="form-group">
           <label class="form-label">公司 / 机构</label>
-          <input type="text" class="form-control" placeholder="选填"/>
+          <input type="text" id="home-company" class="form-control" placeholder="选填"/>
         </div>
       </div>
       <div class="form-row-2">
         <div class="form-group">
           <label class="form-label">联系电话<span>*</span></label>
-          <input type="tel" class="form-control" placeholder="手机号码"/>
+          <input type="tel" id="home-phone" class="form-control" placeholder="手机号码"/>
         </div>
         <div class="form-group">
           <label class="form-label">合作意向<span>*</span></label>
-          <select class="form-control">
+          <select id="home-type" class="form-control">
             <option value="" disabled selected>请选择</option>
             <option>产品采购咨询</option>
             <option>诊所合作开店</option>
@@ -1277,7 +1277,7 @@
       </div>
       <div class="form-group">
         <label class="form-label">留言内容<span>*</span></label>
-        <textarea class="form-control" placeholder="请描述您的需求或问题"></textarea>
+        <textarea id="home-message" class="form-control" placeholder="请描述您的需求或问题"></textarea>
       </div>
       <button type="button" class="form-submit" onclick="submitHomeForm(this)">提交留言 →</button>
       <!-- 提交状态提示 -->
@@ -1442,12 +1442,11 @@ async function submitHomeForm(btn) {
   if (isSubmitting) return;
   
   // 获取表单元素
-  const formSection = document.getElementById('form-section');
-  const name = formSection.querySelector('input[type="text"]');
-  const company = formSection.querySelectorAll('input[type="text"]')[1];
-  const tel = formSection.querySelector('input[type="tel"]');
-  const type = formSection.querySelector('select');
-  const msg = formSection.querySelector('textarea');
+  const name = document.getElementById('home-name');
+  const company = document.getElementById('home-company');
+  const tel = document.getElementById('home-phone');
+  const type = document.getElementById('home-type');
+  const msg = document.getElementById('home-message');
   
   hideStatusMessage();
   
@@ -1510,8 +1509,15 @@ async function submitHomeForm(btn) {
     const response = await fetch(FORM_CONFIG.SUBMIT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(submitData)
+      body: JSON.stringify(submitData),
+      mode: 'cors'
     });
+    
+    console.log('HTTP状态:', response.status, response.statusText);
+    
+    if (!response.ok) {
+      throw new Error('服务器返回错误: ' + response.status);
+    }
     
     const result = await response.json();
     console.log('服务器返回:', result);
@@ -1543,7 +1549,8 @@ async function submitHomeForm(btn) {
     }
   } catch (error) {
     console.error('表单提交失败:', error);
-    showStatusMessage('提交失败，请直接电话联系 186-1277-9998 或稍后重试', 'error');
+    console.error('错误详情:', error.message);
+    showStatusMessage('提交失败: ' + error.message + '，请直接电话联系 186-1277-9998', 'error');
     btn.textContent = '提交失败，请重试';
     btn.style.background = '#ef4444';
     btn.style.opacity = '1';
