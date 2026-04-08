@@ -2169,7 +2169,15 @@ function renderProductDetailPage() {
 /**
  * 根据当前页面自动初始化
  */
+let isRendering = false;
 async function autoInit() {
+  // 防止重复渲染
+  if (isRendering) {
+    console.log('渲染进行中，跳过重复调用');
+    return;
+  }
+  isRendering = true;
+  
   const config = await loadConfig();
   if (!config) {
     console.error('配置加载失败，使用默认内容');
@@ -2206,6 +2214,7 @@ async function autoInit() {
   }
   
   console.log('✅ 网站配置已加载完成');
+  isRendering = false;
 }
 
 // DOM加载完成后自动初始化
@@ -2220,6 +2229,11 @@ if (document.readyState === 'loading') {
 window.addEventListener('pageshow', function(event) {
   if (event.persisted) {
     console.log('页面从缓存恢复，延迟重新渲染...');
+    // 如果正在渲染中，不要重复触发
+    if (isRendering) {
+      console.log('渲染已在进行中，跳过 pageshow 触发');
+      return;
+    }
     // 延迟执行，确保 DOM 完全恢复
     setTimeout(function() {
       autoInit();
