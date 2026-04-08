@@ -367,7 +367,7 @@
         {
           "type": "品牌授权",
           "typeClass": "ctp-blue",
-          "image": "images/case-home-sichuan.jpg",
+          "image": "images/case-home-shanghai.jpg",
           "name": "四川骆氏正脊康元中医诊所",
           "description": "整店输出模式标杆案例，从选址装修、设备配置到运营培训全程赋能，实现快速规模化复制。",
           "metrics": [
@@ -1034,7 +1034,7 @@
         "category": "brand",
         "type": "品牌授权",
         "typeClass": "ctp-blue",
-        "image": "images/case-home-sichuan.jpg",
+        "image": "images/case-home-shanghai.jpg",
         "name": "四川骆氏正脊体验中心",
         "description": "整店输出模式标杆案例，从选址装修、设备配置到运营培训全程赋能，实现快速规模化复制。",
         "metrics": [
@@ -1464,7 +1464,7 @@
           ]
         },
         {
-          "image": "images/case-home-sichuan.jpg",
+          "image": "images/case-home-shanghai.jpg",
           "name": "上海骆氏中医诊所",
           "location": "2019年开业 · 上海市",
           "metrics": [
@@ -1479,7 +1479,7 @@
           ]
         },
         {
-          "image": "images/case-home-sichuan.jpg",
+          "image": "images/case-home-xian.jpg",
           "name": "西安骆氏正脊中心",
           "location": "2027年开业 · 西安市",
           "metrics": [
