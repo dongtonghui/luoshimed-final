@@ -207,8 +207,12 @@ function renderHomePage() {
     // 主标题
     if (hero.title) {
       const titleEl = document.querySelector('.hero-title');
-      if (titleEl) {
-        titleEl.textContent = hero.title.line1 || '';
+      const taglineEl = document.querySelector('.hero-tagline');
+      if (titleEl && hero.title.line1) {
+        titleEl.textContent = hero.title.line1;
+      }
+      if (taglineEl && hero.title.accent) {
+        taglineEl.textContent = hero.title.accent;
       }
     }
     
