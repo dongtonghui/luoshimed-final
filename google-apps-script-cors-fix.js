@@ -48,6 +48,32 @@ function doPost(e) {
       data.source || ""                // H: 表单来源
     ]);
     
+    // 发送邮件通知
+    try {
+      var notificationEmail = "your-email@example.com"; // 修改为你的邮箱
+      var typeLabel = data.type || data.budget || "咨询";
+      
+      MailApp.sendEmail({
+        to: notificationEmail,
+        subject: "【骆氏健康官网 - 新询盘】" + typeLabel + (data.source ? " [" + data.source + "]" : ""),
+        body: "您收到一条新的网站询盘：\n\n" +
+              "提交时间：" + new Date().toLocaleString("zh-CN") + "\n" +
+              "姓名：" + (data.name || "未填写") + "\n" +
+              "联系电话：" + (data.phone || "未填写") + "\n" +
+              "公司/机构：" + (data.company || "未填写") + "\n" +
+              (data.city ? "意向城市：" + data.city + "\n" : "") +
+              (data.type ? "咨询类型：" + data.type + "\n" : "") +
+              (data.budget ? "可投入资金：" + data.budget + "\n" : "") +
+              "留言内容：\n" + (data.message || "无") + "\n\n" +
+              (data.source ? "来源页面：" + data.source + "\n" : "") +
+              "---\n" +
+              "此邮件由系统自动发送，请勿回复。"
+      });
+    } catch (emailError) {
+      // 邮件发送失败不影响主流程
+      console.log("邮件发送失败:", emailError);
+    }
+    
     // 返回成功响应
     return createResponse({
       success: true, 
