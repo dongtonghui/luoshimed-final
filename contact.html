@@ -678,7 +678,7 @@ footer {
           <div class="form-group"><label class="form-label">联系电话<span>*</span></label><input type="tel" id="cf-tel" class="form-control" placeholder="手机号码"/><p class="form-error">请填写有效手机号</p></div>
         </div>
         <div class="form-row-2">
-          <div class="form-group"><label class="form-label">公司 / 机构</label><input type="text" class="form-control" placeholder="选填"/></div>
+          <div class="form-group"><label class="form-label">公司 / 机构</label><input type="text" id="cf-company" class="form-control" placeholder="选填"/></div>
           <div class="form-group"><label class="form-label">咨询类型<span>*</span></label>
             <select id="cf-type" class="form-control"><option value="" disabled selected>请选择</option><option>产品采购咨询</option><option>诊所合作开店</option><option>分销商合作</option><option>售后服务</option><option>产学研合作</option><option>其他</option></select>
             <p class="form-error">请选择咨询类型</p>
@@ -758,21 +758,150 @@ footer {
 </div><!-- 配置加载器 -->
 <script src="config-loader.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function isValidPhone(v) { const p = v.trim(); return p.length === 11 && ["3","4","5","6","7","8","9"].includes(p[1]); }$/.test(v.trim()); }
-function submitContactForm(btn) {
+// ============================================
+// Google Apps Script 表单提交配置
+// ============================================
+const FORM_CONFIG = {
+  // Google Apps Script Web 应用 URL
+  // 部署文档：GOOGLE_SCRIPT_SETUP.md
+  SUBMIT_URL: 'https://script.google.com/macros/s/AKfycbw2uyzefC-I2GUjo-91idfJZbb9xsbfMa75msvt7GIaO1M_yZJqeNVQoaBAjbL7aaIz6A/exec'
+};
+
+// 防重复提交锁
+let isSubmitting = false;
+
+// 手机号验证函数
+function isValidPhone(v) {
+  const p = v.trim();
+  return p.length === 11 && /^1[3-9]\d{9}$/.test(p);
+}
+
+// 表单提交函数
+async function submitContactForm(btn) {
+  // 防重复提交
+  if (isSubmitting) return;
+  
+  // 获取表单元素
   const name = document.getElementById('cf-name');
   const tel = document.getElementById('cf-tel');
   const type = document.getElementById('cf-type');
   const msg = document.getElementById('cf-msg');
+  const company = document.getElementById('cf-company');
+  
+  // 表单验证
   let valid = true;
-  if (!name.value.trim()) { name.classList.add('invalid'); valid = false; } else name.classList.remove('invalid');
-  if (!isValidPhone(tel.value)) { tel.classList.add('invalid'); valid = false; } else tel.classList.remove('invalid');
-  if (!type.value) { type.classList.add('invalid'); valid = false; } else type.classList.remove('invalid');
-  if (!msg.value.trim()) { msg.classList.add('invalid'); valid = false; } else msg.classList.remove('invalid');
+  
+  if (!name.value.trim()) {
+    name.classList.add('invalid');
+    valid = false;
+  } else {
+    name.classList.remove('invalid');
+  }
+  
+  if (!isValidPhone(tel.value)) {
+    tel.classList.add('invalid');
+    valid = false;
+  } else {
+    tel.classList.remove('invalid');
+  }
+  
+  if (!type.value) {
+    type.classList.add('invalid');
+    valid = false;
+  } else {
+    type.classList.remove('invalid');
+  }
+  
+  if (!msg.value.trim()) {
+    msg.classList.add('invalid');
+    valid = false;
+  } else {
+    msg.classList.remove('invalid');
+  }
+  
   if (!valid) return;
-  btn.textContent = '✓ 提交成功，我们将尽快联系您！';
-  btn.style.background = 'var(--green)';
+  
+  // 检查是否已配置 URL
+  if (FORM_CONFIG.SUBMIT_URL.includes('你的脚本ID')) {
+    alert('请先配置 Google Apps Script URL！\n\n配置方法：\n1. 按照 GOOGLE_SCRIPT_SETUP.md 部署 Apps Script\n2. 将生成的 Web 应用 URL 填入 FORM_CONFIG.SUBMIT_URL');
+    return;
+  }
+  
+  // 显示提交中状态
+  isSubmitting = true;
+  const originalText = btn.textContent;
+  btn.textContent = '提交中...';
   btn.disabled = true;
+  btn.style.opacity = '0.7';
+  
+  try {
+    // 准备提交数据
+    const submitData = {
+      name: name.value.trim(),
+      phone: tel.value.trim(),
+      company: company?.value?.trim() || '',
+      type: type.value,
+      message: msg.value.trim()
+    };
+    
+    console.log('正在提交数据到 Google Sheets:', submitData);
+    
+    // 发送请求到 Google Apps Script
+    const response = await fetch(FORM_CONFIG.SUBMIT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(submitData)
+    });
+    
+    const result = await response.json();
+    console.log('服务器返回:', result);
+    
+    if (result.success) {
+      // 提交成功
+      btn.textContent = '✓ 提交成功，我们将尽快联系您！';
+      btn.style.background = 'var(--green)';
+      btn.style.opacity = '1';
+      
+      // 清空表单
+      name.value = '';
+      tel.value = '';
+      type.value = '';
+      msg.value = '';
+      if (company) company.value = '';
+      
+      // 移除所有验证错误样式
+      [name, tel, type, msg].forEach(el => el.classList.remove('invalid'));
+      
+      // 3秒后恢复按钮状态
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.disabled = false;
+        isSubmitting = false;
+      }, 3000);
+      
+    } else {
+      throw new Error(result.error || '提交失败');
+    }
+    
+  } catch (error) {
+    console.error('表单提交失败:', error);
+    
+    // 显示错误提示
+    btn.textContent = '提交失败，请直接电话联系 186-1277-9998';
+    btn.style.background = '#ef4444';
+    btn.style.opacity = '1';
+    
+    // 5秒后恢复按钮状态
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.disabled = false;
+      isSubmitting = false;
+    }, 5000);
+  }
 }
 </script><script>
   const nav = document.getElementById('nav');
