@@ -761,12 +761,10 @@ footer {
 <script src="config-loader.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ============================================
-// Google Apps Script 表单提交配置
+// 飞书机器人表单提交配置
 // ============================================
-const FORM_CONFIG = {
-  // Google Apps Script Web 应用 URL
-  // 部署文档：GOOGLE_SCRIPT_SETUP.md
-  SUBMIT_URL: 'https://script.google.com/macros/s/AKfycbwcQqC24_BXCr7KyuxfIJNQhojB7MKWFo2jPahd086_Mn9Y0wVwmWcdwkaV2YY4tLFKVg/exec'
+const FEISHU_CONFIG = {
+  WEBHOOK_URL: 'https://open.feishu.cn/open-apis/bot/v2/hook/6b3be9c2-54af-4000-ae06-1b89951dfa95'
 };
 
 // 防重复提交锁
@@ -797,157 +795,134 @@ function showStatusMessage(message, type = 'info') {
   statusEl.style.color = style.text;
   statusEl.style.border = `1px solid ${style.border}`;
   statusEl.style.display = 'block';
-  
-  // 滚动到消息位置
   statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 // 隐藏状态消息
 function hideStatusMessage() {
   const statusEl = document.getElementById('form-status-message');
-  if (statusEl) {
-    statusEl.style.display = 'none';
-  }
+  if (statusEl) statusEl.style.display = 'none';
 }
 
-// 表单提交函数
-async function submitContactForm(btn) {
-  // 防重复提交
-  if (isSubmitting) return;
-  
-  // 获取表单元素
-  const name = document.getElementById('cf-name');
-  const tel = document.getElementById('cf-tel');
-  const type = document.getElementById('cf-type');
-  const msg = document.getElementById('cf-msg');
-  const company = document.getElementById('cf-company');
-  
-  // 隐藏之前的状态消息
-  hideStatusMessage();
-  
-  // 表单验证
-  let valid = true;
-  
-  if (!name.value.trim()) {
-    name.classList.add('invalid');
-    valid = false;
-  } else {
-    name.classList.remove('invalid');
-  }
-  
-  if (!isValidPhone(tel.value)) {
-    tel.classList.add('invalid');
-    valid = false;
-  } else {
-    tel.classList.remove('invalid');
-  }
-  
-  if (!type.value) {
-    type.classList.add('invalid');
-    valid = false;
-  } else {
-    type.classList.remove('invalid');
-  }
-  
-  if (!msg.value.trim()) {
-    msg.classList.add('invalid');
-    valid = false;
-  } else {
-    msg.classList.remove('invalid');
-  }
-  
-  if (!valid) {
-    showStatusMessage('请填写所有必填项（标 * 号）', 'error');
-    return;
-  }
-  
-  // 检查是否已配置 URL
-  if (FORM_CONFIG.SUBMIT_URL.includes('你的脚本ID')) {
-    showStatusMessage('系统配置中，请稍后重试或直接电话联系 186-1277-9998', 'error');
-    return;
-  }
-  
-  // 显示提交中状态
-  isSubmitting = true;
-  const originalText = btn.textContent;
-  btn.textContent = '提交中...';
-  btn.disabled = true;
-  btn.style.opacity = '0.7';
-  showStatusMessage('正在提交，请稍候...', 'loading');
+// 提交到飞书机器人
+async function submitToFeishu(formData, btn) {
+  const originalText = btn ? btn.textContent : '提交';
   
   try {
-    // 准备提交数据
-    const submitData = {
-      name: name.value.trim(),
-      phone: tel.value.trim(),
-      company: company?.value?.trim() || '',
-      type: type.value,
-      message: msg.value.trim(),
-      source: '联系我们页面'
+    if (btn) {
+      btn.textContent = '提交中...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+    }
+    showStatusMessage('正在提交，请稍候...', 'loading');
+    
+    const message = {
+      msg_type: "interactive",
+      card: {
+        config: { wide_screen_mode: true },
+        header: { title: { tag: "plain_text", content: "🎉 新询盘通知" }, template: "blue" },
+        elements: [
+          { tag: "div", text: { tag: "lark_md", content: `**姓名：** ${formData.name || '未填写'}` } },
+          { tag: "div", text: { tag: "lark_md", content: `**电话：** ${formData.phone || '未填写'}` } },
+          { tag: "div", text: { tag: "lark_md", content: `**公司：** ${formData.company || '未填写'}` } },
+          { tag: "div", text: { tag: "lark_md", content: `**类型：** ${formData.type || formData.budget || '未填写'}` } },
+          { tag: "div", text: { tag: "lark_md", content: `**城市：** ${formData.city || '未填写'}` } },
+          { tag: "div", text: { tag: "lark_md", content: `**来源：** ${formData.source || '未填写'}` } },
+          { tag: "div", text: { tag: "lark_md", content: `**留言：**\n${formData.message || '无'}` } },
+          { tag: "hr" },
+          { tag: "note", elements: [{ tag: "plain_text", content: `提交时间：${new Date().toLocaleString('zh-CN')}` }] }
+        ]
+      }
     };
     
-    console.log('正在提交数据到 Google Sheets:', submitData);
-    
-    // 发送请求到 Google Apps Script
-    const response = await fetch(FORM_CONFIG.SUBMIT_URL, {
+    const response = await fetch(FEISHU_CONFIG.WEBHOOK_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(submitData)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(message)
     });
     
     const result = await response.json();
-    console.log('服务器返回:', result);
     
-    if (result.success) {
-      // 提交成功
+    if (result.code === 0) {
       showStatusMessage('✓ 提交成功！我们会尽快与您联系', 'success');
-      btn.textContent = '提交成功';
-      btn.style.background = 'var(--green)';
+      if (btn) {
+        btn.textContent = '✓ 提交成功';
+        btn.style.background = 'var(--green)';
+        btn.style.opacity = '1';
+      }
+      return true;
+    } else {
+      throw new Error(result.msg || '发送失败');
+    }
+  } catch (error) {
+    console.error('提交失败:', error);
+    showStatusMessage('提交失败：' + error.message + '，请直接电话联系 186-1277-9998', 'error');
+    if (btn) {
+      btn.textContent = '提交失败，请重试';
+      btn.style.background = '#ef4444';
       btn.style.opacity = '1';
-      
-      // 清空表单
-      name.value = '';
-      tel.value = '';
-      type.value = '';
-      msg.value = '';
-      if (company) company.value = '';
-      
-      // 移除所有验证错误样式
-      [name, tel, type, msg].forEach(el => el.classList.remove('invalid'));
-      
-      // 3秒后恢复按钮状态
+    }
+    return false;
+  } finally {
+    if (btn) {
       setTimeout(() => {
         btn.textContent = originalText;
         btn.style.background = '';
         btn.disabled = false;
         btn.style.opacity = '1';
         isSubmitting = false;
-        hideStatusMessage();
       }, 3000);
-      
-    } else {
-      throw new Error(result.error || '提交失败');
     }
-    
-  } catch (error) {
-    console.error('表单提交失败:', error);
-    
-    // 显示错误提示
-    showStatusMessage('提交失败，请直接电话联系 186-1277-9998 或稍后重试', 'error');
-    btn.textContent = '提交失败，请重试';
-    btn.style.background = '#ef4444';
-    btn.style.opacity = '1';
-    
-    // 5秒后恢复按钮状态
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.style.background = '';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      isSubmitting = false;
-    }, 5000);
+  }
+}
+
+// 联系表单提交函数
+async function submitContactForm(btn) {
+  if (isSubmitting) return;
+  isSubmitting = true;
+  
+  const name = document.getElementById('cf-name');
+  const tel = document.getElementById('cf-tel');
+  const type = document.getElementById('cf-type');
+  const msg = document.getElementById('cf-msg');
+  const company = document.getElementById('cf-company');
+  
+  hideStatusMessage();
+  
+  // 验证
+  let valid = true;
+  if (!name.value.trim()) { name.classList.add('invalid'); valid = false; } else { name.classList.remove('invalid'); }
+  if (!isValidPhone(tel.value)) { tel.classList.add('invalid'); valid = false; } else { tel.classList.remove('invalid'); }
+  if (!type.value) { type.classList.add('invalid'); valid = false; } else { type.classList.remove('invalid'); }
+  if (!msg.value.trim()) { msg.classList.add('invalid'); valid = false; } else { msg.classList.remove('invalid'); }
+  
+  if (!valid) {
+    showStatusMessage('请填写所有必填项（标 * 号）', 'error');
+    isSubmitting = false;
+    return;
+  }
+  
+  const formData = {
+    name: name.value.trim(),
+    phone: tel.value.trim(),
+    company: company?.value?.trim() || '',
+    type: type.value,
+    budget: '',
+    message: msg.value.trim(),
+    city: '',
+    source: '联系我们页面'
+  };
+  
+  const success = await submitToFeishu(formData, btn);
+  
+  if (success) {
+    name.value = '';
+    tel.value = '';
+    type.value = '';
+    msg.value = '';
+    if (company) company.value = '';
+    [name, tel, type, msg].forEach(el => el.classList.remove('invalid'));
+    setTimeout(hideStatusMessage, 3000);
   }
 }
 </script><script>
