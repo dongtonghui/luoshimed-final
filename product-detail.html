@@ -354,6 +354,16 @@ footer {
 .detail-thumb:hover, .detail-thumb.active { border-color: var(--blue); }
 .detail-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
+/* 临时隐藏产品详情页的缩略图区域 */
+.product-detail-block .detail-img-thumbs {
+  display: none;
+}
+
+/* 增加主图高度以保持视觉对齐 (原400px → 480px) */
+.product-detail-block .detail-img-main {
+  height: 480px;
+}
+
 /* 信息区 */
 .detail-product-name { font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; line-height: 1.2; }
 .detail-product-model { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
