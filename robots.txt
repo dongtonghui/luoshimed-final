@@ -1,0 +1,28 @@
+# robots.txt for 骆氏健康官网
+# 允许所有搜索引擎爬虫访问
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-image
+Allow: /
+
+User-agent: Baiduspider-video
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: *
+Allow: /
+
+# 禁止访问的目录
+Disallow: /docs/
+Disallow: /data/
+Disallow: /.git/
+
+# 网站地图
+Sitemap: https://www.luoshimed.com/sitemap.xml
