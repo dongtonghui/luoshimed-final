@@ -1207,58 +1207,37 @@
         {
           "type": "invention",
           "typeName": "发明专利",
-          "name": "可跃入家具中的脉冲报动式脊椎牵引装置",
-          "num": "ZL 2014 1 0662751.X",
-          "year": "2016年获授权"
-        },
-        {
-          "type": "utility",
-          "typeName": "实用新型",
-          "name": "一种快解式脊柱治疗椅",
-          "num": "ZL 2007 2 0312289.6",
-          "year": "2008年获授权"
-        },
-        {
-          "type": "utility",
-          "typeName": "实用新型",
-          "name": "一种快解式脊柱治疗椅",
-          "num": "ZL 02 2 47070.0",
-          "year": "2003年获授权"
-        },
-        {
-          "type": "utility",
-          "typeName": "实用新型",
-          "name": "一种便携式颈椎牵引仪的安全限位装置",
-          "num": "ZL 20XX XXXXXXXX.X",
-          "year": "2021年获授权"
-        },
-        {
-          "type": "invention",
-          "typeName": "设计专利",
-          "name": "坐式牵引治疗机",
-          "num": "ZL 2023 3 0516207.4",
-          "year": "2024年获授权"
-        },
-        {
-          "type": "invention",
-          "typeName": "发明专利",
-          "name": "便携式膝关节动态牵引器",
-          "num": "ZL 202311190851.4",
-          "year": "2025年获授权"
-        },
-        {
-          "type": "utility",
-          "typeName": "实用新型",
-          "name": "一种智能康复设备的人机交互控制面板",
+          "name": "一种基于生物力学的脊柱自适应牵引力控制方法",
           "num": "ZL 20XX XXXXXXXX.X",
           "year": "2022年获授权"
         },
         {
           "type": "invention",
           "typeName": "发明专利",
-          "name": "一种基于骆氏正脊技法的机械辅助调理系统",
+          "name": "一种颈椎牵引角度智能调节系统及方法",
+          "num": "ZL 20XX XXXXXXXX.X",
+          "year": "2021年获授权"
+        },
+        {
+          "type": "utility",
+          "typeName": "实用新型",
+          "name": "一种坐式牵引治疗机的多轴联动机构",
+          "num": "ZL 20XX XXXXXXXX.X",
+          "year": "2020年获授权"
+        },
+        {
+          "type": "invention",
+          "typeName": "发明专利",
+          "name": "一种基于穿戴传感器的关节活动度评估方法",
           "num": "ZL 20XX XXXXXXXX.X",
           "year": "2023年获授权"
+        },
+        {
+          "type": "utility",
+          "typeName": "实用新型",
+          "name": "一种脊柱康复设备的电动升降调节结构",
+          "num": "ZL 20XX XXXXXXXX.X",
+          "year": "2020年获授权"
         }
       ]
     },
