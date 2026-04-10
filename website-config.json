@@ -1225,13 +1225,7 @@
           "num": "ZL 02 2 47070.0",
           "year": "2003年获授权"
         },
-        {
-          "type": "utility",
-          "typeName": "实用新型",
-          "name": "一种便携式颈椎牵引仪的安全限位装置",
-          "num": "ZL 20XX XXXXXXXX.X",
-          "year": "2021年获授权"
-        },
+
         {
           "type": "invention",
           "typeName": "设计专利",
@@ -1246,20 +1240,8 @@
           "num": "ZL 202311190851.4",
           "year": "2025年获授权"
         },
-        {
-          "type": "utility",
-          "typeName": "实用新型",
-          "name": "一种智能康复设备的人机交互控制面板",
-          "num": "ZL 20XX XXXXXXXX.X",
-          "year": "2022年获授权"
-        },
-        {
-          "type": "invention",
-          "typeName": "发明专利",
-          "name": "一种基于骆氏正脊技法的机械辅助调理系统",
-          "num": "ZL 20XX XXXXXXXX.X",
-          "year": "2023年获授权"
-        }
+
+
       ]
     },
     "process": {
