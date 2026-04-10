@@ -870,7 +870,7 @@ footer {
         `).join('');
         
         return `
-          <a href="case-detail.html?id=${caseItem.id}&series=medical" class="case-card">
+          <div class="case-card">
             <div class="case-card-image">
               <img src="${caseItem.cover}" alt="${caseItem.title}" loading="lazy">
             </div>
@@ -885,7 +885,7 @@ footer {
                 ${metricsHTML}
               </div>
             </div>
-          </a>
+          </div>
         `;
       }).join('');
       

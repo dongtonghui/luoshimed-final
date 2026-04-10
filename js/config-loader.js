@@ -2014,7 +2014,7 @@ function renderNewsPage() {
               <div class="news-meta"><span class="news-tag ${tagClass}">${article.categoryLabel || ''}</span></div>
               <h3>${article.title || ''}</h3>
               <p>${article.summary || ''}</p>
-              <a href="case-detail.html?id=${article.id}" class="read-more">阅读全文 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              <span class="read-more" style="cursor:default;color:var(--text-muted);">阅读全文 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
           </div>
         `;
@@ -2028,7 +2028,7 @@ function renderNewsPage() {
     if (hotList) {
       hotList.innerHTML = config.hotArticles.map((article, index) => {
         return `
-          <div class="hot-item" onclick="window.location.href='case-detail.html?id=${article.id}'">
+          <div class="hot-item">
             <span class="hot-num">${index + 1}</span>
             <span class="hot-title">${article.title || ''}</span>
           </div>

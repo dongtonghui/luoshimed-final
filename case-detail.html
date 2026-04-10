@@ -1026,7 +1026,7 @@ function loadRelatedCases(currentCaseItem) {
   }
   
   relatedContainer.innerHTML = relatedCases.map(caseItem => `
-    <div class="related-case-item" onclick="window.location.href='case-detail.html?id=${caseItem.id}'">
+    <div class="related-case-item">
       <img src="${caseItem.cover}" alt="${caseItem.title}" class="related-case-thumb">
       <div class="related-case-info">
         <h4 class="related-case-title">${caseItem.title}</h4>
