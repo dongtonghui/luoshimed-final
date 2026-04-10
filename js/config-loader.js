@@ -2086,6 +2086,91 @@ function renderProductDetailPage() {
   const product = config.productList.find(p => p.id === productId);
   if (!product) return;
   
+  // 渲染产品名称
+  if (product.name) {
+    const nameEl = document.querySelector('.detail-product-name');
+    if (nameEl) nameEl.textContent = product.name;
+  }
+  
+  // 渲染产品型号
+  if (product.model) {
+    const modelEl = document.querySelector('.detail-product-model');
+    if (modelEl) modelEl.textContent = product.model;
+  }
+  
+  // 渲染产品描述
+  if (product.description) {
+    const descEl = document.querySelector('.detail-desc');
+    if (descEl) descEl.textContent = product.description;
+  }
+  
+  // 渲染产品主图
+  if (product.image) {
+    const mainImg = document.querySelector(`#main-img-${productId}`);
+    if (mainImg) {
+      mainImg.src = product.image;
+      mainImg.alt = product.name || '';
+    }
+    
+    // 渲染缩略图
+    const thumbImg = document.querySelector(`#product-${productId} .detail-thumb img`);
+    if (thumbImg) {
+      thumbImg.src = product.image;
+      thumbImg.alt = product.name || '';
+    }
+    
+    // 更新缩略图点击数据
+    const thumbDiv = document.querySelector(`#product-${productId} .detail-thumb`);
+    if (thumbDiv) {
+      thumbDiv.dataset.src = product.image;
+    }
+  }
+  
+  // 渲染注册证信息
+  if (product.cert) {
+    const certEl = document.querySelector(`#product-${productId} .detail-cert-tag`);
+    if (certEl) {
+      certEl.innerHTML = `<span class="cert-dot-sm"></span>${product.cert}`;
+    }
+  }
+  
+  // 渲染KPI数据
+  if (product.kpis && Array.isArray(product.kpis) && product.kpis.length >= 2) {
+    const kpiEls = document.querySelectorAll(`#product-${productId} .detail-kpi`);
+    product.kpis.forEach((kpi, index) => {
+      if (kpiEls[index]) {
+        const valEl = kpiEls[index].querySelector('.detail-kpi-val');
+        const keyEl = kpiEls[index].querySelector('.detail-kpi-key');
+        if (valEl) valEl.textContent = kpi.value || '';
+        if (keyEl) keyEl.textContent = kpi.label || '';
+      }
+    });
+  }
+  
+  // 渲染适应症标签
+  if (product.indications && Array.isArray(product.indications)) {
+    const tagsContainer = document.querySelector(`#product-${productId} .indication-tags`);
+    if (tagsContainer) {
+      tagsContainer.innerHTML = product.indications.map(tag => 
+        `<span class="indication-tag">${tag}</span>`
+      ).join('');
+    }
+  }
+  
+  // 渲染产品分类标签
+  if (product.category) {
+    const catEl = document.querySelector(`#product-${productId} .detail-cat-tag`);
+    if (catEl) {
+      const catLabels = {
+        'medical': '📦 医疗机构专用',
+        'home': '📦 家医两用',
+        'smart': '📦 智能设备',
+        'rehab': '📦 康复设备'
+      };
+      catEl.textContent = catLabels[product.category] || '📦 产品';
+    }
+  }
+  
   // 渲染规格参数表
   if (product.specifications && Array.isArray(product.specifications)) {
     const specTableBody = document.querySelector('.spec-table tbody');
