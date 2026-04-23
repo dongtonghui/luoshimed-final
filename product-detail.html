@@ -354,15 +354,33 @@ footer {
 .detail-thumb:hover, .detail-thumb.active { border-color: var(--blue); }
 .detail-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
-/* 临时隐藏产品详情页的缩略图区域 */
-.product-detail-block .detail-img-thumbs {
+/* 主图区域支持 img + video 切换 */
+.detail-img-main .main-media {
+  width: 100%; height: 100%;
+  object-fit: cover;
   display: none;
 }
-
-/* 增加主图高度以保持视觉对齐 (原400px → 480px) */
-.product-detail-block .detail-img-main {
-  height: 480px;
+.detail-img-main .main-media.active {
+  display: block;
 }
+
+/* 视频缩略图播放图标 */
+.detail-thumb .thumb-video-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.25);
+  border-radius: inherit;
+}
+.detail-thumb .thumb-video-overlay::after {
+  content: '▶';
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--blue);
+  padding-left: 2px;
+}
+.detail-thumb { position: relative; }
 
 /* 信息区 */
 .detail-product-name { font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; line-height: 1.2; }
@@ -717,9 +735,20 @@ footer {
       <div class="detail-grid">
         <div>
           <div class="detail-img-main">
-            <img id="main-img-1" src="images/product-ls1.jpg" alt="坐式牵引治疗机 LS-1"/>
+            <img id="main-img-1" class="main-media active" src="images/product-ls1.jpg" alt="坐式牵引治疗机 LS-1"/>
+            <video id="main-video-1" class="main-media" muted loop playsinline controls preload="metadata">
+              <source src="videos/product-demo.mp4" type="video/mp4">
+            </video>
           </div>
-          <div class="detail-img-thumbs"><div class="detail-thumb active" onclick="switchImg(0)" data-src="images/product-ls1.jpg"><img src="images/product-ls1.jpg" alt="产品图1" loading="lazy"/></div><div class="detail-thumb " onclick="switchImg(1)" data-src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=700&h=500&fit=crop&auto=format&q=70"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=700&h=500&fit=crop&auto=format&q=70" alt="产品图2" loading="lazy"/></div><div class="detail-thumb " onclick="switchImg(2)" data-src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=700&h=500&fit=crop&auto=format&q=70"><img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=700&h=500&fit=crop&auto=format&q=70" alt="产品图3" loading="lazy"/></div></div>
+          <div class="detail-img-thumbs">
+            <div class="detail-thumb active" data-media="img" data-target="main-img-1" data-pid="1">
+              <img src="images/product-ls1.jpg" alt="产品图" loading="lazy"/>
+            </div>
+            <div class="detail-thumb" data-media="video" data-target="main-video-1" data-pid="1">
+              <img src="images/product-ls1.jpg" alt="视频封面" loading="lazy"/>
+              <div class="thumb-video-overlay"></div>
+            </div>
+          </div>
         </div>
         <div>
           <h1 class="detail-product-name">坐式牵引治疗机 LS-1</h1>
@@ -1323,16 +1352,39 @@ footer {
   window._currentPid = pid;
   showProduct(pid);
 
-  // 缩略图点击
+  // 缩略图点击 —— 支持图片/视频主图切换（product-1 及后续扩展）
   document.querySelectorAll('.detail-thumb').forEach(thumb => {
     thumb.addEventListener('click', function() {
       const block = this.closest('.product-detail-block');
-      const pid = parseInt(block.id.replace('product-', ''));
+      const pid = block.id.replace('product-', '');
       const thumbs = block.querySelectorAll('.detail-thumb');
-      const mainImg = block.querySelector('[id^="main-img-"]');
+      const mediaType = this.dataset.media;
+
       thumbs.forEach(t => t.classList.remove('active'));
       this.classList.add('active');
-      if (mainImg) mainImg.src = this.dataset.src;
+
+      if (mediaType) {
+        // 新逻辑：img / video 切换
+        const targetId = this.dataset.target;
+        const targetEl = document.getElementById(targetId);
+        block.querySelectorAll('.main-media').forEach(el => {
+          el.classList.remove('active');
+          if (el.tagName === 'VIDEO') {
+            el.pause();
+            el.currentTime = 0;
+          }
+        });
+        if (targetEl) {
+          targetEl.classList.add('active');
+          if (targetEl.tagName === 'VIDEO') {
+            targetEl.play().catch(() => {});
+          }
+        }
+      } else {
+        // 兼容旧逻辑：纯图片切换
+        const mainImg = block.querySelector('[id^="main-img-"]');
+        if (mainImg) mainImg.src = this.dataset.src;
+      }
     });
   });
 </script><script>
